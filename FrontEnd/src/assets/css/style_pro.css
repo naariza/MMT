@@ -1,0 +1,50 @@
+#navegacion{
+color: rgb(3, 5, 7);
+}
+.logo{
+  float: left;  
+}
+.linea{
+    border-left: 6px solid lightblue;
+    height: 120px;
+}
+.indicadores{
+    background-color: royalblue;
+    color: seashell;
+}
+@property --num {
+    syntax: "<integer>";
+    initial-value: 0;
+    inherits: false;
+  }
+  
+  .calidad {
+    animation: counter 3s infinite alternate ease-in-out;
+    counter-reset: num var(--num);
+    font: 800 40px system-ui;
+    padding: 2rem;
+  }
+  .calidad::after {
+    content: counter(num);
+  }
+  
+  @keyframes counter {
+    from {
+      --num: 0;
+    }
+    to {
+      --num: 100;
+    }
+  }
+ .icono-accidentalidad{
+    width: 200px;
+  }
+  .calidad{
+      margin-left: 20px;
+  }
+  .indicadores{
+      text-align: center;
+
+  }
+
+/*Linea de Tiempo*/
