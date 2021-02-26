@@ -1460,7 +1460,9 @@ ul#themecolors {
 
 .megna-theme {
   background: #56c0d8; }
-
+.dark-logo{
+  height: 50px;
+}
 .default-dark-theme {
   background: #263238;
   /* Old browsers */
