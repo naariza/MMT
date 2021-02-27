@@ -1,16 +1,46 @@
-#navegacion{
-color: rgb(3, 5, 7);
+header{
+  background-color:white;
+  box-shadow:4px 7px 11px 2px #000000;
+-moz-box-shadow:4px 7px 11px 2px #000000;
+-webkit-box-shadow:4px 7px 11px 2px #000000;
+  padding: 0px;
+  position: fixed;
+  z-index: 100;
+  width: 100%;
 }
-.logo{
-  float: left;  
+.icono{
+  height: 40px;
 }
+.glyphicon{
+  font-size: 25px;
+}
+.glyphicon.glyphicon-th-list{
+  font-size: 15px;
+}
+
+
+ul.nav{
+  float: right;
+  padding-right: 0%;
+  padding-left: 50%;
+}
+.footer {
+  bottom: 0;
+  color: #67757c;
+  left: 0px;
+  padding: 17px 15px;
+  position: absolute;
+  right: 0;
+  border-top: 1px solid rgba(120, 130, 140, 0.13);
+  background: #ffffff; }
 .linea{
     border-left: 6px solid lightblue;
     height: 120px;
 }
 .indicadores{
-    background-color: royalblue;
+    background-color: hsl(225, 73%, 57%);
     color: seashell;
+    opacity: .5;
 }
 @property --num {
     syntax: "<integer>";
@@ -36,15 +66,14 @@ color: rgb(3, 5, 7);
       --num: 100;
     }
   }
- .icono-accidentalidad{
-    width: 200px;
+ 
+  .glyphicon.glyphicon-ok-sign , .glyphicon-road, .glyphicon-check, .glyphicon-globe{
+    font-size: 100px;
+    margin-top: 20px;
+    padding: 0px;
+    display: block;
+    float:right;
   }
-  .calidad{
-      margin-left: 20px;
-  }
-  .indicadores{
-      text-align: center;
-
-  }
-
+  
+ 
 /*Linea de Tiempo*/
