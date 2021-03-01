@@ -26,11 +26,11 @@ header{
 margin-bottom: 40px;
 }
 
-ul.nav{
+/* ul.nav{
   float: right;
   padding-right: 0%;
   padding-left: 55%;
-}
+} */
 .footer {
   bottom: 0;
   color: #67757c;
@@ -44,7 +44,7 @@ ul.nav{
 .indicadores{
     background-color: hsl(225, 73%, 57%);
     color: seashell;
-    opacity: .5;
+    opacity: 1;
 }
 @property --num {
     syntax: "<integer>";
@@ -85,13 +85,17 @@ ul.nav{
   border-left: 6px solid #c4c4c7;
   height: 120px;
 }
-.line-time{
-
+.tab-informativo{
+  box-shadow:4px 4px 6px 3px #919192;
+-moz-box-shadow:4px 4px 6px 3px #919192;
+-webkit-box-shadow:4px 4px 6px 3px #919192;
+margin-bottom: 40px;
 }
 .card-line-time{
-  opacity: 0.5;
-  transition: all 0.5s;
+  opacity: 1;
+  transition: all 1s;
 }
+
 /* .card-line-time{
 animation-name: card-line-time;
 animation-duration: 10s;
