@@ -1,8 +1,8 @@
 header{
   background-color:white;
-  box-shadow:4px 7px 11px 2px #000000;
--moz-box-shadow:4px 7px 11px 2px #000000;
--webkit-box-shadow:4px 7px 11px 2px #000000;
+  box-shadow:4px 7px 11px 2px #4a6ee4;
+-moz-box-shadow:4px 7px 11px 2px #4a6ee4;
+-webkit-box-shadow:4px 7px 11px 2px #4a6ee4;
   padding: 0px;
   position: fixed;
   z-index: 100;
@@ -18,11 +18,18 @@ header{
   font-size: 15px;
 }
 
+.carrusel{
+  /* border-bottom: 2px solid rgb(255, 0, 0); */
+  box-shadow:4px 4px 6px 3px #919192;
+-moz-box-shadow:4px 4px 6px 3px #919192;
+-webkit-box-shadow:4px 4px 6px 3px #919192;
+margin-bottom: 40px;
+}
 
 ul.nav{
   float: right;
   padding-right: 0%;
-  padding-left: 50%;
+  padding-left: 55%;
 }
 .footer {
   bottom: 0;
@@ -33,10 +40,7 @@ ul.nav{
   right: 0;
   border-top: 1px solid rgba(120, 130, 140, 0.13);
   background: #ffffff; }
-.linea{
-    border-left: 6px solid lightblue;
-    height: 120px;
-}
+
 .indicadores{
     background-color: hsl(225, 73%, 57%);
     color: seashell;
@@ -77,3 +81,29 @@ ul.nav{
   
  
 /*Linea de Tiempo*/
+.linea{
+  border-left: 6px solid #c4c4c7;
+  height: 120px;
+}
+.line-time{
+
+}
+.card-line-time{
+  opacity: 0.5;
+  transition: all 0.5s;
+}
+/* .card-line-time{
+animation-name: card-line-time;
+animation-duration: 10s;
+animation-direction:alternate;
+}
+
+@keyframes card-line-time{
+  
+from{
+margin-right: 100%;
+}
+to{
+margin-left: 0%;
+}
+} */

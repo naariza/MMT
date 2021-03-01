@@ -10,7 +10,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { BreadcrumbsComponent } from './share/breadcrumbs/breadcrumbs.component';
 import { SidebarComponent } from './share/sidebar/sidebar.component';
 import { HeaderComponent } from './share/header/header.component';
-import { BodyComponent } from './share/body/body/body.component';
+import { BodyComponent } from './share/body/body.component';
 
 
 @NgModule({
