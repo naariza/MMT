@@ -11,7 +11,8 @@ import { BreadcrumbsComponent } from './share/breadcrumbs/breadcrumbs.component'
 import { SidebarComponent } from './share/sidebar/sidebar.component';
 import { HeaderComponent } from './share/header/header.component';
 import { BodyComponent } from './share/body/body.component';
-import { HomeComponent } from './pages/home/home/home.component';
+import { HomeComponent } from './pages/home/home.component';
+import { ContactanosComponent } from './pages/contactanos/contactanos.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { HomeComponent } from './pages/home/home/home.component';
     SidebarComponent,
     HeaderComponent,
     BodyComponent,
-    HomeComponent
+    HomeComponent,
+    ContactanosComponent
   ],
   imports: [
     BrowserModule,
