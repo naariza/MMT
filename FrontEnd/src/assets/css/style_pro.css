@@ -1,36 +1,114 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* Header */
 header{
-  background-color:white;
+  position: relative;
+width: 100%;
+height: 600px;
+z-index: 1;
+background-size: cover;
+background-attachment: fixed; 
+
+/* Fondo del header difuminado con imagen */
+  /* background: #005AA7;
+background: -webkit-linear-gradient(to bottom, #FFFDE4,hsla(208, 100%, 33%, 0.527)),url(../images/scroll-1.jpg);  
+background: linear-gradient(to bottom, #FFFDE4, hsla(208, 100%, 33%, 0.527)),url(../images/scroll-1.jpg);  */
+
+
+  /* height: 600px; */
+/* background-color:white;
   box-shadow:4px 7px 11px 2px #4a6ee4;
 -moz-box-shadow:4px 7px 11px 2px #4a6ee4;
 -webkit-box-shadow:4px 7px 11px 2px #4a6ee4;
   padding: 0px;
   position: fixed;
-  z-index: 100;
+  z-index: 100; */
+}
+.search{
+  width: 700px;
+  margin-left: 300px;
+  margin-top: 50px;
+}
+.glyphicon.glyphicon-search.icon-search{
+  font-size: 40px;
+}
+.contenedor{
+  position: absolute;
+  z-index: 2;
   width: 100%;
+}
+.slogan{
+  margin-top: 200px;
+  padding-bottom: 0;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.btn .btn-buscar{
+  border: 1px solid #005AA7;
+  font: bold;
+  color:#ffffff ;
+}
+nav{
+  justify-content: center;
+  align-items: center;
+  text-align:center;
+  padding: 30px 50px 0 0;
+  position: absolute;
+}
+nav > a{
+  color: black;
+  font-weight: 300;
+  font-size: 15px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  text-decoration:none;
+  margin-right: 100px;
+}
+nav > a:hover{
+  background:  rgb(255, 255, 255);
+  text-decoration:none;
+}
+.wave{
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  z-index: 3;
 }
 .icono{
   height: 40px;
+  padding-right: 50px;
 }
-.glyphicon{
-  font-size: 25px;
+button.btn.btn-primary{
+  width: 100px;
 }
-.glyphicon.glyphicon-th-list{
-  font-size: 15px;
+input.form-control.me-2{
+  height: 60px;
 }
-
 .carrusel{
-  /* border-bottom: 2px solid rgb(255, 0, 0); */
   box-shadow:4px 4px 6px 3px #919192;
 -moz-box-shadow:4px 4px 6px 3px #919192;
 -webkit-box-shadow:4px 4px 6px 3px #919192;
 margin-bottom: 40px;
+margin-top: 0px;
+padding-top: 0px ;
+position: absolute;
+z-index: 1;
+opacity: 0.4;
 }
 
-/* ul.nav{
+.menu > ul{
+  display: flex;
   float: right;
   padding-right: 0%;
   padding-left: 55%;
-} */
+  list-style: none;
+}
 .footer {
   bottom: 0;
   color: #67757c;
