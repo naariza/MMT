@@ -79,6 +79,7 @@ nav > a:hover{
   background:  rgb(255, 255, 255);
   text-decoration:none;
 }
+
 .wave{
   position: absolute;
   bottom: 0px;
@@ -128,6 +129,13 @@ img.card-img-top.img-noticia{
   border-top-right-radius: 7%;
   border-bottom-left-radius: 4%;
   border-bottom-right-radius: 4%;
+}
+.sellos{
+  height: 195px;
+
+}
+.container.sellos{
+  padding-bottom: 20px;
 }
 .footer {
   bottom: 0;
@@ -194,6 +202,9 @@ margin-bottom: 40px;
   transition: all 1s;
 }
 
+@keyframes elementos-home{
+
+}
 /* .card-line-time{
 animation-name: card-line-time;
 animation-duration: 10s;
