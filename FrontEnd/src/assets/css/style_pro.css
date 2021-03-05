@@ -304,9 +304,10 @@ display: flex;
   transform: scale(1);
 }
 .sellos-seccion{
-  background: #c9d6ff; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to bottom, #c9d6ff, #e2e2e2); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to bottom, #c9d6ff, #e2e2e2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */margin-top: 20px;
+  background: #c9d6ff; 
+  background: -webkit-linear-gradient(to bottom, #c9d6ff, #e2e2e2); 
+  background: linear-gradient(to bottom, #c9d6ff, #e2e2e2); 
+  margin-top: 20px;
 }
 .form-group{
   display: grid;
@@ -315,6 +316,7 @@ display: flex;
     background-color: hsl(225, 73%, 57%);
     color: seashell;
     opacity: 1;
+    margin: 5px;
 }
 @property --num {
     syntax: "<integer>";

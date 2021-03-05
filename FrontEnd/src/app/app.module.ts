@@ -1,41 +1,40 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
+import { routing,appRoutingProviders} from './app-routing.module';
+import { FormsModule } from "@angular/forms";
+import { HttpClientModule } from "@angular/common/http";
 import { AppComponent } from './app.component';
-import { LoginComponent } from './auth/login/login.component';
-import { RegisterComponent } from './auth/register/register.component';
 import { NopagefoundComponent } from './pages/nopagefound/nopagefound.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { BreadcrumbsComponent } from './share/breadcrumbs/breadcrumbs.component';
-import { SidebarComponent } from './share/sidebar/sidebar.component';
 import { HeaderComponent } from './share/header/header.component';
 import { BodyComponent } from './share/body/body.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ContactanosComponent } from './pages/contactanos/contactanos.component';
 import { FooterComponent } from './pages/footer/footer.component';
+import { NosotrosComponent } from './pages/nosotros/nosotros.component';
+import { ServiciosComponent } from './pages/servicios/servicios.component';
+import { AsociadosComponent } from './pages/asociados/asociados.component';
+import { LoginComponent } from './pages/login/login.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    RegisterComponent,
     NopagefoundComponent,
-    DashboardComponent,
-    BreadcrumbsComponent,
-    SidebarComponent,
     HeaderComponent,
     BodyComponent,
     HomeComponent,
     ContactanosComponent,
-    FooterComponent
+    FooterComponent,
+    NosotrosComponent,
+    ServiciosComponent,
+    AsociadosComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    routing
   ],
-  providers: [],
+  providers: [appRoutingProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

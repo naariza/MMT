@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-sidebar',
-  templateUrl: './sidebar.component.html',
+  selector: 'app-asociados',
+  templateUrl: './asociados.component.html',
   styles: [
   ]
 })
-export class SidebarComponent implements OnInit {
+export class AsociadosComponent implements OnInit {
 
   constructor() { }
 
