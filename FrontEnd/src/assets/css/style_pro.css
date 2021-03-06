@@ -60,6 +60,10 @@ background: linear-gradient(to bottom, #FFFDE4, hsla(208, 100%, 33%, 0.527)),url
   justify-content: center;
   flex-direction: column;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  background-color: hsla(0, 0%, 1%, 0.473);
+}
+.slogan >h1{
+  color: rgb(255, 255, 255);
 }
 .btn .btn-buscar{
   border: 1px solid #005AA7;
@@ -189,7 +193,19 @@ main .sobre-nosotros{
 .contenido-textos h3{
   margin-bottom: 15px;
 }
+.historia{
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.parrafo-historia::first-letter{
+  font-size:3em;
+	font-family:serif;
+  /* font-size:3em;
+	font-family:serif;
+	margin:8px;
+	float:left; */
 
+}
 .contenido-textos h3 span{
   background: #005AA7;
   color: #fff;
@@ -312,6 +328,26 @@ display: flex;
 .form-group{
   display: grid;
 }
+/* Nosotros */
+.historia-contenido{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 20px;
+  text-align: justify;
+}
+
+.historia-contenido > h2{
+font-size: 30px;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+font: bold;
+}
+
+
+
+
 .indicadores{
     background-color: hsl(225, 73%, 57%);
     color: seashell;
