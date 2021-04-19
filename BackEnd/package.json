@@ -4,6 +4,7 @@
   "description": "Programa de Mantenimiento de Vehiculos Para la empresa Mmt Ltda en maní casanare",
   "main": "index.js",
   "scripts": {
+    "start":"nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Nicolas Ariza",
@@ -15,6 +16,10 @@
     "express": "^4.17.1",
     "jwt-simple": "^0.5.6",
     "moment": "^2.29.1",
-    "mongoose": "^5.12.4"
+    "mongoose": "^5.12.4",
+    "mongoose-pagination": "^1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
   }
 }
