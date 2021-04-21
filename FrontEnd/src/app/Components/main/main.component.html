@@ -1,0 +1,21 @@
+<div id="content">
+    <section id="tipo-usuario">
+        <div id="usuario">
+            <a [routerLink]="['login-Admin']" (click)="message('1')">
+               <img id="usuario-icon" src="../assets/Img/funcionario.png" alt="">
+            </a>
+            <a id="enlace"  [routerLink]="['login-Admin']" (click)="message('1')" [routerLinkActive]="['actived']">
+                <h4>FUNCIONARIO</h4>
+            </a>
+           
+        </div>
+        <div id="usuario">
+            <a [routerLink]="['login-User']" (click)="message('2')">
+                <img id="usuario-icon" src="../assets/Img/conductor.png" alt="">
+            </a>
+            <a id="enlace" [routerLink]="['login-Admin']" (click)="message('2')" [routerLinkActive]="['actived']">
+                <h4>CONDUCTOR</h4>
+            </a>
+        </div>
+    </section>
+</div>

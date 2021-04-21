@@ -1,10 +1,17 @@
-import { NgModule } from '@angular/core';
+import { ModuleWithProviders } from "@angular/core";
 import { RouterModule, Routes } from '@angular/router';
+import { AppComponent } from "./app.component";
+import { LoginComponent } from "./Components/login/login.component";
+import { MainComponent } from './Components/main/main.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {path:'', component:MainComponent},
+  {path:'login-Admin', component:LoginComponent},
+  {path:'login-User', component:LoginComponent},
+  {path:'**', redirectTo:''}
+];
 
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }
+
+export const appRoutingProviders:any[]=[];
+export const routing: ModuleWithProviders<any> = RouterModule.forRoot(routes);
+

@@ -1,23 +1,23 @@
 /* Fuente */
 @font-face {
     font-family:"TrebuchetMS" ;
-    src: url('assets/fonts/TrebuchetMS.ttf');
+    src: url('../fonts/TrebuchetMS.ttf');
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family:"bebasNeue" ;
-    src: url('assets/fonts/BebasNeue.otf');
+    src: url('../fonts/BebasNeue.otf');
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family:"websymbols-regular-webfont" ;
-    src: url('assets/fonts/websymbols-regular-webfont.eot');
-    src: url('assets/fonts/websymbols-regular-webfont.eot?#iefix') format('embedded-opentype'), 
-    url('assets/fonts/websymbols-regular-webfont.woff') format('woff'), 
-    url('assets/fonts/websymbols-regular-webfont.ttf') format('truetype'),
-    url('assets/fonts/websymbols-regular-webfont.svg#WebSymbolsRegular') format('svg');
+    src: url('../fonts/websymbols-regular-webfont.eot');
+    src: url('../fonts/websymbols-regular-webfont.eot?#iefix') format('embedded-opentype'), 
+    url('../fonts/websymbols-regular-webfont.woff') format('woff'), 
+    url('../fonts/websymbols-regular-webfont.ttf') format('truetype'),
+    url('../fonts/websymbols-regular-webfont.svg#WebSymbolsRegular') format('svg');
     font-weight:normal;
     font-style: normal; 
     
@@ -28,7 +28,8 @@
     padding: 0px;
 }
 body{
-    background: url('assets/Img/12226.jpg');
+    background: url('../../Img/12226.jpg');
+      background-color: blue;
   
 }
 .gear{
@@ -141,10 +142,9 @@ font-size: 13px;
 /* Contenido */
 #content{
     width: 1100px;
-    /* min-height: 1100px; */
+    min-height: 1100px;
     margin: 0px auto;
     margin-top: 40px;
-    border: 1px solid #ccc;
    
 }
 .clearfix{
@@ -374,70 +374,4 @@ background: white;
 #emergente{
 display: inline-block;
 margin-left: 15%;
-}
-/* Seleccion de tipo de usuario */
-#tipo-usuario{
-    display: flex;
-    justify-content: center;
-    width: 70%;
-    height: 300px;
-    text-align: center;
-    margin: 0px auto;
-    background-color: white;
-}
-#tipo-usuario #usuario{
-    width: 25%;
-    height: 200px;
-    border: 1px solid #ccc;
-    float: left;
-    margin: 50px;
-    border-radius: 100%;
-    background-color:#4F81BD;
-    box-shadow: 4px 4px 6px #ccc;
-}
-#tipo-usuario #usuario img{
-    width: 80%;
-    height: 180px;
-    border-radius: 100%;
-    padding-top: 4px;
-
-}
-#tipo-usuario #usuario>h4{
-    margin-top: 15px;
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 26px;
-    background-color: #4F81BD;
-    border-radius: 10%;
-    box-shadow: 4px -1px 6px #ccc;
-}
-#tipo-usuario #usuario #enlace{
-    display: block;
-    height: 30px;
-    text-decoration: none;
-    margin-top: 14px;
-    color: white;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 26px;
-    background-color: #4F81BD;
-    border-radius: 10%;
-    box-shadow: 4px -1px 6px #ccc;
-}
-.back{
-  font-family: 'websymbols-regular-webfont';
-  background-color: white;
-  width: 50px;
-  height: 50px;
-  font-size: 23px;
-  border: 1px solid #ccc;
-  text-align: center;
-  padding-top: 5px;
-  position: absolute;
-  margin-left: 20%;
-  box-shadow: 3px -3px 3px #ccc;
-  text-decoration: none;
-}
-.back:hover>a{
-  text-decoration: none;
-  
 }
