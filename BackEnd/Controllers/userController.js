@@ -7,12 +7,74 @@ var bcrypt = require('bcrypt-nodejs');
 var jwt=require('../Service/jwt');
 const user = require('../Models/user');
 const { findByIdAndUpdate } = require('../Models/user');
+var mongoosePaginate = require('mongoose-pagination');
 
 
-function prueba(req, res){
-    res.status(200).send({message:'hola mundo'})
+function getUser(req,res){
+    var userId = req.params.id;
+
+    User.findById(userId, (err,user)=>{
+        if(err){
+            res.status(500).send({message:'Error en la peticion'});
+        }else{
+            if(!user){
+                res.status(404).send({message:'El usuario no existe'});
+            }else{
+                res.status(200).send({user});
+            }
+        }
+    })
+    
 }
+function getUsers(req,res){
+    if(req.params.page){
+        var page = req.params.page;
+    }else{
+        var page =1;
+    }
 
+var itemsPerPage = 3;
+User.find().sort('name').paginate(page,itemsPerPage,function(err,users,total){
+    if(err){
+        res.status(500).send({message:'Error al guardar el artista'});
+        
+    }else{
+        if(!users){
+            res.status(404).send({message:'No hay usuarios'});
+       
+        }else{
+        return res.status(200).send({
+            pages:total,
+            users:users
+        });
+        }
+    }
+});
+}
+function getDrivers(req,res){
+    
+    if(req.params.page){
+        var page = req.params.page;
+    }else{
+        var page =1;
+    }
+
+var itemsPerPage = 6;
+User.find({role: 'CONDUCTOR'}).sort('name').paginate(page,itemsPerPage,function(err,users,total){
+    if(err){
+        res.status(500).send({message:'Error al buscar los conductores'});
+    }else{
+        if(!users){
+            res.status(404).send({message:'No hay usuarios'});
+        }else{
+        return res.status(200).send({
+            pages:total,
+            users:users
+        });
+        }
+    }
+});
+}
 function UserSave(req, res) {
     var user = new User();
     var params = req.body;
@@ -21,7 +83,7 @@ function UserSave(req, res) {
     user.surName = params.surName;
     user.email = params.email;
     user.role = params.role;
-    user.image = 'null';
+    user.image = '';
 
     if (params.password) {
         //Encriptar la contraseña
@@ -85,7 +147,7 @@ function loginUser(req,res){
     var name = params.name;
     var password = params.password
 
-    User.findOne({name:name.toLowerCase()},(err,user)=>{
+    User.findOne({name:name},(err,user)=>{
         if(err){
             res.status(500).send({message:"Error en la petición"})
         }else{
@@ -141,7 +203,7 @@ function loginUser(req,res){
         var ext_split = file_name.split('\.');
         var file_ext = ext_split[1];
 
-        if(file_ext == 'png' || file_ext == 'jpg' || file_ext == 'jpeg' || file_ext == 'gif'){
+        if(file_ext == 'png' ||file_ext == 'PNG' || file_ext == 'JPG' ||  file_ext == 'jpg' || file_ext == 'JPEG' || file_ext == 'jpeg' || file_ext == 'gif'){
             User.findByIdAndUpdate(userId,{image:file_name},(err, userUpdated)=>{
                 if(!userUpdated){
                     res.status(404).send({message:'No se ha podido actualizar el usuario'});
@@ -159,7 +221,7 @@ function loginUser(req,res){
 }
 function getImageFile(req, res){
     var imageFile = req.params.imageFile;
-    var path_file = './uploads/users/'+imageFile;
+    var path_file = './Uploads/users/'+imageFile;
     fs.exists(path_file, function(exists){
         if(exists){
             res.sendFile(path.resolve(path_file));
@@ -175,5 +237,7 @@ module.exports = {
     updateUser,
     uploadImage,
     getImageFile,
-    prueba
+    getUser,
+    getUsers, 
+    getDrivers
 };

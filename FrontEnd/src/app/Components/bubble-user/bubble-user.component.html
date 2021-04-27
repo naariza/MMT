@@ -1,0 +1,22 @@
+<aside class="col-2">
+    <ul id="perfil">
+        <li>
+            <img src="{{url+'get-image-user/'+identity.image}}"  alt="">
+            <ul>
+                <li>
+                    {{identity.name}} {{identity.surName}}
+                </li>
+                <li>
+                    <a [routerLink]="['/edit-user/:id']" [routerLinkActive]="['actived']">
+                    Editar Perfil
+                    </a>
+                </li>
+                <li>
+                    <a [routerLink]="['']" (click)="logout()">
+                        Salir
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    </aside>

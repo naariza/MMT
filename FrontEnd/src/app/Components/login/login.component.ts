@@ -11,6 +11,7 @@ import { LoginService } from 'src/app/Services/login.service';
 })
 export class LoginComponent implements OnInit {
 
+  public level="";
   public user:User;
   public user_register:User;
   public identity;
@@ -19,7 +20,7 @@ export class LoginComponent implements OnInit {
   public url;
   
   constructor(
-    public level:LoginService,
+    // public level:LoginService,
     private _route:ActivatedRoute,
     private _router:Router,
     private _userService:UserService 
@@ -28,11 +29,20 @@ export class LoginComponent implements OnInit {
     this.user= new User('','','','','','','');
     this.user_register= new User('','','','','','','');
     this.url=GLOBAL.url;
+    
    }
 
   ngOnInit(): void {
+    this._route.queryParams.subscribe(res => {
+      if(res.level){
+        this.level = res.level
+      }else{
+        this._router.navigate(['']);
+      }
+    });
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
+    
   }
   public onSubmit(){
     //Conseguir los datos del usuario identificado
@@ -52,11 +62,13 @@ export class LoginComponent implements OnInit {
               let token = response.token;
               this.token = token;
               if(this.token.length <= 0){
-                alert("El no se ha generado")
+                alert("El token no se ha generado")
               }else{
                 //Crear elemento en el localStorage para tener el token disponble
                 localStorage.setItem('token',token);
-                this.user= new User('','','','','','ROLE_USER','');
+                this.user= new User('','','','','','','');
+                this._router.navigate(['navegador']);
+                console.log(this.token);
               }
             },
                error=>{
@@ -90,30 +102,5 @@ export class LoginComponent implements OnInit {
     this.identity = null;
     this.token=null;
     this._router.navigate[('/')];
-  }
-  public alertRegister;
-  onSubmitRegister(){
-    this._userService.register(this.user_register).subscribe(
-      response=>{
-        let user = response.user;
-        this.user_register = user;
-
-        if(!user._id){
-          this.alertRegister='Error al registrase';
-        }else{
-          this.alertRegister='El registro se ha realizado corecctamente, identificate con '+this.user_register.email;
-          this.user_register = new User('','','','','','ROLE_USER','');
-  
-        }
-      },
-      error=>{
-        var errorMessage = <any>error;
-        if(errorMessage != null){
-          var body = error.error.message;
-          this.alertRegister=body;
-          console.log(error);
-        }
-      }
-    );
   }
 }

@@ -1,10 +1,10 @@
-<div  id="content" [class.hidden]="!identity">
-    <div class="back">
-        <a [routerLink]="['']" (click)="logout()">
-            h
-        </a>
-    </div>
-    <div id="login" *ngIf="level.level_num == '1'">
+<div class="back">
+    <a [routerLink]="['']" (click)="logout()">
+        h
+    </a>
+</div>
+<div  id="content">
+    <div id="login" *ngIf="level == '1'">
             <h2>Bienvenido</h2>
             <form #loginForm="ngForm" (ngSubmit)="onSubmit()"class="form-group" action="">
                 <input id="input" name="email" #email="ngModel" [(ngModel)]="user.email" class="form-control" type="email" placeholder="Correo electronico" required>
@@ -17,10 +17,10 @@
                 <span *ngIf="!password.valid && password.touched">
                     La contraseña es obligatoria
                 </span>
-                <button type="submit" href="" class="btn btn-primary form-control">Ingresar</button>
+                <button type="submit" class="btn btn-primary form-control">Ingresar</button>
             </form>
     </div>
-    <div id="login" *ngIf="level.level_num == '2'">
+    <div id="login" *ngIf="level == '2'">
         <h2>Bienvenido</h2>
         <form #loginForm="ngForm" (ngSubmit)="onSubmit()" class="form-group" action="">            
             <input id="input" name="name" #name="ngModel" [(ngModel)]="user.name" class="form-control" type="text" placeholder="Primer Nombre" required>

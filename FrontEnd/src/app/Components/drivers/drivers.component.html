@@ -1,0 +1,28 @@
+<div class="content">
+    <table class="table table-bordered">
+      <thead class="table-dark">
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Correo Electronico</th>
+            <th>Rol De Usuario</th>
+            <th colspan="3">Funciones</th>
+        </tr>
+      </thead> 
+      <tbody>
+        <tr *ngFor="let driver of drivers">
+          <th>{{driver.name}}</th>
+          <th>{{driver.surName}}</th>
+          <th>{{driver.email}}</th>
+          <th>{{driver.role}}</th>
+          <th class="Agregar">+</th>
+          <th class="Eliminar">-</th>
+          <th class="Editar">*</th>
+
+       </tr> 
+      </tbody>
+      
+    </table>
+
+    <button [routerLink]="['/navegador']" class="btn btn-primary">Volver</button>
+</div>

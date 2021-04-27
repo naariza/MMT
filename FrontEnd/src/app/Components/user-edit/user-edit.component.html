@@ -1,0 +1,45 @@
+<div id="content" *ngIf="identity && identity.role === 'FUNCIONARIO'">
+  <div class="clearfix"></div>
+    <div *ngIf="alertMessage">
+      <div class="alert alert-info">
+        {{alertMessage}}
+      </div>
+    </div>
+    <form id="editar-usuario"#userUpdateForm="ngForm" (ngSubmit)="onSubmit()" class="col-md-4">
+      <button type="button" [routerLink]="['/navegador']" [routerLinkActive]="['actived']" class="close" aria-hidden="true">&times;</button>
+      <h3>{{titulo}}</h3>
+      <p>
+        <label for="">Nombre</label>
+        <input type="text" class="form-control" #name="ngModel" name="name" [(ngModel)]="user.name" required>
+        <span *ngIf="!name.valid && name.touched">
+          El nombre es obligatorio
+        </span>
+      </p>
+      <p>
+        <label for="">Apellido</label>
+        <input type="text" class="form-control" #userName="ngModel" name="userName" [(ngModel)]="user.surName" required>
+        <span *ngIf="!userName.valid && userName.touched">
+          El apellido es obligatorio
+        </span>
+      </p>
+      <p>
+        <label for="">Correo Electronico</label>
+        <input type="text" class="form-control" #email="ngModel" name="email" [(ngModel)]="user.email" required>
+        <span *ngIf="!email.valid && email.touched">
+          El email es obligatorio
+        </span>
+      </p>
+      <!-- <p>
+       <input type="text" class="form-control" #role="ngModel" name="role" [(ngModel)]="user.role" style="text-transform:uppercase;">
+      </p> -->
+      <div id="identity_image" class="image_for_edit" *ngIf="user.image && user.image != 'null'">
+        <img src="{{url+'get-image-user/'+user.image}}" style="width: 50px">
+      </div>
+      <p>
+        <label for="">Sube tu foto</label> 
+        <input type="file" placeholder="Subir imagen..." (change)="fileChangeEvent($event)">
+      </p>
+      <input type="submit" name="" id="" class="btn btn-primary m-3" value="Actualizar datos">
+      <input type="button" name="" id="" [routerLink]="['/navegador']" class="btn btn-danger m-3" value="Cancelar">
+    </form>
+  </div>

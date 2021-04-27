@@ -13,6 +13,7 @@ export class UserService {
   public identity;
   public token;
   public url: string;
+  drivers:User[];
   constructor(private _http: HttpClient) { 
     this.url = GLOBAL.url;
   }
@@ -37,14 +38,30 @@ register(user_to_register): Observable<any> {
 
     let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-    return this._http.post(this.url + 'register-user', params, { headers: headers });
+    return this._http.post(this.url + 'register', params, { headers: headers });
 
 }
 updateUser(user_to_update): Observable<any> {
     let json = JSON.stringify(user_to_update);
     let params = json;
     let headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':this.getToken()});
-    return this._http.put(this.url + 'update-user/' + user_to_update._id, params, { headers: headers });
+    return this._http.put(this.url + 'update-User/' + user_to_update._id, params, { headers: headers });
+}
+getUser(token,id:string){
+    let headers= new HttpHeaders({
+        'Content-Type':'application/json',
+        'Authorization':token
+    });
+    let url = `${this.url}/get-user/${id}`
+    return this._http.get(url,{headers});
+}
+getDrivers(token,page){
+    let headers= new HttpHeaders({
+        'Content-Type':'application/json',
+        'Authorization':token
+    });
+    let url = `${this.url}/get-drivers/${page}`
+    return this._http.get(url,{headers});
 }
 getIdentity() {
     let identity = JSON.parse(localStorage.getItem('identity'));

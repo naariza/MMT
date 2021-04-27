@@ -19,8 +19,7 @@
     url('assets/fonts/websymbols-regular-webfont.ttf') format('truetype'),
     url('assets/fonts/websymbols-regular-webfont.svg#WebSymbolsRegular') format('svg');
     font-weight:normal;
-    font-style: normal; 
-    
+    font-style: normal;
 }
 /* Estilos generales */
 *{
@@ -28,8 +27,7 @@
     padding: 0px;
 }
 body{
-    background: url('assets/Img/12226.jpg');
-  
+   background-color: white;
 }
 .gear{
     font-family: 'websymbols-regular-webfont';
@@ -41,7 +39,9 @@ body{
     width: 100%;
     height: 150px;
     margin: 0px auto;
-    background-color:white;
+    background-color:#DCDCDC;
+    box-shadow: 0px 2px 2px hsla(213, 45%, 53%, 0.644);
+
 }
 #header a{
     text-decoration: none;
@@ -59,8 +59,12 @@ body{
 }
 #header h1{
     text-align: center;
-    font-size: 40px;
+    font-size: 50px;
+    text-shadow: 1px 1px white, 2px 2px white, 3px 3px white, 4px 4px white;
+    letter-spacing: 2px;
     color: #4F81BD;
+    font-family: 'bebasNeue';
+    margin-top: 10px;
 }
 #header h1 a{
     color: #4F81BD;
@@ -140,11 +144,17 @@ font-size: 13px;
 
 /* Contenido */
 #content{
-    width: 1100px;
-    /* min-height: 1100px; */
-    margin: 0px auto;
-    margin-top: 40px;
-    border: 1px solid #ccc;
+  display: flex;
+  width: 1100px;
+  min-height: 430px;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 0px auto;
+  margin-left: 130px;
+  margin-top: 5px;
+    
+    /* border: 1px solid #ccc; */
    
 }
 .clearfix{
@@ -378,12 +388,14 @@ margin-left: 15%;
 /* Seleccion de tipo de usuario */
 #tipo-usuario{
     display: flex;
+    align-items: center;
     justify-content: center;
+    text-align: center;
     width: 70%;
     height: 300px;
-    text-align: center;
     margin: 0px auto;
-    background-color: white;
+    border: 1px solid rgb(221, 221, 221);
+    box-shadow: 4px 4px 2px #ccc;
 }
 #tipo-usuario #usuario{
     width: 25%;
@@ -440,4 +452,117 @@ margin-left: 15%;
 .back:hover>a{
   text-decoration: none;
   
+}
+/* Home.component-html */
+#funciones{
+   margin: 0px auto; 
+   margin-top: 5px;
+   box-shadow: 3px 3px 3px #ccc;
+   background-color: white;
+   border: 1px solid #ccc;
+   height: 450px;
+}
+#funciones #funciones-icon{
+  width:100px;
+}
+#funciones #enlace{
+  display: block;
+  height: 60px;
+  width:170px;
+  text-decoration: none;
+  margin-top: 14px;
+  color: white;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  background-color: #4F81BD;
+  border-radius: 10%;
+  box-shadow: 4px -1px 6px #ccc;
+}
+#funciones .item{
+    height: 180px;
+    border: 1px solid #ccc;
+    float: left;
+    margin: 5px;
+    margin-top: 20px;
+    border-radius: 100%;
+    background-color:#4F81BD;
+    box-shadow: 4px 4px 6px #ccc;
+}
+
+ul ul{
+display:none;
+z-index: 2;
+}
+ul:hover ul {
+  display: block;
+  list-style:none;
+  align-content: flex-end;
+  background-color:#f8f6f6;
+  box-shadow: 2px 2px 2px #cccc;
+  width: 125px;
+  height: 100px;
+  margin-inline-start: auto;
+  z-index: 2;
+}
+ul:hover ul>li{
+  display: block;
+  text-align: right;
+  list-style: none;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+ul:hover ul>li>a{
+  color:red;
+  font-size: 20px;
+  text-decoration: none;
+}
+#perfil img{
+width: 60px;
+height: 60px;
+border-radius: 100%;
+box-shadow: 3px 3px 3px 1px #ccc;
+}
+#perfil >li{
+  display: block;
+  text-align: right;
+  background-color: white;
+  cursor: pointer;
+  width: 60px;
+}
+dl, ol, ul{
+  float: right;
+  margin-top: 10px;
+}
+aside{
+  float: right;
+}
+/* Editar usuario */
+#editar-usuario{
+    display: block;
+    text-align: justify;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    padding: 0px;
+    margin: 0px auto;
+    border: 1px solid #ccc;
+    background: white;
+    box-shadow: 3px 3px 3px #ccc;
+    padding: 5px;
+    padding-bottom: 0px;
+}
+.Agregar {
+  font-family:"websymbols-regular-webfont";
+  font-size: 30px;
+  color: green;
+  cursor:pointer;
+}
+
+.Eliminar{
+  font-family:"websymbols-regular-webfont";
+  font-size: 30px;
+  color: red;
+  cursor:pointer;
+}
+.Editar{
+  font-family:"websymbols-regular-webfont";
+  font-size: 30px;
+  color:rgb(224, 195, 26);
+  cursor:pointer;
 }

@@ -1,1 +1,87 @@
-<p>home works!</p>
+<app-bubble-user></app-bubble-user>
+<div id="content" *ngIf="identity && identity.role =='FUNCIONARIO'">
+        <section id="funciones" class="col-9">
+            <div id="items" class="row justify-content-between bg-white">
+                <div class="item col-3 border bg-white pt-3">
+                    <a [routerLink]="['']" >
+                        <img id="funciones-icon" src="../../../assets/Img/vehiculo.png" alt="">
+                     </a>
+                     <a id="enlace"  [routerLink]="['']" [routerLinkActive]="['actived']">
+                        <h4> Gestionar Vehiculos</h4>
+                    </a>
+                </div>
+                <div class="item col-3 border pt-3 bg-white ">
+                    <a [routerLink]="['/get-drivers/1']" >
+                        <img id="funciones-icon" src="../../../assets/Img/Conductores.png" alt="">
+                     </a>
+                     <a id="enlace"  [routerLink]="['/get-drivers/1']" [routerLinkActive]="['actived']">
+                        <h4>Gestionar Conductores</h4>
+                    </a>
+                </div>
+                <div class="item col-3 border pt-3 bg-white">
+                    <a [routerLink]="['']" >
+                        <img id="funciones-icon" src="../../../assets/Img/formatos.png" alt="">
+                     </a>
+                     <a id="enlace"  [routerLink]="['']" [routerLinkActive]="['actived']">
+                        <h4>Formatos MmtLtda</h4>
+                    </a>
+                </div>
+                <div class="item col-3 border pt-3 bg-white">
+                    <a [routerLink]="['']" >
+                        <img id="funciones-icon" src="../../../assets/Img/Gestionar Autorización.png" alt="">
+                     </a>
+                     <a id="enlace"  [routerLink]="['']" [routerLinkActive]="['actived']">
+                        <h4>Gestionar Autorización</h4>
+                    </a>                
+                </div>
+                <div class="item col-3 border pt-3 bg-white">
+                    <a [routerLink]="['']" >
+                        <img id="funciones-icon" src="../../../assets/Img/preoperacional.png">
+                     </a>
+                     <a id="enlace"  [routerLink]="['']" [routerLinkActive]="['actived']">
+                        <h4>Gestionar Preoperacional</h4>
+                    </a>   
+                </div>
+                <div class="item col-3 border pt-3 bg-white">
+                    <a [routerLink]="['/register-user']" >
+                        <img id="funciones-icon" src="../../../assets/Img/Gestionar Usuario.png">
+                     </a>
+                     <a id="enlace"  [routerLink]="['/register-user']" [routerLinkActive]="['actived']">
+                        <h4>Registrar Usuarios</h4>
+                    </a>   
+                </div>
+                
+            </div>
+        </section>
+</div>
+<div id="content" *ngIf="identity && identity.role =='CONDUCTOR'">
+    <section id="funciones" class="col-9">
+        <div id="items" class="row justify-content-between bg-white">
+            
+            <div class="item col-3 border pt-3 bg-white">
+                <a [routerLink]="['']" >
+                    <img id="funciones-icon" src="../../../assets/Img/formatos.png" alt="">
+                 </a>
+                 <a id="enlace"  [routerLink]="['']" [routerLinkActive]="['actived']">
+                    <h4>Formatos MmtLtda</h4>
+                </a>
+            </div>
+            <div class="item col-3 border pt-3 bg-white">
+                <a [routerLink]="['']" >
+                    <img id="funciones-icon" src="../../../assets/Img/Gestionar Autorización.png" alt="">
+                 </a>
+                 <a id="enlace"  [routerLink]="['']" [routerLinkActive]="['actived']">
+                    <h4>Gestionar Autorización</h4>
+                </a>                
+            </div>
+            <div class="item col-3 border pt-3 bg-white">
+                <a [routerLink]="['']" >
+                    <img id="funciones-icon" src="../../../assets/Img/preoperacional.png">
+                 </a>
+                 <a id="enlace"  [routerLink]="['']" [routerLinkActive]="['actived']">
+                    <h4>Gestionar Preoperacional</h4>
+                </a>   
+            </div>            
+        </div>
+    </section>
+</div>
