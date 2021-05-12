@@ -6,6 +6,7 @@ var app = express();
 
 //cargar Rutas
 var user_routes = require('./Routes/user');
+var car_routes = require('./Routes/car');
 app.use(bodyparser.urlencoded({extended:false}));
 app.use(bodyparser.json());
 
@@ -18,4 +19,5 @@ app.use((req,res,next)=>{
 });
 //rutas Base
 app.use('/api',user_routes);
+app.use('/api',car_routes);
 module.exports =app;

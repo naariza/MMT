@@ -1,13 +1,15 @@
 <div id="content" *ngIf="identity && identity.role === 'FUNCIONARIO'">
-  <div class="clearfix"></div>
-    <div *ngIf="alertMessage">
-      <div class="alert alert-info">
-        {{alertMessage}}
-      </div>
-    </div>
+    
     <form id="editar-usuario"#userUpdateForm="ngForm" (ngSubmit)="onSubmit()" class="col-md-4">
-      <button type="button" [routerLink]="['/navegador']" [routerLinkActive]="['actived']" class="close" aria-hidden="true">&times;</button>
+      <div class="card">
+        <div class="card-body">
+          <button type="button" [routerLink]="['/navegador']" [routerLinkActive]="['actived']" class="close" aria-hidden="true">&times;</button>
       <h3>{{titulo}}</h3>
+      <div *ngIf="alertMessage">
+        <div class="alert alert-info">
+          {{alertMessage}}
+        </div>
+      </div>
       <p>
         <label for="">Nombre</label>
         <input type="text" class="form-control" #name="ngModel" name="name" [(ngModel)]="user.name" required>
@@ -29,9 +31,19 @@
           El email es obligatorio
         </span>
       </p>
-      <!-- <p>
-       <input type="text" class="form-control" #role="ngModel" name="role" [(ngModel)]="user.role" style="text-transform:uppercase;">
-      </p> -->
+      <p>
+        <p>
+          <select class="form-control" #car="ngModel" name="car" [(ngModel)]="user.car"id="">
+            <option value="{{car._id}}" *ngFor="let car of vehiculos">{{car.clase}}</option>
+          </select>
+        </p>
+        <p>
+       <!-- <input type="text" class="form-control" #role="ngModel" name="role" [(ngModel)]="user.role" style="text-transform:uppercase;"> -->
+       <select name="" id="" class="form-control" #role="ngModel" name="role" [(ngModel)]="user.role">
+         <option value="CONDUCTOR">CONDUCTOR</option>
+         <option value="FUNCIONARIO">FUNCIONARIO</option>
+       </select>
+      </p>
       <div id="identity_image" class="image_for_edit" *ngIf="user.image && user.image != 'null'">
         <img src="{{url+'get-image-user/'+user.image}}" style="width: 50px">
       </div>
@@ -41,5 +53,7 @@
       </p>
       <input type="submit" name="" id="" class="btn btn-primary m-3" value="Actualizar datos">
       <input type="button" name="" id="" [routerLink]="['/navegador']" class="btn btn-danger m-3" value="Cancelar">
+        </div>
+      </div>
     </form>
   </div>

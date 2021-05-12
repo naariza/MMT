@@ -3,27 +3,27 @@
         <section id="funciones" class="col-9">
             <div id="items" class="row justify-content-between bg-white">
                 <div class="item col-3 border bg-white pt-3">
-                    <a [routerLink]="['']" >
+                    <a [routerLink]="['/register-car']" [routerLinkActive]="['actived']">
                         <img id="funciones-icon" src="../../../assets/Img/vehiculo.png" alt="">
                      </a>
-                     <a id="enlace"  [routerLink]="['']" [routerLinkActive]="['actived']">
-                        <h4> Gestionar Vehiculos</h4>
+                     <a id="enlace"  [routerLink]="['/register-car']" [routerLinkActive]="['actived']">
+                        <h4>Registrar Vehiculos</h4>
                     </a>
                 </div>
                 <div class="item col-3 border pt-3 bg-white ">
-                    <a [routerLink]="['/get-drivers/1']" >
+                    <a [routerLink]="['/cars/1']" >
                         <img id="funciones-icon" src="../../../assets/Img/Conductores.png" alt="">
                      </a>
-                     <a id="enlace"  [routerLink]="['/get-drivers/1']" [routerLinkActive]="['actived']">
-                        <h4>Gestionar Conductores</h4>
+                     <a id="enlace"  [routerLink]="['/cars/1']" [routerLinkActive]="['actived']">
+                        <h4>Listar Vehiculos</h4>
                     </a>
                 </div>
                 <div class="item col-3 border pt-3 bg-white">
-                    <a [routerLink]="['']" >
+                    <a [routerLink]="['/get-drivers']" >
                         <img id="funciones-icon" src="../../../assets/Img/formatos.png" alt="">
                      </a>
-                     <a id="enlace"  [routerLink]="['']" [routerLinkActive]="['actived']">
-                        <h4>Formatos MmtLtda</h4>
+                     <a id="enlace"  [routerLink]="['/get-drivers']" [routerLinkActive]="['actived']">
+                        <h4>Listar Conductores</h4>
                     </a>
                 </div>
                 <div class="item col-3 border pt-3 bg-white">
@@ -75,10 +75,10 @@
                 </a>                
             </div>
             <div class="item col-3 border pt-3 bg-white">
-                <a [routerLink]="['']" >
+                <a [routerLink]="['/preoperacional']" >
                     <img id="funciones-icon" src="../../../assets/Img/preoperacional.png">
                  </a>
-                 <a id="enlace"  [routerLink]="['']" [routerLinkActive]="['actived']">
+                 <a id="enlace"  [routerLink]="['/preoperacional']" [routerLinkActive]="['actived']">
                     <h4>Gestionar Preoperacional</h4>
                 </a>   
             </div>            

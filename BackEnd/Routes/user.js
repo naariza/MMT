@@ -14,8 +14,9 @@ api.post('/login-User',userController.loginUser);
 api.post('/upload-image/:id',[md_auth.ensureAuth,md_upload],userController.uploadImage);
 api.get('/get-image-user/:imageFile',userController.getImageFile);
 api.get('/get-users/:page?',md_auth.ensureAuth,userController.getUsers);
-api.get('/get-drivers/:page?',md_auth.ensureAuth,userController.getDrivers);
+api.get('/get-driver/:id?',md_auth.ensureAuth,userController.getDriver);
+api.get('/get-drivers/:car?',md_auth.ensureAuth,userController.getDrivers);
 api.get('/get-user/:id',md_auth.ensureAuth,userController.getUser);
 api.put('/update-User/:id',md_auth.ensureAuth,userController.updateUser);
-
+api.delete('/user-delete/:id',md_auth.ensureAuth,userController.deleteUser);
 module.exports = api;

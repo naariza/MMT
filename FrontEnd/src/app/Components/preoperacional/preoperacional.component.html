@@ -1,0 +1,27 @@
+<!-- <div class="clearfix"></div> -->
+<div *ngIf="identity">
+    <ul class="cars-list" >
+        <li *ngFor="let user of users" class="col-9 car-item">
+            <div class="car-image">
+                <img class="card-img-top" src="{{url +'get-image-car/'+user.car.image}}" alt="Imagen del artista">
+            </div>
+            <div class="car-name">
+                <a [routerLink]="['/create-preoperacional',user._id,user.car._id]">
+                    {{user.car.clase}}
+                </a>
+                <p>
+                    {{user.car.marca}}
+                </p>
+                <p>
+                    {{user.car.modelo}}
+
+                </p>
+                <p>
+                    {{user.car.placa}}
+                </p>
+            </div>
+        </li>
+    </ul>  
+</div>
+<button [routerLink]="['/navegador']" class="btn btn-primary">Volver</button>
+    

@@ -1,6 +1,7 @@
 'use strict'
 
 var mongoose=require('mongoose');
+const {model}=require('./car')
 var Schema = mongoose.Schema;
 
 var userSchema= Schema({
@@ -9,6 +10,7 @@ var userSchema= Schema({
     email:String,
     password: String,
     role:String,
-    image:String
+    image:String,
+    car:{type:Schema.ObjectId,ref:'Car'}
 });
 module.exports = mongoose.model('User', userSchema);

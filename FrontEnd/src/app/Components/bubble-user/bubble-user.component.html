@@ -7,7 +7,7 @@
                     {{identity.name}} {{identity.surName}}
                 </li>
                 <li>
-                    <a [routerLink]="['/edit-user/:id']" [routerLinkActive]="['actived']">
+                    <a [routerLink]="['/edit-user',identity._id]" [routerLinkActive]="['actived']">
                     Editar Perfil
                     </a>
                 </li>

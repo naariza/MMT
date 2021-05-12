@@ -27,6 +27,7 @@ public url;
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
   }
+  
   logout(){
     localStorage.removeItem('identity');
     localStorage.removeItem('token');

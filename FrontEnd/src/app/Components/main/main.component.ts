@@ -20,8 +20,6 @@ export class MainComponent implements OnInit {
   }
 
   message(nivel_user: string) {
-    console.log(nivel_user);
-    // this.level_usuer.level_num = nivel_user;
     this.router.navigate(['login-Admin'],{queryParams:{
       level:nivel_user
     }})

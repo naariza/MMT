@@ -4,10 +4,13 @@ import { User } from "../../Models/user";
 import { promise } from 'protractor';
 import { GLOBAL } from "../../Services/global";
 import { ActivatedRoute, Router, Params } from '@angular/router';
+import { VehiculoService } from "src/app/Services/vehiculo.service";
+import { Car } from "src/app/Models/car";
 
 @Component({
     selector: 'user-edit',
     templateUrl: './user-edit.component.html',
+    styleUrls: ['./user-edit.component.css'],
     providers: [UserService]
 })
 export class UserEditComponent implements OnInit {
@@ -16,22 +19,33 @@ export class UserEditComponent implements OnInit {
     public identity;
     public token;
     public alertMessage;
-    public url:string;
+    public url: string;
+    public cars: any;
+    public next_page;
+    public prev_page;
+    public vehiculos: Car[];
+    
 
     constructor(
         private _userService: UserService,
-        private _router:Router,
-        private _route:ActivatedRoute
+        private _carService:VehiculoService,
+        private _router: Router,
+        private _route: ActivatedRoute
     ) {
-        this.titulo = 'Actualizar Mis Datos';
         this.identity = this._userService.getIdentity();
         this.token = this._userService.getToken();
+        this.titulo = 'Actualizar Mis Datos';
         this.user = this.identity;
         this.url = GLOBAL.url;
+        this.next_page=1;
+        this.prev_page=1;
+        
+        
     }
 
     ngOnInit() {
-        this.getUser();
+    this.getUser();
+    this.getCar();
     }
     getUser() {
         this._route.params.forEach((params: Params) => {
@@ -57,75 +71,108 @@ export class UserEditComponent implements OnInit {
             );
         });
     }
+    getCar(){
+        this._route.params.forEach((params:Params)=>{
+            let page = +params['page'];
+            if(!page){
+                page = 1;
+            }else{
+                this.next_page=page+1;
+                this.prev_page=page-1;
+    
+                if(this.prev_page == 0){
+                    this.prev_page=1;
+                }
+            }
+            this._carService.getCars(this.token,page).subscribe(
+                (response: any) => {
+                    if (!response.cars) {
+                        this._router.navigate(['/']);
+                    } else {
+                        this.vehiculos = response.cars;
+                    }
+                },
+                error => {
+                    var errorMessage = <any>error;
+                    var body = error.error.message;
+                    if (errorMessage != null) {
+                        // this.alertMessage = body;
+                        console.log(error);
+                    }
+                }
+            )
+        });
+    }
 
     onSubmit() {
+        this._route.params.forEach((params: Params) => {
+            let id = params['id'];
+            this._userService.updateUser(this.token, id, this.user).subscribe(
+                (response: any) => {
+                    this.user = response.user;
+                    if (!response.user) {
+                        this.alertMessage = 'Error en el servidor';
+                    } else {
 
-        this._userService.updateUser(this.user).subscribe(
-            
-            (response: any) => {              
-                if (!response.user) {
-                    this.alertMessage = 'El usuario no se ha actualizado';
-                } else {
-                    localStorage.setItem('identity', JSON.stringify(this.user));
-                    if(!this.filesToUpload){
-                        //Redirección
-                         this._router.navigate[('/navegador')];
-                    }else{
-                        this.makeFileRequest(this.url+"upload-image/"+this.user._id,[],this.filesToUpload).then(
-                            (result:any)=>{
-                                this.user.image= result.image;
-                                localStorage.setItem('identity', JSON.stringify(this.user));
-                                let image_path= this.url+'get-image-user/'+this.user.image;
-                                document.getElementById("identity_image").setAttribute('src',image_path);
-                                
-                                
-                                
-                            }
-                        );
+                        if (!this.filesToUpload) {
+                            this._router.navigate(['/navegador']);
+                        } else {
+                            //Subir la imagen del usuario
+                            this.makeFileRequest(this.url + "upload-image/" + this.user._id, [], this.filesToUpload).then(
+                                (result: any) => {
+                                    this.user.image = result.image;
+                                    let image_path = this.url + 'get-image-user/' + this.user.image;
+                                    document.getElementById("identity_image").setAttribute('src', image_path);
+                                },
+                                error => {
+                                    console.log(error);
+                                }
+
+                            );
+                            this.alertMessage = 'El usuario se ha actualizado correctamente';
+                        }
+                    }
+                },
+                error => {
+                    var errorMessage = <any>error;
+                    var body = error.error.message;
+                    if (errorMessage != null) {
+                        this.alertMessage = body;
+                        console.log(error);
+                    }
                 }
-                this.alertMessage = 'El usuario se ha actualizado correctamente'; 
-                    // this._router.navigate(['/navegador']);
-                }   
-            },
-            error=>{
-                var errorMessage = <any>error;
-                var body = error.error.message;
-                if(errorMessage != null){
-                this.alertMessage=body;
-                  console.log(error);
-                }
-              }
-              
-        );
-    }
-    public filesToUpload : Array<File>;
 
-    fileChangeEvent(fileInput:any){
-        this.filesToUpload= <Array<File>>fileInput.target.files;
-        
+            );
+        });
+    }
+    public filesToUpload: Array<File>;
+
+    fileChangeEvent(fileInput: any) {
+        this.filesToUpload = <Array<File>>fileInput.target.files;
+
     }
 
-    makeFileRequest(url: string,params:Array<string>, files: Array<File>){
+    makeFileRequest(url: string, params: Array<string>, files: Array<File>) {
         var token = this.token;
-        return new Promise(function(resolve,reject){
-            var formData:any = new FormData();
-            var xhr= new XMLHttpRequest();
+        return new Promise(function (resolve, reject) {
+            var formData: any = new FormData();
+            var xhr = new XMLHttpRequest();
 
-            for(var i = 0; i < files.length;i++){
-                formData.append('image',files[i],files[i].name);
+            for (var i = 0; i < files.length; i++) {
+                formData.append('image', files[i], files[i].name);
             }
-            xhr.onreadystatechange = function(){
-                if(xhr.readyState ==4){
-                    if(xhr.status==200){
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+                    if (xhr.status == 200) {
 
                         resolve(JSON.parse(xhr.response));
-                    }else{
+                    } else {
                         reject(xhr.response);
                     }
                 }
             }
-            xhr.open('POST',url,true);
-            xhr.setRequestHeader('Authorization',token);
+            xhr.open('POST', url, true);
+            xhr.setRequestHeader('Authorization', token);
             xhr.send(formData);
         });
     }

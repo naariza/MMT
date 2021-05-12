@@ -14,6 +14,11 @@ import { UserEditComponent } from './Components/user-edit/user-edit.component';
 import { RegisterUserComponent } from './Components/register-user/register-user.component';
 import { BubbleUserComponent } from './Components/bubble-user/bubble-user.component';
 import { DriversComponent } from './Components/drivers/drivers.component';
+import { RegisterCarComponent } from './Components/register-car/register-car.component';
+import { CarEditComponent } from './Components/car-edit/car-edit.component';
+import { CarsComponent } from './Components/cars/cars.component';
+import { PreoperacionalComponent } from './Components/preoperacional/preoperacional.component';
+import { CreatePreoperacionalComponent } from './Components/create-preoperacional/create-preoperacional.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +31,12 @@ import { DriversComponent } from './Components/drivers/drivers.component';
     UserEditComponent,
     RegisterUserComponent,
     BubbleUserComponent,
-    DriversComponent
+    DriversComponent,
+    RegisterCarComponent,
+    CarEditComponent,
+    CarsComponent,
+    PreoperacionalComponent,
+    CreatePreoperacionalComponent
   ],
   imports: [
     BrowserModule,

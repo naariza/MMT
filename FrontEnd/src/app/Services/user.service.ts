@@ -32,20 +32,33 @@ export class UserService {
         return this._http.post(this.url + 'login-User', params, { headers: headers });   
     }
 }
-register(user_to_register): Observable<any> {
+register(token,user_to_register): Observable<any> {
     let json = JSON.stringify(user_to_register);
     let params = json;
 
-    let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    let headers = new HttpHeaders({
+        'Content-Type':'application/json',
+        'Authorization':token
+    });
 
     return this._http.post(this.url + 'register', params, { headers: headers });
 
 }
-updateUser(user_to_update): Observable<any> {
-    let json = JSON.stringify(user_to_update);
-    let params = json;
-    let headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':this.getToken()});
-    return this._http.put(this.url + 'update-User/' + user_to_update._id, params, { headers: headers });
+// updateUser(user_to_update): Observable<any> {
+//     let json = JSON.stringify(user_to_update);
+//     let params = json;
+//     let headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':this.getToken()});
+//     return this._http.put(this.url + 'update-User/' + user_to_update._id, params, { headers: headers });
+// }
+updateUser(token,id:string, user:User): Observable<any> {
+    let params = JSON.stringify(user);
+        let headers = new HttpHeaders({
+            'Content-Type':'application/json',
+            'Authorization':token
+        });
+        
+        return this._http.put(this.url+'update-User/'+id,params,{headers:headers});
+    
 }
 getUser(token,id:string){
     let headers= new HttpHeaders({
@@ -55,13 +68,39 @@ getUser(token,id:string){
     let url = `${this.url}/get-user/${id}`
     return this._http.get(url,{headers});
 }
-getDrivers(token,page){
+getDriver(token, id: string) {
+    let headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': token
+    });
+    let url = `${this.url}/get-driver/${id}`
+    return this._http.get(url, { headers });
+}
+getDrivers(token,car?) {
+        
     let headers= new HttpHeaders({
         'Content-Type':'application/json',
         'Authorization':token
     });
-    let url = `${this.url}/get-drivers/${page}`
+    let url = `${this.url}/get-drivers`
+    let url2 = `${this.url}/get-drivers/${car}`
+    if(car == null){
+        return this._http.get(url,{headers});
+    }else{
+        return this._http.get(url2,{headers});
+    }
+    
+    
     return this._http.get(url,{headers});
+    
+}
+DeleteUser(token,id:string){
+    let headers= new HttpHeaders({
+        'Content-Type':'application/json',
+        'Authorization':token
+    });
+    let url = `${this.url}/user-delete/${id}`
+    return this._http.delete(url,{headers});
 }
 getIdentity() {
     let identity = JSON.parse(localStorage.getItem('identity'));

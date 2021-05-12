@@ -7,6 +7,11 @@ import { HomeComponent } from "./Components/home/home.component";
 import { UserEditComponent } from "./Components/user-edit/user-edit.component";
 import { RegisterUserComponent } from "./Components/register-user/register-user.component";
 import { DriversComponent } from "./Components/drivers/drivers.component";
+import { RegisterCarComponent } from "./Components/register-car/register-car.component";
+import { CarEditComponent } from "./Components/car-edit/car-edit.component";
+import { CarsComponent } from "./Components/cars/cars.component";
+import { PreoperacionalComponent } from "./Components/preoperacional/preoperacional.component";
+import { CreatePreoperacionalComponent } from "./Components/create-preoperacional/create-preoperacional.component";
 
 const routes: Routes = [
   {path:'', component:MainComponent},
@@ -15,7 +20,12 @@ const routes: Routes = [
   {path:'navegador', component:HomeComponent},
   {path:'edit-user/:id', component:UserEditComponent},
   {path:'register-user', component:RegisterUserComponent},
-  {path:'get-drivers/:page', component:DriversComponent},
+  {path:'cars/:page', component:CarsComponent},
+  {path:'register-car', component:RegisterCarComponent},
+  {path:'edit-car/:id', component:CarEditComponent}, 
+  {path:'get-drivers', component:DriversComponent},  
+  {path:'preoperacional', component:PreoperacionalComponent}, 
+  {path:'create-preoperacional/:id/:id', component:CreatePreoperacionalComponent}, 
   {path:'**', component:MainComponent}
 ];
 

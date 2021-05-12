@@ -1,0 +1,13 @@
+.btn.btn-success{
+    float: right;
+    margin-bottom: 30px;
+    }
+    .table-info tbody+tbody, .table-info td, .table-info th, .table-info thead th {
+        border-color: #86cfda;
+        border-style: solid;
+        vertical-align: middle;
+    }
+    p{
+        display: block;
+        float: left;
+    }

@@ -1,0 +1,56 @@
+.cars-list{
+    margin: 0px;
+    padding: 0px;
+    margin-top:30px;
+    list-style: none;
+    display: flex;
+    width: 30%;
+
+}
+.car-item{
+    width: 23%;
+    margin: 0px;
+    padding: 0px;
+    height: 271px;
+    border: 1px solid #444;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+.car-item .car-image{
+    height: 100%;
+    overflow: hidden;
+}
+.car-item .car-image img
+{
+    height:100%;  
+    
+}
+.car-item .car-name{
+    color:white;
+    padding: 10px;
+    background: #222326;
+}
+.car-item .car-name a{
+    color:white;
+
+}
+#car-head-card .image{
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    float: left;
+    margin-right: 30px;
+}
+#car-head-card .image img{
+    height:130px;
+    /* object-fit: cover;
+    object-position: center center; */
+}
+ul{
+    float: none;
+    clear: both;
+}
+p{
+    padding: 0px;
+    margin: 0px;
+}

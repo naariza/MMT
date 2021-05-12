@@ -26,8 +26,8 @@ export class LoginComponent implements OnInit {
     private _userService:UserService 
     )
     {
-    this.user= new User('','','','','','','');
-    this.user_register= new User('','','','','','','');
+    this.user= new User('','','','','','','','');
+    this.user_register= new User('','','','','','','','');
     this.url=GLOBAL.url;
     
    }
@@ -66,9 +66,8 @@ export class LoginComponent implements OnInit {
               }else{
                 //Crear elemento en el localStorage para tener el token disponble
                 localStorage.setItem('token',token);
-                this.user= new User('','','','','','','');
+                this.user= new User('','','','','','','','');
                 this._router.navigate(['navegador']);
-                console.log(this.token);
               }
             },
                error=>{

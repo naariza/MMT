@@ -509,11 +509,17 @@ ul:hover ul>li{
   list-style: none;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
-ul:hover ul>li>a{
+ul:hover ul>li:nth-last-child(2)>a{
+  color:rgb(255, 196, 0);
+  font-size: 16px;
+  text-decoration: none;
+}
+ul:hover ul>li:nth-last-child(1)>a{
   color:red;
   font-size: 20px;
   text-decoration: none;
 }
+
 #perfil img{
 width: 60px;
 height: 60px;
@@ -541,9 +547,6 @@ aside{
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     padding: 0px;
     margin: 0px auto;
-    border: 1px solid #ccc;
-    background: white;
-    box-shadow: 3px 3px 3px #ccc;
     padding: 5px;
     padding-bottom: 0px;
 }
@@ -563,6 +566,33 @@ aside{
 .Editar{
   font-family:"websymbols-regular-webfont";
   font-size: 30px;
-  color:rgb(224, 195, 26);
+  
   cursor:pointer;
+}
+.Editar > a{
+  text-decoration: none;
+  color:rgb(224, 195, 26);
+}
+#table-drivers{
+  margin: 0px auto;
+  text-align: center;
+}
+
+.btn.btn-success.m-5{
+  float: right;
+}
+.card{
+    
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #ccc; 
+}
+.cerrar{
+  border: 1px solid red;
+}
+button.close {
+  padding: 2px;
+  background: RED;
+  border: 1px solid black;
+  width: 30px;
+  color: white;
 }

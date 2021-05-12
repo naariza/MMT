@@ -1,0 +1,19 @@
+.card{
+    max-width: 1000px;
+    width: 47%;
+    height: 430px;
+    margin: 0px auto;
+    background-color: white;
+    text-align: center;
+    box-shadow: -2px 2px 2px #ccc;
+    border: 1px solid #ccc;
+    padding-top: 30px;
+}
+.btn-danger {
+float: left;
+margin-left: 10px;
+}
+.btn-success {
+    float: right;
+    margin-right: 10px;
+}

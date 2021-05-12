@@ -1,0 +1,34 @@
+.table .thead-light th {
+    vertical-align: inherit;
+    text-align: center;
+    border: aliceblue;
+}
+ input {
+    float: right;
+}
+#contenedor{
+    width: 90%;
+    margin: 0px auto;
+    margin-top: 30px;
+}
+.table-dark td, .table-dark th, .table-dark thead th{
+    border-right: 1px solid black;
+}
+.table *{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 14px;
+}
+.table{
+    box-shadow: 3px 4px 4px rgba(58, 58, 58, 0.8);
+}
+.btn.btn-success{
+float: right;
+margin-bottom: 30px;
+}
+.form-control{
+    width: 200px;
+    margin: 0px auto;
+}
+input{
+text-transform: uppercase;
+}
