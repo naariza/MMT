@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoginService } from 'src/app/Services/login.service';
 import { LoginComponent } from "../login/login.component";
 
 @Component({
@@ -11,7 +10,6 @@ import { LoginComponent } from "../login/login.component";
 export class MainComponent implements OnInit {
 
   constructor(
-    private level_usuer: LoginService,
     private router:Router) {
 
   }

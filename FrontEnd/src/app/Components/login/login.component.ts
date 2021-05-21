@@ -3,7 +3,6 @@ import { UserService } from "../../Services/user.service";
 import { User } from '../../Models/user';
 import { GLOBAL } from "../../Services/global";
 import { Router, ActivatedRoute,Params } from "@angular/router";
-import { LoginService } from 'src/app/Services/login.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',

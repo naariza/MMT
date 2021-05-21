@@ -8,10 +8,10 @@ import { GLOBAL } from './global';
   providedIn: 'root'
 })
 export class VehiculoService {
-  public identity;
-  public token;
   public url: string;
-  constructor(private _http: HttpClient) {
+  constructor(
+    private _http: HttpClient
+    ) {
     this.url = GLOBAL.url;
   }
   register(token,car_to_register): Observable<any> {

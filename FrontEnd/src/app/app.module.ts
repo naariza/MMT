@@ -19,6 +19,7 @@ import { CarEditComponent } from './Components/car-edit/car-edit.component';
 import { CarsComponent } from './Components/cars/cars.component';
 import { PreoperacionalComponent } from './Components/preoperacional/preoperacional.component';
 import { CreatePreoperacionalComponent } from './Components/create-preoperacional/create-preoperacional.component';
+import { FormularioComponent } from './Components/formulario/formulario.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { CreatePreoperacionalComponent } from './Components/create-preoperaciona
     CarEditComponent,
     CarsComponent,
     PreoperacionalComponent,
-    CreatePreoperacionalComponent
+    CreatePreoperacionalComponent,
+    FormularioComponent
   ],
   imports: [
     BrowserModule,

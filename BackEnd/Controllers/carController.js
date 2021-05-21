@@ -79,6 +79,7 @@ function saveCar(req, res) {
     car.iluminacion = params.iluminacion;
     car.apoya_cabeza = params.apoya_cabeza;
     car.control_estabilidad = params.control_estabilidad;
+    car.servicio = params.servicio;
     car.hv_vehiculo ='';
     car.image = '';
 

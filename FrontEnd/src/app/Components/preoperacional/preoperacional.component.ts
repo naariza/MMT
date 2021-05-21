@@ -5,6 +5,8 @@ import { UserService } from 'src/app/Services/user.service';
 import { VehiculoService } from 'src/app/Services/vehiculo.service';
 import { GLOBAL } from 'src/app/Services/global';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { FormularioService } from 'src/app/Services/formulario.service';
+import { Formulario } from 'src/app/Models/formulario';
 
 
 @Component({
@@ -16,46 +18,74 @@ export class PreoperacionalComponent implements OnInit {
   public identity;
   public token;
   public url;
-  public users:User[];
+  public car:Car;
+  public formulario:Formulario;
   public alertMessage;
   constructor(
     private _userService:UserService,
     private _carService:VehiculoService,
+    private _formService:FormularioService,
     private _route:ActivatedRoute,
     private _router:Router
   ) {
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
     this.url= GLOBAL.url;
-   }
+    this.car = new Car('','', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '','');
+    this.formulario= new Formulario('','','','','','');
+}
 
   ngOnInit(): void {
-  this.getUser()
+  this.getCar()
+this.getForm();
   }
-  getUser() {
-    this._route.params.forEach(() => {
-        let id = this.identity.car;
-        this._userService.getDrivers(this.token, id).subscribe(
-            (response: any) => {
-                this.users = response.users;
-                if (!response.users) {
-                    this._router.navigate(['/']);
-                } else {
-                    this.users = response.users;
-                }
-            },
-            error => {
-                var errorMessage = <any>error;
-                var body = error.error.message;
-                if (errorMessage != null) {
-                    // this.alertMessage = body;
-                    console.log(error);
-                }
+getCar(){
+    let id = this.identity.car;
+    this._carService.getCar(this.token, id).subscribe(
+        (response: any) => {
+            this.car = response.car;
+            if (!response.car) {
+                this._router.navigate(['/']);
+            } else {
+                this.car = response.car;
             }
+        },
+        error => {
+            var errorMessage = <any>error;
+            var body = error.error.message;
+            if (errorMessage != null) {
+                // this.alertMessage = body;
+                console.log(error);
+            }
+        }
 
-        );
-    });
+    );
 }
+getForm(){
+    let id = this.identity.car;
+    console.log();
+            // debugger
+            this._formService.getForm(this.token, id).subscribe(
+                (response: any) => {
+                    this.formulario = response.formulario;
+                    if (!response.formulario) {
+                        this._router.navigate(['/']);
+                    } else {
+                        this.formulario= response.formulario[0];
+                    }
+                },
+                error => {
+                    var errorMessage = <any>error;
+                    var body = error.error.message;
+                    if (errorMessage != null) {
+                        // this.alertMessage = body;
+                        console.log(error);
+                    }
+                }
+    
+            );
+            
+  }
 public confirmado;
 onDeleteConfirm(id){
     this.confirmado=id;
@@ -70,7 +100,7 @@ onDeleteCar(id){
             if (!response.cars) {
                 alert("Error en el servido");
             } 
-            this.getUser();
+            // this.getUser();
         },
         error => {
             var errorMessage = <any>error;

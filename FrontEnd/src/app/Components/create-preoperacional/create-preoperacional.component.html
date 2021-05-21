@@ -1,698 +1,152 @@
-<form #registerCar="ngForm" action="">
-    <button type="button" [routerLink]="['/navegador']" class="close" aria-hidden="true">&times;
-    </button>
-    <table id="table" class="table table-info table-sm table-responsive{-sm|-md|-lg|-xl}" style="border: groove;text-align: center;">
-        <thead class="thead thead-info">
-            <tr>
-                <th colspan="1" rowspan="3">
-                    <img src="../../../assets/Img/logo-icon.png" alt="">
-                </th>
-                <th colspan="2" rowspan="3">
-                    INSPECCIÓN PREOPERACIONAL DE VEHICULOS
-                </th>
-                <th colspan="1">
-            <tr>
-                <input type="text" placeholder="Consecutivo" disabled="false" class="form-control" >
-            </tr>
-            <tr>
-                <input type="text" placeholder="Fecha Vigencia" disabled="false" class="form-control">
-            </tr>
-            <tr>
-                <input type="text" placeholder="Version" disabled="false" class="form-control">
-            </tr>
-            </th>
-            </tr>
-        </thead>
-        <tr>
-            <th>
-                <input type="text" class="form-control" placeholder="Vehiculo">
-            </th>
-            <th>
-                <input type="text" class="form-control" placeholder="Conductor">
-            </th>
-            <th>
-                <input type="text" class="form-control" placeholder="Cedula*" required>
-            </th>
-            <th >
-                <input type="text" class="form-control" placeholder="Empresa*" required>
-            </th>
-            
-            
-        </tr>
-        <tr>
-            
-            <th>
-                <input type="text" class="form-control" placeholder="Placas N°">
-            </th>
-            <th>
-                <input type="text" class="form-control" placeholder="Modelo">
-            </th>
-            
-            <th>
-                <input type="text" class="form-control" placeholder="Kilometro Inicial*" required>
-            </th>
-            <th>
-                <input type="text" class="form-control" placeholder="Kilometro Final*" required>
-            </th>
-           
-        </tr>
-        <tr>
-            <th>
-                <input type="text" class="form-control" placeholder="Color*" required>
-            </th>
-            <th>
-                <input type="text" class="form-control" placeholder="Ubicación*" required>
-            </th>
-            <th>
-                <input type="text" class="form-control" placeholder="Kilometros De Recorrido*" required>
-            </th>          
-            
-            <th>
-                <input type="date" class="form-control" required>
-            </th>
-        </tr>
-        <tbody class="bg-light">
-            <tr class="bg-info">
-                <th colspan="2">
-                    Aspecto
-                </th>
-                <th colspan="2">
-                    Estado
-                </th>
-            </tr>
-            <tr class="bg-secondary">
-                <th colspan="2">
-                    Luces
-                </th>
-                <th>
-                    Bueno
-                </th>
-                <th>
-                    Malo
-                </th>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <p>
-                       
-                        Frontales de servicio (bajas / altas)
-                    </p>
-                </td>
-                <td>
-                    <input type="radio" name="1" id="" value="0">
-                </td>
-                <td>
-                    <input type="radio" name="1" id="" value="1">
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <p>
-                       
-                        Direccionales delanteras de parqueo / giro                
-                    </p>
-                </td>
-                <td>
-                    <input type="radio" name="2" id="" value="0">
-                </td>
-                <td>
-                    <input type="radio" name="2" id="" value="1">
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                  <p>
-
-                      Direccionales traseras de parqueo / giro                
-                  </p>  
-                </td>
-                <td>
-                    <input type="radio" name="3" id="" value="0">
-                </td>
-                <td>
-                    <input type="radio" name="3" id="" value="1">
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <p>
-
-                        De stop y señal trasera 
-                    </p>
-                </td>
-                <td>                   
-                    <input type="radio" name="4" id="" value="0">
-                </td>
-                <td>
-                    <input type="radio" name="4" id="" value="1">
-                </td>
-            </tr>
-            <tr class="bg-secondary">
-                <th colspan="2">
-                    Cabina
-                </th>
-                <th>
-                    Bueno
-                </th>
-                <th>
-                    Malo
-                </th>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <p>
-
-                        Espejo central convexo							
-                    </p>
-               </td>
-                <td>                   
-                    <input type="radio" name="5" id="" value="0">
-                </td>
-                <td>
-                    <input type="radio" name="5" id="" value="1">
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <p>
-
-                        Espejos laterales							
-                    </p>
-               </td>
-                <td>                   
-                    <input type="radio" name="6" id="" value="0">
-                </td>
-                <td>
-                    <input type="radio" name="6" id="" value="1">
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <p>
-
-                        Pito							
-                    </p>
-               </td>
-                <td>                   
-                    <input type="radio" name="7" id="" value="0">
-                </td>
-                <td>
-                    <input type="radio" name="7" id="" value="1">
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <p>
-
-                        Freno de mano o de emergencia														
-                    </p>
-               </td>
-                <td>                   
-                    <input type="radio" name="8" id="" value="0">
-                </td>
-                <td>
-                    <input type="radio" name="8" id="" value="1">
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <p>
-
-                        Dirección o Volante
-                    </p>
-               </td>
-                <td>                   
-                    <input type="radio" name="9" id="" value="0">
-                </td>
-                <td>
-                    <input type="radio" name="9" id="" value="1">
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <p>
-
-                        Cinturón de seguridad (en cada asiento)							
-                    </p>
-               </td>
-                <td>                   
-                    <input type="radio" name="10" id="" value="0">
-                </td>
-                <td>
-                    <input type="radio" name="10" id="" value="1">
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <p>
-
-                        Puertas en buen estado							
-                    </p>
-               </td>
-                <td>                   
-                    <input type="radio" name="11" id="" value="0">
-                </td>
-                <td>
-                    <input type="radio" name="11" id="" value="1">
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <p>
-
-                        Vidrio frontal (en buen estado)							
-                    </p>
-               </td>
-                <td>                   
-                    <input type="radio" name="12" id="" value="0">
-                </td>
-                <td>
-                    <input type="radio" name="12" id="" value="1">
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <p>
-                        Vidrios de las puertas							
-                    </p>
-
-               </td>
-                <td>                   
-                    <input type="radio" name="13" id="" value="0">
-                </td>
-                <td>
-                    <input type="radio" name="13" id="" value="1">
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <p>
-
-                        Limpia parabrisas con agua							
-                    </p>
-               </td>
-                <td>                   
-                    <input type="radio" name="14" id="" value="0">
-                </td>
-                <td>
-                    <input type="radio" name="14" id="" value="1">
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <p>
-                        Limpia parabrisas con agua							
-                    </p>
-
-               </td>
-                <td>                   
-                    <input type="radio" name="14" id="" value="0">
-                </td>
-                <td>
-                    <input type="radio" name="14" id="" value="1">
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <p>
-
-                        Asientos en buen estado							
-                    </p>
-               </td>
-                <td>                   
-                    <input type="radio" name="15" id="" value="0">
-                </td>
-                <td>
-                    <input type="radio" name="15" id="" value="1">
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <p>
-
-                        Indicadores del tablero (temperatura, freno de emergencia, batería, velocímetro, luces plenas, combustible y agua)							
-                    </p>
-               </td>
-                <td>                   
-                    <input type="radio" name="16" id="" value="0">
-                </td>
-                <td>
-                    <input type="radio" name="16" id="" value="1">
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <p>
-
-                        Batería y cables en buen estado							
-                    </p>
-               </td>
-                <td>                   
-                    <input type="radio" name="17" id="" value="0">
-                </td>
-                <td>
-                    <input type="radio" name="17" id="" value="1">
-                </td>
-            </tr><tr>
-                <td colspan="2">
-                    <p>
-
-                        Asientos en buen estado							
-                    </p>
-               </td>
-                <td>                   
-                    <input type="radio" name="18" id="" value="0">
-                </td>
-                <td>
-                    <input type="radio" name="18" id="" value="1">
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <p>
-
-                        Equipo de carretera (Conos, tacos, botiquín, herramientas, gato y extintor de incendios)						
-                    </p> 
-               </td>
-                <td>                   
-                    <input type="radio" name="19" id="" value="0">
-                </td>
-                <td>
-                    <input type="radio" name="19" id="" value="1">
-                </td>
-            </tr>
-            <tr class="bg-secondary">
-                <th colspan="2">
-                    Llantas
-                </th>
-                <th>
-                    Bueno
-                </th>
-                <th>
-                    Malo
-                </th>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <p>
-
-                        Delanteras sin cortaduras ni abultamientos						
-                    </p>
-               </td>
-                <td>                   
-                    <input type="radio" name="20" id="" value="0">
-                </td>
-                <td>
-                    <input type="radio" name="20" id="" value="1">
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <p>
-
-                        Traseras sin cortaduras ni abultamientos						
-                    </p>
-               </td>
-                <td>                   
-                    <input type="radio" name="21" id="" value="0">
-                </td>
-                <td>
-                    <input type="radio" name="21" id="" value="1">
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <p>
-
-                        Llantas con 3 mm de huellas						
-                    </p>
-               </td>
-                <td>                   
-                    <input type="radio" name="22" id="" value="0">
-                </td>
-                <td>
-                    <input type="radio" name="22" id="" value="1">
-                </td>
-            </tr>
-            <tr class="bg-secondary">
-                <th colspan="2">
-                    Estado Mecanico
-                </th>
-                <th>
-                    Bueno
-                </th>
-                <th>
-                    Malo
-                </th>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <p>
-
-                        Control de fugas de aceite y agua					
-                    </p>
-               </td>
-                <td>                   
-                    <input type="radio" name="23" id="" value="0">
-                </td>
-                <td>
-                    <input type="radio" name="22" id="" value="1">
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <p>
-
-                        Tanque de combustible (Abrazaderas y soportes)					
-                    </p>
-               </td>
-                <td>                   
-                    <input type="radio" name="24" id="" value="0">
-                </td>
-                <td>
-                    <input type="radio" name="24" id="" value="1">
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <p>
-
-                        Estado de las correas												
-                    </p>
-               </td>
-                <td>                   
-                    <input type="radio" name="25" id="" value="0">
-                </td>
-                <td>
-                    <input type="radio" name="25" id="" value="1">
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <p>
-
-                        Prueba de frenado de servicio y emergencia												
-                    </p>
-               </td>
-                <td>                   
-                    <input type="radio" name="26" id="" value="0">
-                </td>
-                <td>
-                    <input type="radio" name="26" id="" value="1">
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <p>
-
-                        Caja de cambio												
-                    </p>
-               </td>
-                <td>                   
-                    <input type="radio" name="27" id="" value="0">
-                </td>
-                <td>
-                    <input type="radio" name="27" id="" value="1">
-                </td>
-            </tr>
-            <tr class="bg-secondary">
-                <th colspan="2">
-                    DOCUMENTOS
-                </th>
-                <th>
-                    Bueno
-                </th>
-                <th>
-                    Malo
-                </th>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <p>
-
-                        Seguro obligatorio (SOAT)							
-                    </p>
-                </td>
-                <td>                   
-                    <input type="radio" name="28" id="" value="0">
-                </td>
-                <td>
-                    <input type="radio" name="28" id="" value="1">
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <p>
-
-                        Póliza de responsabilidad contractual y extracontractual												
-                    </p>
-               </td>
-                <td>                   
-                    <input type="radio" name="29" id="" value="0">
-                </td>
-                <td>
-                    <input type="radio" name="29" id="" value="1">
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                   <p>
-                    Póliza todo riesgo vigente
-                  </p> 												
-               </td>
-                <td>                   
-                    <input type="radio" name="30" id="" value="0">
-                </td>
-                <td>
-                    <input type="radio" name="30" id="" value="1">
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                  <p>
-
-                      Licenccia de conducción de conductor vigente												
-                  </p> 
-               </td>
-                <td>                   
-                    <input type="radio" name="31" id="" value="0">
-                </td>
-                <td>
-                    <input type="radio" name="31" id="" value="1">
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                   <p>
-                       Tarjeta de propiedad del vehículo												
-                </p> 
-                       
-               </td>
-                <td>                   
-                    <input type="radio" name="32" id="" value="0">
-                </td>
-                <td>
-                    <input type="radio" name="32" id="" value="1">
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                   <p>
-
-                       Certificado de emisión de gases vigente												
-                   </p> 
-               </td>
-                <td>                   
-                    <input type="radio" name="33" id="" value="0">
-                </td>
-                <td>
-                    <input type="radio" name="33" id="" value="1">
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                  <p>
-
-                      Manejo defensivo												
-                  </p>
-               </td>
-                <td>                   
-                    <input type="radio" name="34" id="" value="0">
-                </td>
-                <td>
-                    <input type="radio" name="34" id="" value="1">
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                  <p>
-
-                    Otros ¿Cuáles?											
-                  </p>
-               </td>
-                <td>                   
-                    <input type="radio" name="35" id="" value="0">
-                </td>
-                <td>
-                    <input type="radio" name="35" id="" value="1">
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <button [routerLink]="['/navegador']" class="btn btn-primary ml-2">
-        Atras
-    </button>
-    <button type="submit" class="btn btn-success">
-        Enviar Registro
-    </button>
-</form>
-
-<!-- <form (ngSubmit)="guardarformulario()" method="post" >
-    <div>
-        <label for=""></label>
-        <input type="text">
-    </div>
-    <div>
-        <label for=""></label>
-        <input type="text">
-    </div>
-    <div>
-        <label for=""></label>
-        <input type="text">
-    </div>
-    <div>
-        <label for=""></label>
-        <input type="text">
-    </div>
-
-    <table>
-        <tr>
-            <th>Pregunta</th>
-            <th>Descripcion</th>
-            <th>valor</th>
-            <th>Acciones</th>
-        </tr>
-        <ng-template *ngIf="preguntas">
-            <tr *ngFor="let item of preguntas">
-                <td>{{ item.pregunta }}</td>
-                <td></td>
-                <td></td>
-                <td>X</td>
-            </tr>
-        </ng-template>
-        
-    </table>
-    <div>
-        <div>
-            <label for="">Pregunta</label>
-            <input type="text" [(ngModel)]="pregunta">
+<div class="container">
+    <div *ngIf="alertMessage">
+        <div class="alert alert-info">
+            {{alertMessage}}
         </div>
-        <div>
-            <label for="">Descripcion</label>
-            <input type="text" [(ngModel)]="Descripcion">
-        </div>
-        <button (click)="agregarPregunta()">Agregar</button>
     </div>
+    <form #registerPreoperacional="ngForm" method="POST" action="">
+        <button type="button" [routerLink]="['/navegador']" class="close" aria-hidden="true">&times;
+        </button>
+        <table id="table" class="table table-info table-responsive{-sm|-md|-lg|-xl}" style="border: groove;text-align: center;">
+            <thead>
+                <tr>
+                    <th colspan="1" rowspan="3">
+                        <img src="../../../assets/Img/logo-icon.png" alt="">
+                    </th>
+                    <th colspan="2" rowspan="3">
+                        INSPECCIÓN PREOPERACIONAL DE VEHICULOS
+                    </th>
+                    <th colspan="1">
+                <tr>
+                    <input type="text" placeholder="Consecutivo" disabled="false" class="form-control" >
+                </tr>
+                <tr >
+                    <input  type="text" placeholder="Fecha Vigencia" disabled="false" value="{{ formulario.fechaVigencia }}" class="form-control">
+                </tr>
+                <tr>
+                    <input type="text" placeholder="Version" disabled="false" class="form-control">
+                </tr>
+                </th>
+                </tr>              
+            </thead>
+            <thead>
+                <tr>
+                    <th>
+                        <input type="text" class="form-control" disabled="false" value="{{user.car.clase}}" style="text-transform: uppercase;">
+                    </th>
+                    <th>
+                        <input type="text" class="form-control" disabled="false" value="{{user.name}}" style="text-transform: uppercase;">
+                    </th>
+                    <th>
+                        <input type="text" class="form-control" placeholder="Cedula*" #cedula="ngModel" name="cedula" [(ngModel)]="preoperacional.cedula" style="text-transform: uppercase;" required>
+                    </th>
+                    <th >
+                        <input type="text" class="form-control" placeholder="Empresa*" #business="ngModel" name="business" [(ngModel)]="preoperacional.business" style="text-transform: uppercase;" required>
+                    </th>
+                    
+                    
+                </tr>
+                <tr>
+                    
+                    <th>
+                        <input type="text" class="form-control" disabled="false" value="{{user.car.placa}}" style="text-transform: uppercase;">
+                    </th>
+                    <th>
+                        <input type="text" class="form-control" disabled="false" value="{{user.car.modelo}}" style="text-transform: uppercase;">
+                    </th>
+                    
+                    <th>
+                        <input type="number" class="form-control" placeholder="Kilometro Inicial*" #kil_start="ngModel" name="kil_start" [(ngModel)]="preoperacional.kil_start" required>
+                    </th>
+                    <th>
+                        <input type="number" class="form-control" placeholder="Kilometro Final*" #kil_end="ngModel" name="kil_end" [(ngModel)]="preoperacional.kil_end" required>
+                    </th>
+                   
+                </tr>
+                <tr>
+                    <th>
+                        <input type="text" class="form-control" placeholder="Color" disabled="false" value="{{user.car.color}}" style="text-transform: uppercase;">
+                    </th>
+                    <th>
+                        <input type="date" class="form-control" #date="ngModel" min="{{fecha}}" disabled="false" name="date" [(ngModel)]="preoperacional.date">
+                    </th>
+                    <th>
+                        <input type="number" class="form-control" placeholder="Kilometros De Recorrido*"  placeholder="Recorrido: {{recorrido}} Km" (click)="getRecorrido(preoperacional.kil_start,preoperacional.kil_end)"  required>
+                    </th>          
+                    
+                    <th>
+                        <input type="text" placeholder="Ubicación*" #location="ngModel" name="location"  [(ngModel)]="preoperacional.location" style="text-transform: uppercase;" required>
+                        
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="bg-light">
+                <tr class="bg-info">
+                    <th colspan="1">
+                        Aspecto
+                    </th>
+                    <th colspan="1">
+                        Descripción
+                    </th>
+                    <th colspan="2">
+                        Estado
+                    </th>
+                </tr>
+                <tr class="bg-secondary">
+                    <th>
+                       
+                    </th>
+                    <td>
+    
+                    </td>
+                    <th>
+                        Bueno
+                    </th>
+                    <th>
+                        Malo
+                    </th>
+                </tr>
+                <ng-container *ngFor="let pregunta of respuestas ; index as i">
+                    <tr >
+                        <td>
+                            <p>
+                               {{pregunta.pregunta}}
+                            </p>
+                        </td>
+                        <!-- Gustavo 
+                        Duver 
+                       694889 Radicado -->
+                        <td>
+                            <p>
+                                {{pregunta.descripcion}}
+                            </p>
+                        </td>
+                        <td (click)="darRespuesta(pregunta,1)">
+                            <input type="radio" id="valor" name="{{ i }}" value="1"  [checked]="pregunta.valor == 1" >
+                        </td>
+                        <td (click)="darRespuesta(pregunta,0)">
+                            <input type="radio" id="valor" name="{{ i }}" value="0"  [checked]="pregunta.valor == 0" >
+                        </td>
+                    </tr>
+                    <ng-container *ngIf="pregunta.otros">
+                        <tr>
+                            <td colspan="4">
+                                <textarea class="form-control" name="" id="" cols="30" rows="10" name="otros" ngModel="pregunta.otros"></textarea>
+                            </td>
+                        </tr>
+                    </ng-container>
+                    
+                </ng-container>
+                
+                
+            </tbody>
+        </table>
+        <button [routerLink]="['/preoperacional']" class="btn btn-primary ml-2">
+            Atras
+        </button>
+        <button (click)="guardarPreoperacional()" class="btn btn-success">
+            Enviar Registro
+        </button>
+    </form>
+</div>
 
-    <button type="submit">Guardar Formulario</button>
-</form> -->

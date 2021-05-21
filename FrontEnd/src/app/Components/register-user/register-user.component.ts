@@ -41,6 +41,8 @@ export class RegisterUserComponent implements OnInit {
   ngOnInit(): void {
     this.identity = this._userService.getIdentity();
   this.token = this._userService.getToken();
+  console.log(this.token)
+
   this.getCar();
   }
 
@@ -81,7 +83,6 @@ export class RegisterUserComponent implements OnInit {
   this._userService.register(this.token,this.user_register).subscribe(
     response=>{
       let user = response.user;
-      debugger
       if(!user._id){
         this.alertMessage='Error al registrase';
       }else{

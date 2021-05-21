@@ -1,23 +1,22 @@
-<!-- <div class="clearfix"></div> -->
 <div *ngIf="identity">
     <ul class="cars-list" >
-        <li *ngFor="let user of users" class="col-9 car-item">
+        <li  class="col-9 car-item">
             <div class="car-image">
-                <img class="card-img-top" src="{{url +'get-image-car/'+user.car.image}}" alt="Imagen del artista">
+                <img class="card-img-top" src="{{url +'get-image-car/'+car.image}}" alt="Imagen del artista">
             </div>
             <div class="car-name">
-                <a [routerLink]="['/create-preoperacional',user._id,user.car._id]">
-                    {{user.car.clase}}
+                <a [routerLink]="['/create-preoperacional',identity._id,formulario._id]">
+                    {{car.clase}}
                 </a>
                 <p>
-                    {{user.car.marca}}
+                    {{car.marca}}
                 </p>
                 <p>
-                    {{user.car.modelo}}
-
+                    {{car.modelo}}
+ 
                 </p>
                 <p>
-                    {{user.car.placa}}
+                    {{car.placa}}
                 </p>
             </div>
         </li>

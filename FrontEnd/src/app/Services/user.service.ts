@@ -6,15 +6,17 @@ import { User } from "../Models/user";
 import { GLOBAL } from "../Services/global";
 import { JsonPipe } from '@angular/common';
 import { ThrowStmt } from '@angular/compiler';
-
+ 
 
 @Injectable()
 export class UserService {
   public identity;
   public token;
   public url: string;
-  drivers:User[];
-  constructor(private _http: HttpClient) { 
+  constructor(
+    private _http: HttpClient
+    ) 
+    { 
     this.url = GLOBAL.url;
   }
   singup(user_to_login, gethash = null): Observable<any> {
@@ -77,21 +79,20 @@ getDriver(token, id: string) {
     return this._http.get(url, { headers });
 }
 getDrivers(token,car?) {
-        
     let headers= new HttpHeaders({
         'Content-Type':'application/json',
         'Authorization':token
     });
-    let url = `${this.url}/get-drivers`
-    let url2 = `${this.url}/get-drivers/${car}`
+    
+    
     if(car == null){
+        let url = `${this.url}/get-drivers`
         return this._http.get(url,{headers});
     }else{
+        console.log('no entra');
+        let url2 = `${this.url}/get-drivers/${car}`
         return this._http.get(url2,{headers});
     }
-    
-    
-    return this._http.get(url,{headers});
     
 }
 DeleteUser(token,id:string){

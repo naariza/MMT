@@ -54,3 +54,11 @@ p{
     padding: 0px;
     margin: 0px;
 }
+button{
+    margin-top: 170px;
+    margin-left: 20px;
+    margin-bottom: 30px;
+}
+.btn-success{
+    float: right;
+}

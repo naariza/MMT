@@ -1,49 +1,22 @@
 'use strict'
 
 var mongoose=require('mongoose');
-const {model}=require('./car')
 const {model}=require('./user');
+const {modelo}=require('./formulario');
 var Schema = mongoose.Schema;
 
 var preoperacionalSchema= Schema({
-    // cedula:String,
-    // empresa:String,
-    // kilo_inicial:Number,
-    // kilo_final: Number,
-    // kilo_recorridos :String,
-    // color:String,
-    // ubicacion:String,
-    // date:String,
-    // image:String,
-    // user:{type:Schema.ObjectId,ref:'User'},
-    // formulario:{
-    //     id,
-    //     nombre,
-    //     desscripcion,
-    //     fechaCreacion,
-    //     tipoCarrito,
-    //     preguntas:[
-    //         {
-    //             nombre,
-    //             desscripcion,
-    //             valores:["si"=1,"no"=]
-    //         }
-    //     ],
-    // },
-    // respuestaFormulario:{
-    //     id,
-    //     id_usuario,
-    //     fechaCreacion,
-    //     fechaPresentacion,
-    //     Fechalimite,
-    //     id_formulario,
-    //     respuestas:[
-    //         {
-    //             pregunta,
-    //             valor
-    //         }
-    //     ]
-    // }
+    cedula:String,
+    empresa:String,
+    kilo_inicial:Number,
+    kilo_final: Number,
+    kilo_recorridos :Number,
+    ubicacion:String,
+    date:String,
+    driver:{type:Schema.ObjectId,ref:'User'},
+    formulario:{type:Schema.ObjectId,ref:'Formulario'},
+    respuesta:Array
+    
 
 });
 module.exports = mongoose.model('Preoperacional', preoperacionalSchema);

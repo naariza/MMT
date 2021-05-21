@@ -1,4 +1,4 @@
-
+<div class="container">
     <div class="clearfix"></div>
     <ul class="cars-list" *ngIf="identity">
         <li *ngFor="let car of cars" class="col-9 car-item">
@@ -30,4 +30,15 @@
             </div>
         </li>
     </ul>
+    <button [routerLink]="['/navegador']" class="btn btn-primary">
+        Atras
+    </button>
+    <button [routerLink]="['/register-car']" [routerLinkActive]="['actived']" class="btn btn-success">
+        Registrar Vehiculo
+    </button>
+</div>
+
+   
+
+   
 

@@ -1,0 +1,39 @@
+<div class="container">
+    
+    <form action="" method="post" class="form-group" #formQuestion="ngForm">
+        <h2>Registro de Preguntas Preoperacional</h2>
+        
+        <div class="form-full">
+            <div class="cancelar">
+                <button type="button" [routerLink]="['/navegador']" class="close" aria-hidden="true">&times;
+                </button> 
+            </div>
+            <div class="form_header">
+                <input type="text" class="form-control m-2" placeholder="Nombre del Formulario" #name="ngModel" name="name" [(ngModel)]="form.name">
+                <input type="text" class="form-control m-2" placeholder="Descripcion" #description="ngModel" name="description" [(ngModel)]="form.description">
+                <input type="text" name="" id="" class="form-control m-2" placeholder="fechaVigencia" #fechaVigencia="ngModel" name="fechaVigencia" [(ngModel)]="form.fechaVigencia">
+                <input type="text" class="form-control m-2" placeholder="Tipo De Vehiculo" #vehiculo="ngModel" name="vehiculo" [(ngModel)]="form.vehiculo">
+            </div>
+            <div class="form_body">
+                <input type="text" class="form-control mb-2" placeholder="Pregunta" name="pregunta" [(ngModel)]="pregunta"> 
+                <textarea name="descripcion" class="form-control mb-2" cols="30" rows="10" placeholder="Descripcion" [(ngModel)]="descripcion"></textarea>
+                <button class="btn btn-primary" (click)="agregarPregunta()">Agregar</button>
+            </div>
+        </div>
+        <table class="table table-bordered">
+            <tr>
+                <th>Pregunta</th>
+                <th>Descripcion</th>
+                <th>Acciones</th>
+            </tr>
+            
+                <tr *ngFor="let item of preguntas">
+                    <td>{{ item.pregunta }}</td>
+                    <td>{{item.descripcion}}</td>
+                    <td class="Eliminar" title="Eliminar" (click)="delete(item)">-</td>
+                </tr>
+            
+        </table>
+        <button (click)="guardarformulario()" class="btn btn-success">Guardar Formulario</button>
+    </form>
+</div>

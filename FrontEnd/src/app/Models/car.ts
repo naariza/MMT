@@ -5,7 +5,7 @@ export class Car{
     public modelo:string,
     public chasis:string,
     public marca:string,
-    public capacidad:string,
+    public color:string,
     public placa:string,
     public serie_motor:string,
     public anio_fabrica:string,
@@ -32,8 +32,10 @@ export class Car{
     public apoya_cabeza:string,
     public control_estabilidad:string,
     public hv_vehiculo:string,
-    public image:string
+    public image:string,
+    public servicio:string
     ){
 
     }
+    
 }

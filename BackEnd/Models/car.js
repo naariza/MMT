@@ -34,6 +34,7 @@ var carSchema= Schema({
     iluminacion:String,
     apoya_cabeza:String,
     control_estabilidad:String,
+    servicio:String,
     hv_vehiculo:String,
     image:String
 });

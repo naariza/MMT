@@ -24,7 +24,7 @@ export class RegisterCarComponent implements OnInit {
     private _router: Router
   ) {
     this.url = GLOBAL.url;
-    this.car_register = new Car('','', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
+    this.car_register = new Car('','', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '','');
     this.titulo = "Registrar Vehiculo"
   }
 
@@ -38,12 +38,12 @@ export class RegisterCarComponent implements OnInit {
       response => {
         let car = response.car;
         this.car_register = car;
-
+ 
         if (!car._id) {
           this.alertMessage = 'Error al registr el auto';
         } else {
           this.alertMessage = 'El registro del vehiculo '+this.car_register.clase+' se realizo corecctamente';
-          this.car_register = new Car('','', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'null', 'null');
+          this.car_register = new Car('','', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'null', 'null','');
 
           this._router.navigate(['/edit-car', response.car._id]);
         }
