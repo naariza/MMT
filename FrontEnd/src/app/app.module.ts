@@ -20,6 +20,7 @@ import { CarsComponent } from './Components/cars/cars.component';
 import { PreoperacionalComponent } from './Components/preoperacional/preoperacional.component';
 import { CreatePreoperacionalComponent } from './Components/create-preoperacional/create-preoperacional.component';
 import { FormularioComponent } from './Components/formulario/formulario.component';
+import { PreoperacionalesComponent } from './Components/preoperacionales/preoperacionales.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { FormularioComponent } from './Components/formulario/formulario.componen
     CarsComponent,
     PreoperacionalComponent,
     CreatePreoperacionalComponent,
-    FormularioComponent
+    FormularioComponent,
+    PreoperacionalesComponent
   ],
   imports: [
     BrowserModule,

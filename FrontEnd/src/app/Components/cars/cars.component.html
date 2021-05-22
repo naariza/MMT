@@ -22,6 +22,7 @@
                 <div class="buttons" *ngIf="identity.role == 'FUNCIONARIO'">
                     <a [routerLink]="['/edit-car',car._id]" class="btn btn-sm btn-warning">Editar</a>
                     <a (click)="onDeleteConfirm(car._id)" class="btn btn-sm btn-danger">Borrar</a>
+                    <a [routerLink]="['/preoperacionales',car._id]" class="btn btn-sm btn-success">Preoperacional</a>
                 </div>
                 <div class="seguro" *ngIf="confirmado == car._id">
                     <a (click)="onDeleteCar(car._id)" class="btn btn-sm btn-danger">Eliminar</a>

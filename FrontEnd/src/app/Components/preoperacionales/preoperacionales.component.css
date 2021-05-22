@@ -1,0 +1,30 @@
+@font-face {
+    font-family:"websymbols-regular-webfont" ;
+    src: url('../../../assets/fonts/websymbols-regular-webfont.eot');
+    src: url('../../../assets/fonts/websymbols-regular-webfont.eot?#iefix') format('embedded-opentype'), 
+    url('../../../assets/fonts/websymbols-regular-webfont.woff') format('woff'), 
+    url('../../../assets/fonts/websymbols-regular-webfont.ttf') format('truetype'),
+    url('../../../assets/fonts/websymbols-regular-webfont.svg#WebSymbolsRegular') format('svg');
+    font-weight:normal;
+    font-style: normal;
+}
+ul{
+    float: none;
+    clear: both;
+}
+li{
+    display: block;
+    text-decoration: none;
+}
+p{
+    display: inline-flex;
+    font-family:"websymbols-regular-webfont";
+}
+.listado{
+    display: flexbox;
+    column-count:2;
+    border: 1px solid #ccc;
+    margin-top: 50px;
+    padding: 10px;
+   
+}

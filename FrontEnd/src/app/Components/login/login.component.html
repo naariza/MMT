@@ -3,8 +3,14 @@
         h
     </a>
 </div>
+<div *ngIf="errorMessage">
+    <div class="alert alert-danger">
+        {{errorMessage}}
+    </div>
+</div>
 <div  id="content">
-    <div id="login" *ngIf="level == '1'">
+    
+    <div id="login" *ngIf="level == '1'">    
             <h2>Bienvenido</h2>
             <form #loginForm="ngForm" (ngSubmit)="onSubmit()"class="form-group" action="">
                 <input id="input" name="email" #email="ngModel" [(ngModel)]="user.email" class="form-control" type="email" placeholder="Correo electronico" required>

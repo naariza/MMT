@@ -44,7 +44,7 @@ export class CreatePreoperacionalComponent implements OnInit {
     this.fecha = new Date().getFullYear() + '-' + '0' + this.mes + '-' + new Date().getDate();
     this.formulario = new Formulario('', '', '', '', '', '');
     this.user = new User('', '', '', '', '', '', '', '');
-    this.preoperacional = new Preoperacional('', '', null, null, '', this.recorrido, this.fecha, '', '', '');
+    this.preoperacional = new Preoperacional('', '', null, null, '', this.recorrido, this.fecha, '','', '', '');
     this.respuestas = [];
   }
 
@@ -122,6 +122,7 @@ export class CreatePreoperacionalComponent implements OnInit {
       let form = params.form;
       this.preoperacional.driver = driver;
       this.preoperacional.formulario = form;
+      this.preoperacional.car=this.identity.car;
       this.preoperacional.respuestas = this.respuestas;
       this.preoperacional.kil_Total = this.recorrido;
       this._preService.savePreo(this.token, this.preoperacional).subscribe(

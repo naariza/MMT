@@ -1,0 +1,15 @@
+<div class="container">
+    <div *ngIf="alertMessage">
+        <div class="alert alert-info">
+            {{alertMessage}}
+        </div>
+    </div>
+    <div class="listado">
+        <ul>
+            <li *ngFor="let preo of preoperacionales">
+                <p>]</p> <a href="">{{preo._id}}-{{preo.date}}</a>
+                <button class="btn btn-success btn-sm ml-2">Descargar</button>
+            </li>
+        </ul>
+    </div>
+</div>

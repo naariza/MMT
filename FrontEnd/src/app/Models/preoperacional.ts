@@ -10,6 +10,7 @@ export class Preoperacional{
         public date:Date,
         public driver:string,
         public formulario:string,
+        public car:string,
         public respuestas:any
     )
     {

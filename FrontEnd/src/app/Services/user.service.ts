@@ -121,5 +121,6 @@ getToken() {
        this.token = null;
     }
    return this.token
+   
 }
 }

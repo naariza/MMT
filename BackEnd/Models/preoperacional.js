@@ -15,6 +15,7 @@ var preoperacionalSchema= Schema({
     date:String,
     driver:{type:Schema.ObjectId,ref:'User'},
     formulario:{type:Schema.ObjectId,ref:'Formulario'},
+    car:{type:Schema.ObjectId,ref:'Car'},
     respuesta:Array
     
 

@@ -6,4 +6,5 @@ var api = express.Router();
 var md_auth = require('../MidellWare/authenticated');
 
 api.post('/create-preoperacional',md_auth.ensureAuth, preoController.savePreo);
+api.get('/preoperacionales/:id',md_auth.ensureAuth, preoController.getPreoperacionales);
 module.exports = api;
