@@ -22,7 +22,7 @@ p{
 }
 .listado{
     display: flexbox;
-    column-count:2;
+    column-count:3;
     border: 1px solid #ccc;
     margin-top: 50px;
     padding: 10px;

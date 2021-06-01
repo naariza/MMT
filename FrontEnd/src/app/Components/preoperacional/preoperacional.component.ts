@@ -63,7 +63,6 @@ getCar(){
 }
 getForm(){
     let id = this.identity.car;
-    console.log();
             // debugger
             this._formService.getForm(this.token, id).subscribe(
                 (response: any) => {

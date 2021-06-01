@@ -5,17 +5,17 @@
                 <img class="card-img-top" src="{{url +'get-image-car/'+car.image}}" alt="Imagen del artista">
             </div>
             <div class="car-name">
-                <a [routerLink]="['/create-preoperacional',identity._id,formulario._id]">
+                <a [routerLink]="['/create-preoperacional',identity._id,formulario._id]"  style="text-transform: uppercase;">
                     {{car.clase}}
                 </a>
-                <p>
+                <p style="text-transform: capitalize;">
                     {{car.marca}}
                 </p>
-                <p>
+                <p style="text-transform: capitalize;">
                     {{car.modelo}}
  
                 </p>
-                <p>
+                <p style="text-transform: uppercase;">
                     {{car.placa}}
                 </p>
             </div>

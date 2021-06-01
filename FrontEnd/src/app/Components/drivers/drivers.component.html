@@ -12,11 +12,11 @@
       </thead> 
       <tbody>
         <tr *ngFor="let driver of drivers">
-          <th>{{ driver.name }}</th>
-          <th>{{driver.surName}}</th>
+          <th style="text-transform: uppercase;">{{ driver.name }}</th>
+          <th style="text-transform: uppercase;">{{driver.surName}}</th>
           <th>{{driver.email}}</th>
-          <th>{{driver.role}}</th>
-          <th >{{ driver.car ? driver.car.clase : 'Na#' }}</th>
+          <th style="text-transform: uppercase;">{{driver.role}}</th>
+          <th style="text-transform: uppercase;">{{ driver.car ? driver.car.clase : 'Na#' }}</th>
 
           <th class="Editar"><a title="Editar" [routerLink]="['/edit-user',driver._id]">*</a></th>
           <th class="Eliminar" ><a (click)="onDeleteUser(driver._id)" title="Eliminar">-</a></th>

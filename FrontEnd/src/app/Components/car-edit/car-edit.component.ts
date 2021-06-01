@@ -68,7 +68,6 @@ export class CarEditComponent implements OnInit {
       this._carSevice.updateCar(this.token, id, this.car).subscribe(
         (response: any) => {
           this.car = response.car;
-          console.log(this.car)
           if (!response.car) {
             this.alertMessage = 'Error en el servidor';
           } else {
@@ -76,19 +75,18 @@ export class CarEditComponent implements OnInit {
             if (!this.filesToUpload) {
               this._router.navigate(['/navegador']);
             } else {
-              //Subir la imagen del usuario
+              //Subir la imagen del vehiculo
               this.makeFileRequest(this.url + "upload-image-car/" + this.car._id, [], this.filesToUpload).then(
                 (result: any) => {
                   this.car.image = result.image;
-                  // let image_path = this.url + 'get-image-car/' + this.car.image;
-                  // document.getElementById("identity_image").setAttribute('src', image_path);
                 },
                 error => {
                   console.log(error);
                 }
 
               );
-              this.alertMessage = 'El usuario se ha actualizado correctamente';
+              this.alertMessage = 'El vehiculo se ha actualizado correctamente';
+              this._router.navigate(['cars/1']);
             }
           }
         },

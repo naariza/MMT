@@ -32,8 +32,9 @@ function getForm(req, res) {
             if (!car) {
                 res.status(404).send({ message: 'El vehiculo no existe' });
             } else {
-                if (car.clase != 'TRACTO CAMION' && car.clase != 'TRACTO MULA') {
-                    Formulario.find({ vehiculo: 'Liviano' }).exec((err, formulario) => {
+                if (car.clase.toUpperCase() == 'TRACTO CAMION' || car.clase.toUpperCase() == 'TRACTO MULA' || car.clase.toUpperCase() == 'CAMION GRUA') {
+                    
+                    Formulario.find({ vehiculo: car.clase.toLowerCase() }).exec((err, formulario) => {
                         if (err) {
                             res.status(500).send({ message: 'Error en la petición' });
                         } else {
@@ -46,7 +47,18 @@ function getForm(req, res) {
 
                     })
                 }else{
-                    res.status(200).send({ message: 'formulario para tracto camion' })
+                    Formulario.find({ vehiculo: 'Liviano' }).exec((err, formulario) => {
+                        if (err) {
+                            res.status(500).send({ message: 'Error en la petición' });
+                        } else {
+                            if (!formulario) {
+                                res.status(404).send({ message: 'El vehiculo no existe' });
+                            } else {
+                                res.status(200).send({ formulario });
+                            }
+                        }
+
+                    })
                 }
 
             } 

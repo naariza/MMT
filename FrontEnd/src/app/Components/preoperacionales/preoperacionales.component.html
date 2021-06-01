@@ -7,9 +7,13 @@
     <div class="listado">
         <ul>
             <li *ngFor="let preo of preoperacionales">
-                <p>]</p> <a href="">{{preo._id}}-{{preo.date}}</a>
-                <button class="btn btn-success btn-sm ml-2">Descargar</button>
+                <p>]</p> <a href="">Preoperacional-{{preo.date}}</a>
+                <button (click)="downloadExcel(preo)" class="btn btn-success btn-sm ml-2">Descargar</button>
             </li>
         </ul>
     </div>
+    <button [routerLink]="['/cars/1']" class="btn btn-primary mt-3">
+        Atras
+    </button>
 </div>
+

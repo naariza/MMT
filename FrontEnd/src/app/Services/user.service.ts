@@ -46,12 +46,7 @@ register(token,user_to_register): Observable<any> {
     return this._http.post(this.url + 'register', params, { headers: headers });
 
 }
-// updateUser(user_to_update): Observable<any> {
-//     let json = JSON.stringify(user_to_update);
-//     let params = json;
-//     let headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':this.getToken()});
-//     return this._http.put(this.url + 'update-User/' + user_to_update._id, params, { headers: headers });
-// }
+
 updateUser(token,id:string, user:User): Observable<any> {
     let params = JSON.stringify(user);
         let headers = new HttpHeaders({
@@ -89,7 +84,6 @@ getDrivers(token,car?) {
         let url = `${this.url}/get-drivers`
         return this._http.get(url,{headers});
     }else{
-        console.log('no entra');
         let url2 = `${this.url}/get-drivers/${car}`
         return this._http.get(url2,{headers});
     }

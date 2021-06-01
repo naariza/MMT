@@ -1,64 +1,53 @@
-.cars-list{
-    margin: 0px;
-    padding: 0px;
-    margin-top:30px;
-    list-style: none;
-    display: flex;
-    width: 30%;
 
-}
-.car-item{
-    width: 23%;
-    margin: 0px;
-    padding: 0px;
-    height: 271px;
-    border: 1px solid #444;
-    margin-left: 20px;
-    margin-top: 20px;
-}
-.car-item .car-image{
-    height: 100%;
+.cars-list .car-image{
+    height: 69%;
     overflow: hidden;
 }
-.car-item .car-image img
+.cars-list .car-image img
 {
     height:100%;  
     
 }
-.car-item .car-name{
-    color:white;
-    padding: 10px;
+.car-name{
     background: #222326;
-}
-.car-item .car-name a{
-    color:white;
 
 }
-#car-head-card .image{
-    width: 150px;
-    height: 150px;
-    overflow: hidden;
-    float: left;
-    margin-right: 30px;
+.car-name a{
+    color:white;
+    margin-left: 5px;
 }
-#car-head-card .image img{
-    height:130px;
-    /* object-fit: cover;
-    object-position: center center; */
-}
-ul{
-    float: none;
-    clear: both;
+.car-name p{
+color: white;
+margin-left: 5px;
 }
 p{
     padding: 0px;
     margin: 0px;
 }
 button{
-    margin-top: 170px;
     margin-left: 20px;
     margin-bottom: 30px;
 }
 .btn-success{
     float: right;
+}
+#container{
+    display: flex;
+    margin:10px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    
+
+}
+.cars-list{
+    border: 1px solid #ccc;
+    width: 350px;
+    height: 430px;
+    padding: 2px;
+    margin: 5px;
+    box-shadow: 3px 3px 3px 1px #cccc;
+}
+.seguro{
+    display: block;
+    margin-top: -30px;
 }

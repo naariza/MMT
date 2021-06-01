@@ -1,45 +1,43 @@
-<div class="container">
-    <div class="clearfix"></div>
-    <ul class="cars-list" *ngIf="identity">
-        <li *ngFor="let car of cars" class="col-9 car-item">
-            <div class="car-image">
-                <img class="card-img-top" src="{{url +'get-image-car/'+car.image}}" alt="Imagen del artista">
-            </div>
-            <div class="car-name">
-                <a [routerLink]="['/car',car._id]">
-                    {{car.clase}}
-                </a>
-                <p>
-                    {{car.marca}}
-                </p>
-                <p>
-                    {{car.modelo}}
+<div id="container">
+    <div class="cars-list" *ngFor="let car of cars">
+        <div class="car-image">
+            <img class="card-img-top" src="{{url +'get-image-car/'+car.image}}" alt="Imagen del artista">
+        </div>
+        <div class="car-name">
+            <a [routerLink]="['/car',car._id]" style="text-transform: capitalize;">
+              <strong >Clase del Vehiculo:</strong> {{car.clase}}
+            </a>
+            <p style="text-transform: capitalize;">
+               <strong>Marca</strong> {{car.marca}}
+            </p>
+            <p style="text-transform: capitalize;">
+              <strong>Modelo</strong>  {{car.modelo}}
 
-                </p>
-                <p>
-                    {{car.placa}}
-                </p>
-                <div class="buttons" *ngIf="identity.role == 'FUNCIONARIO'">
-                    <a [routerLink]="['/edit-car',car._id]" class="btn btn-sm btn-warning">Editar</a>
-                    <a (click)="onDeleteConfirm(car._id)" class="btn btn-sm btn-danger">Borrar</a>
-                    <a [routerLink]="['/preoperacionales',car._id]" class="btn btn-sm btn-success">Preoperacional</a>
-                </div>
-                <div class="seguro" *ngIf="confirmado == car._id">
-                    <a (click)="onDeleteCar(car._id)" class="btn btn-sm btn-danger">Eliminar</a>
-                    <a (click)="onCancelCar()" class="btn btn-sm btn-primary">Cancelar</a>
-                </div>
+            </p>
+            <p style="text-transform: capitalize;">
+               <strong>Placa</strong> {{car.placa}}
+            </p>
+            <div class="buttons" *ngIf="identity.role == 'FUNCIONARIO'">
+                <a [routerLink]="['/edit-car',car._id]" class="btn btn-sm btn-warning m-1">Editar</a>
+                <a (click)="onDeleteConfirm(car._id)" class="btn btn-sm btn-danger m-1">Borrar</a>
+                <a [routerLink]="['/preoperacionales',car._id]" class="btn btn-sm btn-success mr-2">Preoperacional</a>
             </div>
-        </li>
-    </ul>
-    <button [routerLink]="['/navegador']" class="btn btn-primary">
-        Atras
-    </button>
-    <button [routerLink]="['/register-car']" [routerLinkActive]="['actived']" class="btn btn-success">
-        Registrar Vehiculo
-    </button>
+            <div class="seguro" *ngIf="confirmado == car._id">
+                <a (click)="onDeleteCar(car._id)" class="btn btn-sm btn-danger m-1">Eliminar</a>
+                <a (click)="onCancelCar()" class="btn btn-sm btn-primary m-1">Cancelar</a>
+            </div>
+        </div>
+
+    </div>
+    
 </div>
 
-   
+<button [routerLink]="['/navegador']" class="btn btn-primary">
+    Atras
+</button>
+<button [routerLink]="['/register-car']" [routerLinkActive]="['actived']" class="btn btn-success">
+    Registrar Vehiculo
+</button>
 
    
 

@@ -10,10 +10,10 @@
         </div>
         <div class="card-body">
             <form class="form-group" #editCar="ngForm" (ngSubmit)="onSubmit()" action="">
-                <input type="text" class="form-control m-2" name="clase" #clase="ngModel" [(ngModel)]="car.clase" id="" placeholder="Clase">
-                <input type="text" class="form-control m-2" name="modelo" #modelo="ngModel" [(ngModel)]="car.modelo" id="" placeholder="Modelo">
-                <input type="text" class="form-control m-2" name="placa" #placa="ngModel" [(ngModel)]="car.placa" id="" placeholder="Placa">
-                <input type="text" class="form-control m-2" name="marca" #marca="ngModel" [(ngModel)]="car.marca" id="" placeholder="Marca">
+                <input type="text" class="form-control m-2" name="clase" #clase="ngModel" [(ngModel)]="car.clase" id="" placeholder="Clase" style="text-transform: uppercase;">
+                <input type="text" class="form-control m-2" name="modelo" #modelo="ngModel" [(ngModel)]="car.modelo" id="" placeholder="Modelo" style="text-transform: uppercase;">
+                <input type="text" class="form-control m-2" name="placa" #placa="ngModel" [(ngModel)]="car.placa" id="" placeholder="Placa" style="text-transform: uppercase;">
+                <input type="text" class="form-control m-2" name="marca" #marca="ngModel" [(ngModel)]="car.marca" id="" placeholder="Marca" style="text-transform: uppercase;">
                 <label for="">Foto Del Vehiculo</label><input class="m-2" type="file" (change)="fileChangeEvent($event)" name="" id="">
                 <label for="">Hv_Vehicular</label><input class="m-2" type="file"  name="" id="">
                 <button [routerLink]="['/register-car']"class="btn btn-danger">Cancelar</button>

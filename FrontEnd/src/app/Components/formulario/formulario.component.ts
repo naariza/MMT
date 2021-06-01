@@ -1,3 +1,5 @@
+import { UpperCasePipe } from '@angular/common';
+import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Formulario } from 'src/app/Models/formulario';
@@ -36,8 +38,7 @@ export class FormularioComponent implements OnInit {
     if(this.pregunta != '' && this.pregunta !=null && this.descripcion !='' && this.descripcion !=null){
       this.preguntas.push({
         pregunta:this.pregunta,
-        descripcion:this.descripcion,
-        valor:''
+        descripcion:this.descripcion
       });
     }
     this.pregunta ="";
@@ -56,6 +57,9 @@ export class FormularioComponent implements OnInit {
   //  
   }
   guardarformulario(){
+    if(this.form.description == '' && this.form.fechaVigencia == '' && this.form.name == '' && this.form.preguntas == '' && this.form.vehiculo == ''){
+      this.alertMessage = 'El formulario no es valido, favor intentelo de nuevo'
+    }else{
     this.form.preguntas=this.preguntas;
     this._formService.saveForm(this.token,this.form).subscribe(
       response => {
@@ -67,6 +71,7 @@ export class FormularioComponent implements OnInit {
         } else {
           this.alertMessage = 'El registro del formulario '+this.form.name+' se realizo corecctamente';
           this.form = new Formulario('','','','','','');
+          this.preguntas=[];
           this._router.navigate(['/formulario']);
         }
       },
@@ -79,9 +84,7 @@ export class FormularioComponent implements OnInit {
         }
       }
     );
-    
-    console.log(this.form);
-    
-
+        
+    }
   }
 }

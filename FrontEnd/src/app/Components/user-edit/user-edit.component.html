@@ -34,7 +34,7 @@
       <p>
         <p>
           <select class="form-control" #car="ngModel" name="car" [(ngModel)]="user.car"id="">
-            <option value="{{car._id}}" *ngFor="let car of vehiculos">{{car.clase}}</option>
+            <option style="text-transform: uppercase;" value="{{car._id}}" *ngFor="let car of vehiculos">{{car.clase}}</option>
           </select>
         </p>
         <p>

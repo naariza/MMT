@@ -141,7 +141,6 @@ function uploadImage(req, res) {
 
         if (file_ext == 'png' || file_ext == 'jpg' || file_ext == 'jpeg' || file_ext == 'gif') {
             Car.findByIdAndUpdate(carId, { image: file_name }, (err, carUpdate) => {
-                console.log(carUpdate);
                 if (!carUpdate) {
                     res.status(404).send({ message: 'No se ha podido actualizar el vehiculo' });
                 } else {
