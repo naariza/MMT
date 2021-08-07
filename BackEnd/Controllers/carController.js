@@ -6,8 +6,29 @@ var mongoosePaginate = require('mongoose-pagination');
 var User = require('../Models/user');
 var Car = require('../Models/car');
 const { send } = require('process');
+var nodemailer = require('nodemailer');
 
 function getCar(req, res) {
+    var carClase = req.params.clase
+    if(carClase==1){
+       var find= Car.find({}).sort('modelo')
+    }else{
+        var find= Car.find({clase:carClase}).sort('modelo')
+    }    
+    find.exec((err, car) => {
+            if (err) {
+                res.status(500).send({ message: 'Error en la petición' });
+            } else {
+                if (!car) {
+                    res.status(404).send({ message: 'El vehiculo no existe' });
+                } else {
+                    res.status(200).send({ car });
+                }
+            }
+        });
+    }
+
+function getCars(req, res) {
     var carId = req.params.id;
     Car.findById(carId).populate({ path: 'user' }).exec((err, car) => {
         if (err) {
@@ -16,36 +37,14 @@ function getCar(req, res) {
             if (!car) {
                 res.status(404).send({ message: 'El vehiculo no existe' });
             } else {
-                res.status(200).send({ car });
-            }
+                res.status(200).send({car})
+            } 
         }
     });
+    
 
-}
 
-function getCars(req, res) {
-    var userId = req.params.user;
-    if (!userId) {
-        //sacar todos los vehiculos de la bbdd
-        var find = Car.find({}).sort('clase');
-    } else {
-        //sacar los vehiculos de un conductor en concreto de la bdd
-        var find = Car.find({ user: userId }).sort('clase');
-    }
-    find.populate({ path: 'user' }).exec((err, cars) => {
-        if (err) {
-            res.status(500).send({ message: 'Error en el servidor' });
-            
-        } else {
-            if (!cars) {
-                res.status(404).send({ message: 'No hay vehiculos' });
-                
-            } else {
-                res.status(200).send({ cars });
-            }
-        }
-    });
-}
+} 
 function saveCar(req, res) {
     var car = new Car();
     var params = req.body;
@@ -166,6 +165,38 @@ function getImageFile(req, res) {
         }
     });
 }
+function sendMessage(authorization,res){
+    var params = authorization.body
+    var transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+        user: 'sistemasmmtltda', // Cambialo por tu email
+        pass: 'Mmtltda2021' // Cambialo por tu password
+        }
+        });
+       const mailOptions = {
+        from: `”${params.driver} ”`,
+        to: 'jodase26@gmail.com', // Cambia esta parte por el destinatario
+        subject: 'AUTORIZACION VEHICULAR',
+        html: `
+        <h2>Tecnicos En Montajes Mecanicos Y Civiles Ltda</h2> <br/>
+        <h3>Coordial Saludo,</h3>
+       <p style="text-transform: uppercase; text-align: justify;">
+       Buen dia,Yo <strong>${params.driver}</strong> desempeñandome con el cargo de conductor, reporto salida del vehiculo <strong>${params.clase}</strong> modelo <strong>${params.modelo}</strong> con placa <strong>${params.placa}</strong> para realizar la actividad <strong>${params.activity}</strong> para <strong>${params.zone}</strong> con fecha y hora <strong>${params.date}</strong>  autorizado por <strong>${params.authorize}</strong>.
+       </p>
+        
+        `
+        };
+       transporter.sendMail(mailOptions, function (err, info) {
+        if (err){
+        res.status(500).send({message:'Error en la peticion'})
+        // console.log(err)
+        }else
+        res.status(200).send({message:'El reporte se genero correctamente'})
+        });
+
+
+}
 module.exports = {
     getCar,
     saveCar,
@@ -173,5 +204,6 @@ module.exports = {
     updateCar,
     deleteCar,
     uploadImage,
-    getImageFile
+    getImageFile,
+    sendMessage
 };

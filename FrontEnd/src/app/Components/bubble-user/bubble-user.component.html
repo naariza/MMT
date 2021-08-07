@@ -6,7 +6,7 @@
                 <li>
                     {{identity.name}} {{identity.surName}}
                 </li>
-                <li>
+                <li *ngIf="identity && identity.role =='FUNCIONARIO'">
                     <a [routerLink]="['/edit-user',identity._id]" [routerLinkActive]="['actived']">
                     Editar Perfil
                     </a>

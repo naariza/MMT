@@ -45,7 +45,7 @@
             </p>
             <p >
                 <select class="form-control" [disabled]="!user_register.role" #car="ngModel" name="car" [(ngModel)]="user_register.car">
-                    <option *ngFor="let car of cars"  value="{{car._id}}">{{car.clase}}</option>
+                     <option *ngFor="let car of cars"  value="{{car._id}}">{{car.clase}}</option>
                 </select>
             </p>
             <input type="submit" name="" id="" data-toggle="modal" data-target="#exampleModal3" class="btn btn-primary m-3"

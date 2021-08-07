@@ -34,7 +34,6 @@ export class FormularioComponent implements OnInit {
   
   }
   agregarPregunta(){
-    // debugger
     if(this.pregunta != '' && this.pregunta !=null && this.descripcion !='' && this.descripcion !=null){
       this.preguntas.push({
         pregunta:this.pregunta,

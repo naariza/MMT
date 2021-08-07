@@ -1,7 +1,7 @@
-<div id="container">
+<!-- <div id="container">
     <div class="cars-list" *ngFor="let car of cars">
         <div class="car-image">
-            <img class="card-img-top" src="{{url +'get-image-car/'+car.image}}" alt="Imagen del artista">
+            <img class="card-img-top" src="{{url +'get-image-car/'+car.image}}" alt="Imagen del carro">
         </div>
         <div class="car-name">
             <a [routerLink]="['/car',car._id]" style="text-transform: capitalize;">
@@ -37,7 +37,92 @@
 </button>
 <button [routerLink]="['/register-car']" [routerLinkActive]="['actived']" class="btn btn-success">
     Registrar Vehiculo
-</button>
+</button> -->
+<app-bubble-user></app-bubble-user>
+<div class="wrap">
+    <h1 *ngIf="identity && identity.role =='CONDUCTOR'">
+        <p class="badge badge-warning">Paso 1.</p>Escoge un vehiculo
+    </h1 >
+    <h1 *ngIf="identity && identity.role =='FUNCIONARIO'"></h1>
+    <div class="store-wrapper">
+        <div class="category_list">
+            <a [routerLink]="['/get-car/1']" class="category_item" category="all">Todo</a>
+            <a [routerLink]="['/get-car/Tracto Camion']" class="category_item" category="Tracto Camion">Tracto
+                Camion</a>
+            <a [routerLink]="['/get-car/Tractores']" class="category_item" category="Tractores">Tractores</a>
+            <a [routerLink]="['/get-car/camion grua']" class="category_item" category="camion grua">Camion grua</a>
+            <a [routerLink]="['/get-car/Retros']" class="category_item" category="Retros">Retros</a>
+        </div>
 
-   
+        <section class="products-list">
 
+            <div class="product-item" *ngFor="let car of cars">
+                <div class="row-md-4">
+                    <div class="card">
+                        <a id="link">
+                            <div class="card-header  text-center font-weight-bold" style="text-transform: uppercase;">
+                                {{car.clase}}
+                            </div>
+                            <div class="card-body">
+                                <img class="card-img-top" src="{{url +'get-image-car/'+car.image}}"
+                                    alt="Imagen del carro">
+                            </div>
+                            <div class="card-footer">
+                                <div class="card-text text-left font-italic text-uppercase">
+                                    Modelo: {{car.modelo}} <br>
+                                    Placa: {{car.placa}}
+                                    <button *ngIf="identity && identity.role =='CONDUCTOR'" type="submit" (click)="carSelect=car" class="btn btn-success btn-sm mt-4 mr-3 mb-0" data-toggle="modal"
+                                        data-target="#exampleModalScrollable">Elegir</button>
+                                    <button *ngIf="identity && identity.role =='FUNCIONARIO'" type="submit" (click)="carSelect=car" class="btn btn-success btn-sm mt-4 mr-3 mb-0" data-toggle="modal"
+                                        data-target="#exampleModalScrollable">Ver</button>    
+                                </div>
+                            </div>
+                        </a>
+
+                    </div>
+
+                </div>
+            </div>
+            <ng-container *ngIf="carSelect">
+                <div class="modal" id="exampleModalScrollable" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalScrollableLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-scrollable" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalCenteredLabel">Registro de Actividad
+                                </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <h3>
+                                    <span class="badge badge-primary">
+                                        Servicio del Vehiculo {{ carSelect.clase }}
+                                    </span>
+                                </h3>
+                                <form class="form-group" [formGroup]="formulario">
+                                    <input type="datetime-local" class="form-control" name="date" formControlName="date">
+                                    <input type="text" value="{{identity.name}}" class="form-control" disabled>
+                                    <input type="text" placeholder="Lugar ó Cliente" class="form-control" name="zone" formControlName="zone"> 
+                                    <textarea name="activity" id="" cols="30" rows="10"
+                                        placeholder="Realice una breve descripción de la actividad a realizar"
+                                        class="form-control" formControlName="activity"></textarea>
+                                    <input type="text" placeholder="Escriba el nombre de quien autoriza el servicio"
+                                        class="form-control" name="authorize" formControlName="authorize">
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" [routerLink]="['/get-car/1']" class="btn btn-secondary"
+                                    data-dismiss="modal">Cancelar</button>
+                                <button data-dismiss="modal" data-backdrop="false" dismiss="modal" (click)="addAuthorization()"  class="btn btn-primary">Entendido</button>
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+            </ng-container>
+            
+        </section>
+    </div>
+</div>

@@ -11,10 +11,10 @@
                     </a>
                 </div>
                 <div class="item col-3 border pt-3 bg-white ">
-                    <a [routerLink]="['/cars/1']" >
+                    <a [routerLink]="['/get-car/1']" >
                         <img id="funciones-icon" src="../../../assets/Img/vehiculo.png" alt="">
                      </a>
-                     <a id="enlace"  [routerLink]="['/cars/1']" [routerLinkActive]="['actived']">
+                     <a id="enlace"  [routerLink]="['/get-car/1']" [routerLinkActive]="['actived']">
                         <h4>Listar Vehiculos</h4>
                     </a>
                 </div>
@@ -54,34 +54,41 @@
             </div>
         </section>
 </div>
-<div id="content" *ngIf="identity && identity.role =='CONDUCTOR'">
-    <section id="funciones" class="col-9">
+<!-- <div id="content" *ngIf="identity && identity.role =='CONDUCTOR'">
+     <section id="funciones" class="col-9">
         <div id="items" class="row justify-content-between bg-white">
             
-            <div class="item col-3 border pt-3 bg-white">
-                <a [routerLink]="['']" >
+            <div class="item col-3 border pt-3 bg-white ">
+                <a [routerLink]="['']" name="opcion_1" >
                     <img id="funciones-icon" src="../../../assets/Img/formatos.png" alt="">
                  </a>
-                 <a id="enlace"  [routerLink]="['']" [routerLinkActive]="['actived']">
+                 <a id="enlace" name="opcion_1"  [routerLink]="['']" [routerLinkActive]="['actived']">
                     <h4>Formatos MmtLtda</h4>
                 </a>
             </div>
+            <div class="col-1 bg-white icono">
+               j
+            </div>
             <div class="item col-3 border pt-3 bg-white">
-                <a [routerLink]="['']" >
+                <a [routerLink]="['']" name="opcion_2" disabled="!opcion_1" >
                     <img id="funciones-icon" src="../../../assets/Img/Gestionar Autorización.png" alt="">
                  </a>
-                 <a id="enlace"  [routerLink]="['']" [routerLinkActive]="['actived']">
+                 <a id="enlace"  [routerLink]="['']" disabled="!opcion_1" name="opcion_2" [routerLinkActive]="['actived']">
                     <h4>Gestionar Autorización</h4>
                 </a>                
             </div>
+            <div class="col-1 bg-white icono">
+                j
+             </div>
             <div class="item col-3 border pt-3 bg-white">
-                <a [routerLink]="['/preoperacional']" >
+                <a [routerLink]="['/preoperacional']"  name="opcion_3">
                     <img id="funciones-icon" src="../../../assets/Img/preoperacional.png">
                  </a>
-                 <a id="enlace"  [routerLink]="['/preoperacional']" [routerLinkActive]="['actived']">
+                 <a id="enlace" name="opcion_3"  [routerLink]="['/preoperacional']" [routerLinkActive]="['actived']">
                     <h4>Gestionar Preoperacional</h4>
                 </a>   
             </div>            
         </div>
-    </section>
-</div>
+    </section> 
+
+</div> -->

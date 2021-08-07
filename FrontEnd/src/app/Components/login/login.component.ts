@@ -3,6 +3,7 @@ import { UserService } from "../../Services/user.service";
 import { User } from '../../Models/user';
 import { GLOBAL } from "../../Services/global";
 import { Router, ActivatedRoute,Params } from "@angular/router";
+import { NgModel } from '@angular/forms';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,6 +12,7 @@ import { Router, ActivatedRoute,Params } from "@angular/router";
 export class LoginComponent implements OnInit {
 
   public level="";
+  // public manual;
   public user:User;
   public user_register:User;
   public identity;
@@ -22,10 +24,12 @@ export class LoginComponent implements OnInit {
     // public level:LoginService,
     private _route:ActivatedRoute,
     private _router:Router,
-    private _userService:UserService 
+    private _userService:UserService
     )
     {
-    this.user= new User('','','','','','','','');
+    this.identity = this._userService.getIdentity();
+    this.token = this._userService.getToken();  
+    this.user= new User('','','',null,'','','','');
     this.user_register= new User('','','','','','','','');
     this.url=GLOBAL.url;
     
@@ -39,14 +43,13 @@ export class LoginComponent implements OnInit {
         this._router.navigate(['']);
       }
     });
-    this.identity = this._userService.getIdentity();
-    this.token = this._userService.getToken();
+    
     
   }
   public onSubmit(){
     //Conseguir los datos del usuario identificado
     this._userService.singup(this.user).subscribe(
-      response =>{
+      response =>{ 
         let identity = response.user;
         this.identity = identity;
         if(!this.identity._id){
@@ -65,8 +68,9 @@ export class LoginComponent implements OnInit {
               }else{
                 //Crear elemento en el localStorage para tener el token disponble
                 localStorage.setItem('token',token);
-                this.user= new User('','','','','','','','');
-                this._router.navigate(['navegador']);
+                if(this.level=='1'){
+                  this._router.navigate(['navegador']);
+                }
               }
             },
                error=>{
@@ -93,12 +97,15 @@ export class LoginComponent implements OnInit {
       }
     );
   }
+ 
   logout(){
     localStorage.removeItem('identity');
     localStorage.removeItem('token');
     localStorage.clear();
     this.identity = null;
     this.token=null;
+    this.user= new User('','','','','','','','');
     this._router.navigate[('/')];
   }
+  
 }

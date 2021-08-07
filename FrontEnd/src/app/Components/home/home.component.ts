@@ -12,6 +12,8 @@ export class HomeComponent implements OnInit {
 public identity;
 public token;
 public url;
+public categoria;
+public titulo="";
 
   constructor(
     private _route:ActivatedRoute,

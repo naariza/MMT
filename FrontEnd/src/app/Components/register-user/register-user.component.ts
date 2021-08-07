@@ -77,7 +77,7 @@ export class RegisterUserComponent implements OnInit {
     });
   }
   onSubmit() {
-    if (this.user_register.name == '' || this.user_register.surName == '' || this.user_register.email == '' || this.user_register.password == '' || this.user_register.role == '' || this.user_register.car == '' || this.user_register.image == '') {
+    if (this.user_register.name == '' || this.user_register.surName == '' || this.user_register.email == '' || this.user_register.password == '' || this.user_register.role == '' || this.user_register.car == '') {
       this.alertMessage = 'Todos los campos del formulario son obligatorios'
     } else {
       this._userService.register(this.token, this.user_register).subscribe(

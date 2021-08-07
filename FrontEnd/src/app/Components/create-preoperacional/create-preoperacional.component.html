@@ -33,56 +33,58 @@
                 </tr>              
             </thead>
             <thead>
-                <tr>
-                    <th>
-                        <input type="text" class="form-control" disabled="false" value="{{user.car.clase}}" style="text-transform: uppercase;">
-
-                    </th>
-                    <th>
-                        <input type="text" class="form-control" disabled="false" value="{{user.name}}" style="text-transform: uppercase;">
-                    </th>
-                    <th>
-                        <input type="text" class="form-control" placeholder="Cedula*" #cedula="ngModel" name="cedula" [(ngModel)]="preoperacional.cedula" style="text-transform: uppercase;" required>
-                    </th>
-                    <th >
-                        <input type="text" class="form-control" placeholder="Empresa*" #business="ngModel" name="business" [(ngModel)]="preoperacional.business" style="text-transform: uppercase;" required>
-                    </th>
-                    
-                    
-                </tr>
-                <tr>
-                    
-                    <th>
-                        <input type="text" class="form-control" disabled="false" value="{{user.car.placa}}" style="text-transform: uppercase;">
-                    </th>
-                    <th>
-                        <input type="text" class="form-control" disabled="false" value="{{user.car.modelo}}" style="text-transform: uppercase;">
-                    </th>
-                    
-                    <th>
-                        <input type="number" class="form-control" placeholder="Kilometro Inicial*" #kil_start="ngModel" name="kil_start" [(ngModel)]="preoperacional.kil_start" required>
-                    </th>
-                    <th>
-                        <input type="number" class="form-control" placeholder="Kilometro Final*" #kil_end="ngModel" name="kil_end" [(ngModel)]="preoperacional.kil_end" required>
-                    </th>
-                   
-                </tr>
-                <tr>
-                    <th>
-                        <input type="text" class="form-control" placeholder="Color" disabled="false" value="{{user.car.color}}" style="text-transform: uppercase;">
-                    </th>
-                    <th>
-                        <input type="date" class="form-control" #date="ngModel" min="{{fecha}}" disabled="false" name="date" [(ngModel)]="preoperacional.date">
-                    </th>
-                    <th>
-                        <input type="number" class="form-control" placeholder="Kilometros De Recorrido*"  placeholder="Recorrido: {{recorrido}} Km" (click)="getRecorrido(preoperacional.kil_start,preoperacional.kil_end)"  required>
-                    </th>          
-                    
-                    <th>
-                        <input type="text" placeholder="Ubicación*" #location="ngModel" name="location"  [(ngModel)]="preoperacional.location" style="text-transform: uppercase;" required>
+                <ng-container >
+                    <tr>
+                        <th>
+                            <input type="text" class="form-control" disabled="false" value="{{cars.clase}}" style="text-transform: uppercase;">
+    
+                        </th>
+                        <th>
+                            <input type="text" class="form-control" disabled="false" value="{{identity.name}}" style="text-transform: uppercase;">
+                        </th>
+                        <th>
+                            <input type="text" class="form-control" placeholder="Cedula*" #cedula="ngModel" name="cedula" [(ngModel)]="preoperacional.cedula" style="text-transform: uppercase;" required>
+                        </th>
+                        <th >
+                            <input type="text" class="form-control" placeholder="Empresa*" #business="ngModel" name="business" [(ngModel)]="preoperacional.business" style="text-transform: uppercase;" required>
+                        </th>
                         
-                    </th>
-                </tr>
+                        
+                    </tr>
+                    <tr>
+                        
+                        <th>
+                            <input type="text" class="form-control" disabled="false" value="{{cars.placa}}" style="text-transform: uppercase;">
+                        </th>
+                        <th>
+                            <input type="text" class="form-control" disabled="false" value="{{cars.modelo}}" style="text-transform: uppercase;">
+                        </th>
+                        
+                        <th>
+                            <input type="number" class="form-control" placeholder="Kilometro Inicial*" #kil_start="ngModel" name="kil_start" [(ngModel)]="preoperacional.kil_start" required>
+                        </th>
+                        <th>
+                            <input type="number" class="form-control" placeholder="Kilometro Final*" #kil_end="ngModel" name="kil_end" [(ngModel)]="preoperacional.kil_end" required>
+                        </th>
+                       
+                    </tr>
+                    <tr>
+                        <th>
+                            <input type="text" class="form-control" placeholder="Color" disabled="false" value="{{cars.color}}" style="text-transform: uppercase;">
+                        </th>
+                        <th>
+                            <input type="date" class="form-control" #date="ngModel" min="{{fecha}}" disabled="false" name="date" [(ngModel)]="preoperacional.date">
+                        </th>
+                        <th>
+                            <input type="number" class="form-control" placeholder="Kilometros De Recorrido*"  placeholder="Recorrido: {{recorrido}} Km" (click)="getRecorrido(preoperacional.kil_start,preoperacional.kil_end)"  required>
+                        </th>          
+                        
+                        <th>
+                            <input type="text" placeholder="Ubicación*" #location="ngModel" name="location"  [(ngModel)]="preoperacional.location" style="text-transform: uppercase;" required>
+                            
+                        </th>
+                    </tr>
+                </ng-container>    
             </thead>
             <tbody class="bg-light">
                 <tr class="bg-info">
@@ -117,9 +119,6 @@
                                {{pregunta.pregunta}}
                             </p>
                         </td>
-                        <!-- Gustavo 
-                        Duver 
-                       694889 Radicado -->
                         <td>
                             <p>
                                 {{pregunta.descripcion}}

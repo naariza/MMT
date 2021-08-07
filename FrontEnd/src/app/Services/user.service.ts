@@ -30,7 +30,6 @@ export class UserService {
     if(user_to_login.email){
         return this._http.post(this.url + 'login-Admin', params, { headers: headers });
     }else{
-
         return this._http.post(this.url + 'login-User', params, { headers: headers });   
     }
 }

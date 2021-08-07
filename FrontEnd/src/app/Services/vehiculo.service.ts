@@ -34,20 +34,20 @@ export class VehiculoService {
     
     return this._http.put(this.url+'update-car/'+id,params,{headers:headers});
   }
-  getCar(token,id:string):Observable<any>{
+  getCar(token,clase?):Observable<any>{
     let headers= new HttpHeaders({
       'Content-Type':'application/json',
       'Authorization':token
   });
-  let url = `${this.url}/get-car/${id}`
+  let url = `${this.url}/get-car/${clase}`
   return this._http.get(url,{headers});
   }
-  getCars(token,page?){
+  getCars(token,id){
     let headers= new HttpHeaders({
         'Content-Type':'application/json',
         'Authorization':token
     });
-    let url = `${this.url}/cars/${page}`
+    let url = `${this.url}/car/${id}`
     return this._http.get(url,{headers});
 }
 DeleteCar(token,id:string){
@@ -57,6 +57,15 @@ DeleteCar(token,id:string){
   });
   let url = `${this.url}/delete-car/${id}`
   return this._http.delete(url,{headers});
+}
+Authorization(token,authorization){
+  let json = JSON.stringify(authorization);
+  let headers = new HttpHeaders({
+    'Content-Type':'application/json',
+    'Authorization':token
+});
+
+  return this._http.post(this.url + 'authorization', json, { headers: headers });
 }
 }
 

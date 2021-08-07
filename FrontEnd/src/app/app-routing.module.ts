@@ -22,14 +22,14 @@ const routes: Routes = [
   {path:'navegador', component:HomeComponent},
   {path:'edit-user/:id', component:UserEditComponent},
   {path:'register-user', component:RegisterUserComponent},
-  {path:'cars/:page', component:CarsComponent},
+  {path:'get-car/:clase', component:CarsComponent},
   {path:'register-car', component:RegisterCarComponent},
   {path:'edit-car/:id', component:CarEditComponent}, 
   {path:'get-drivers', component:DriversComponent},  
   {path:'preoperacional', component:PreoperacionalComponent}, 
-  {path:'create-preoperacional/:driver/:form', component:CreatePreoperacionalComponent},
+  {path:'create-preoperacional/:clase/:car/:form/:driver', component:CreatePreoperacionalComponent},
   {path:'preoperacionales/:id', component:PreoperacionalesComponent},
-  {path:'formulario', component:FormularioComponent}, 
+  {path:'formulario', component:FormularioComponent},
   {path:'**', component:MainComponent}
 ];
 

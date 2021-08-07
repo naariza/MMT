@@ -1,45 +1,103 @@
 <div class="back">
-    <a [routerLink]="['']" (click)="logout()">
-        h
-    </a>
+  <a [routerLink]="['']" (click)="logout()">
+    h
+  </a>
 </div>
 <div *ngIf="errorMessage">
-    <div class="alert alert-danger">
-        {{errorMessage}}
-    </div>
+  <div class="alert alert-danger">
+    {{errorMessage}}
+  </div>
 </div>
-<div  id="content">
-    
-    <div id="login" *ngIf="level == '1'">    
-            <h2>Bienvenido</h2>
-            <form #loginForm="ngForm" (ngSubmit)="onSubmit()"class="form-group" action="">
-                <input id="input" name="email" #email="ngModel" [(ngModel)]="user.email" class="form-control" type="email" placeholder="Correo electronico" required>
-                <div class="fixed"></div>
-                <span *ngIf="!email.valid && email.touched">
-                    El correo es obligatorio
-                </span>
-                <input id="input" name="password" #password="ngModel" [(ngModel)]="user.password" class="form-control" type="password" placeholder="Contraseña" required>
-                <div class="fixed"></div>
-                <span *ngIf="!password.valid && password.touched">
-                    La contraseña es obligatoria
-                </span>
-                <button type="submit" class="btn btn-primary form-control">Ingresar</button>
-            </form>
+<div id="content">
+
+  <div id="login" *ngIf="level == '1'">
+    <h2>Bienvenido</h2>
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit()" class="form-group" action="">
+      <input id="input" name="email" #email="ngModel" [(ngModel)]="user.email" class="form-control" type="email"
+        placeholder="Correo electronico" required>
+      <div class="fixed"></div>
+      <span *ngIf="!email.valid && email.touched">
+        El correo es obligatorio
+      </span>
+      <input id="input" name="password" #password="ngModel" [(ngModel)]="user.password" class="form-control"
+        type="password" placeholder="Contraseña" required>
+      <div class="fixed"></div>
+      <span *ngIf="!password.valid && password.touched">
+        La contraseña es obligatoria
+      </span>
+      <button type="submit" class="btn btn-primary form-control">Ingresar</button>
+    </form>
+  </div>
+  <div id="login" *ngIf="level == '2'">
+    <h2>Bienvenido</h2>
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit()" class="form-group" action="">
+      <input id="input" name="name" #name="ngModel" [(ngModel)]="user.name" class="form-control" type="text"
+        placeholder="Primer Nombre" required>
+      <div class="fixed"></div>
+      <span *ngIf="!name.valid && name.touched">
+        El nombre es obligatorio
+      </span>
+      <input id="input" name="password" #password="ngModel" [(ngModel)]="user.password" class="form-control"
+        type="password" placeholder="Cedula de Ciudadania" required>
+      <div class="fixed"></div>
+      <span *ngIf="!password.valid && password.touched">
+        La cedula es obligatoria
+      </span>
+      <button type="submit" class="btn btn-primary form-control" data-toggle="modal"
+        data-target="#exampleModalScrollable">Ingresar</button>
+    </form>
+   
+    <div class="modal" id="exampleModalScrollable" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalScrollableLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenteredLabel">Manual De Usuario Mmt Ltda</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h3>
+            <span class="badge badge-primary">
+              Mmt Te Da La Bienvenida {{user.name}}
+            </span>
+          </h3>
+          <ul>
+            <li>
+             <h6><p class="badge badge-warning">Paso 1.</p>Debe elegir un vehiculo y darle clic <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-card-checklist" viewBox="0 0 16 16">
+              <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
+              <path d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0zM7 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z"/>
+            </svg></h6>   
+            </li>
+            <li>
+              <h6><p class="badge badge-warning">Paso 2.</p>Debe Llenar la información del servicio o actividad a realizar. <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-clipboard-data" viewBox="0 0 16 16">
+                <path d="M4 11a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1zm6-4a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0V7zM7 9a1 1 0 0 1 2 0v3a1 1 0 1 1-2 0V9z"/>
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+              </svg></h6> 
+            </li>
+            <li>
+              <h6><p class="badge badge-warning">Paso 3.</p>Debe Diligenciar el formulario del Preoperacional para el vehiculo.<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-file-text" viewBox="0 0 16 16">
+                <path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z"/>
+                <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"/>
+              </svg></h6> 
+            </li>
+            <li>
+              <h6><p class="badge badge-warning">Paso 4.</p>Presentar el registro u autorización al almacenista<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16">
+                <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z"/>
+                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+              </svg></h6> 
+            </li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" (click)="logout()" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button type="button" [routerLink]="['/get-car/1']"  data-dismiss="modal" data-backdrop="false" dismiss="modal"class="btn btn-primary">Entendido</button>
+        </div>
+      </div>
     </div>
-    <div id="login" *ngIf="level == '2'">
-        <h2>Bienvenido</h2>
-        <form #loginForm="ngForm" (ngSubmit)="onSubmit()" class="form-group" action="">            
-            <input id="input" name="name" #name="ngModel" [(ngModel)]="user.name" class="form-control" type="text" placeholder="Primer Nombre" required>
-                <div class="fixed"></div>
-                <span *ngIf="!name.valid && name.touched">
-                    El nombre es obligatorio
-                </span>
-            <input id="input" name="password" #password="ngModel" [(ngModel)]="user.password" class="form-control" type="password" placeholder="Cedula de Ciudadania" required>
-            <div class="fixed"></div>
-                <span *ngIf="!password.valid && password.touched">
-                    La cedula es obligatoria
-                </span>
-            <button type="submit" href=""class="btn btn-primary form-control">Ingresar</button>
-        </form>
-</div>
+
+    </div>
+  </div>
 </div>

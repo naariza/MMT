@@ -9,6 +9,7 @@ var User = require('../Models/user');
 
 const { findByIdAndUpdate } = require('../Models/user');
 var mongoosePaginate = require('mongoose-pagination');
+const { send } = require('process');
 
 
 function getUser(req, res) {
@@ -76,7 +77,7 @@ function getDrivers(req,res){
         //sacar los conductores de un vehiculo en concreto de la bdd
         var find = User.find({car:carId}).sort('clase');
     }
-    find.populate({path:'car'}).exec((err,users)=>{
+    User.find({role:'CONDUCTOR'}).sort('name').populate({path:'car'}).exec((err,users)=>{
         if(err){
             res.status(500).send({message:'Error en el servidor'});
         
@@ -167,6 +168,7 @@ function loginUser(req, res) {
             res.status(500).send({ message: "Error en la petición" })
         } else {
             if (!user) {
+               
                 res.status(404).send({ message: 'El Conductor no existe' });
             } else {
                 //Comprobar la Contraseña
@@ -180,9 +182,9 @@ function loginUser(req, res) {
                             })
                         } else {
                             res.status(200).send({ user });
+
                         }
                     } else {
-
                     }
                 })
             }
@@ -260,6 +262,7 @@ function deleteUser(req, res) {
     });
 
 }
+
 module.exports = {
     UserSave,
     loginAdmin,

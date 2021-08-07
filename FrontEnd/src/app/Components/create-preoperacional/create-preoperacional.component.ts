@@ -22,7 +22,7 @@ export class CreatePreoperacionalComponent implements OnInit {
 
   public identity;
   public token;
-  public user: User;
+  public cars: Car;
   public formulario: Formulario;
   public preoperacional: Preoperacional;
   public fecha: any;
@@ -35,6 +35,7 @@ export class CreatePreoperacionalComponent implements OnInit {
     private _userService: UserService,
     private _formService: FormularioService,
     private _preService: PreoperacionalService,
+    private _carService:VehiculoService,
     private _router: Router,
     private _route: ActivatedRoute
   ) {
@@ -43,47 +44,70 @@ export class CreatePreoperacionalComponent implements OnInit {
     this.mes = new Date().getMonth() + 1;
     this.fecha = new Date().getFullYear() + '-' + '0' + this.mes + '-' + new Date().getDate();
     this.formulario = new Formulario('', '', '', '', '', '');
-    this.user = new User('', '', '', '', '', '', '', '');
+    this.cars = new Car('','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','')
     this.preoperacional = new Preoperacional('', '', null, null, '', this.recorrido, this.fecha, '','', '', '');
     this.respuestas = [];
   }
 
   ngOnInit(): void {
-
-
-    this.getUser();
+    this.getCar();
     this.getForm();
   }
   getRecorrido(start, end) {
     this.recorrido = end - start;
-    console.log(this.recorrido)
   }
-  getUser() {
-    let id = this.identity._id;
-    this._userService.getDriver(this.token, id).subscribe(
-      (response: any) => {
-        this.user = response.user;
-        if (!response.user) {
-          this._router.navigate(['/']);
-        } else {
-          this.user = response.user;
-        }
-      },
-      error => {
-        var errorMessage = <any>error;
-        var body = error.error.message;
-        if (errorMessage != null) {
-          // this.alertMessage = body;
-          console.log(error);
-        }
-      }
+  // getUser() {
+  //   let id = this.identity._id;
+  //   this._userService.getDriver(this.token, id).subscribe(
+  //     (response: any) => {
+  //       this.user = response.user;
+  //       if (!response.user) {
+  //         this._router.navigate(['/']);
+  //       } else {
+  //         this.user = response.user;
+  //       }
+  //     },
+  //     error => {
+  //       var errorMessage = <any>error;
+  //       var body = error.error.message;
+  //       if (errorMessage != null) {
+  //         // this.alertMessage = body;
+  //         console.log(error);
+  //       }
+  //     }
 
-    );
+  //   );
 
-  }
+  // }
+  getCar() {
+    this._route.params.forEach((params: Params) => {
+        let car = params.car
+        this._carService.getCars(this.token, car).subscribe(
+            (response: any) => {
+
+                if (!response.car) {
+                    this._router.navigate(['/']);
+                } else {
+
+                    this.cars = response.car;
+                }
+            },
+            error => {
+                var errorMessage = <any>error;
+                var body = error.error.message;
+                if (errorMessage != null) {
+                    // this.alertMessage = body;
+                    console.log(error);
+                }
+            }
+        )
+    });
+
+}
   getForm() {
-    let id = this.identity.car;
-    this._formService.getForm(this.token, id).subscribe(
+    this._route.params.forEach((params:Params)=>{
+      var car = params.car
+      this._formService.getForm(this.token, car).subscribe(
       (response: any) => {
         this.formulario = response.formulario;
         if (!response.formulario) {
@@ -114,10 +138,13 @@ export class CreatePreoperacionalComponent implements OnInit {
       }
 
     );
+    })
+    
 
   }
   guardarPreoperacional() {
     this._route.params.forEach((params: Params) => {
+      console.log(params)
       let driver = params.driver;
       let form = params.form;
       this.preoperacional.driver = driver;
@@ -132,9 +159,9 @@ export class CreatePreoperacionalComponent implements OnInit {
           if (!preoperacional._id) {
             this.alertMessage = 'Error al crear el Formulario';
           } else {
-            this.alertMessage = 'El registro del formulario del vehiculo ' + this.user.car.clase + ' se realizo corecctamente';
+            this.alertMessage = 'El registro del formulario del vehiculo ' + this.cars._id + ' se realizo corecctamente';
            }
-           this._router.navigate(['/navegador']);      
+           this._router.navigate(['/get-car/1']);      
 
         },
         error => {
@@ -148,8 +175,6 @@ export class CreatePreoperacionalComponent implements OnInit {
       )
 
     })
-
-    console.log(this.preoperacional);
   }
 
   darRespuesta(pre, res) {
