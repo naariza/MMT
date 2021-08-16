@@ -1,23 +1,23 @@
 /* Fuente */
 @font-face {
     font-family:"TrebuchetMS" ;
-    src: url('assets/fonts/TrebuchetMS.ttf');
+    src: url('./assets/fonts/TrebuchetMS.ttf');
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family:"bebasNeue" ;
-    src: url('assets/fonts/BebasNeue.otf');
+    src: url('./assets/fonts/BebasNeue.otf');
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family:"websymbols-regular-webfont" ;
-    src: url('assets/fonts/websymbols-regular-webfont.eot');
-    src: url('assets/fonts/websymbols-regular-webfont.eot?#iefix') format('embedded-opentype'), 
-    url('assets/fonts/websymbols-regular-webfont.woff') format('woff'), 
-    url('assets/fonts/websymbols-regular-webfont.ttf') format('truetype'),
-    url('assets/fonts/websymbols-regular-webfont.svg#WebSymbolsRegular') format('svg');
+    src: url('./assets/fonts/websymbols-regular-webfont.eot');
+    src: url('./assets/fonts/websymbols-regular-webfont.eot?#iefix') format('embedded-opentype'), 
+    url('./assets/fonts/websymbols-regular-webfont.woff') format('woff'), 
+    url('./assets/fonts/websymbols-regular-webfont.ttf') format('truetype'),
+    url('./assets/fonts/websymbols-regular-webfont.svg#WebSymbolsRegular') format('svg');
     font-weight:normal;
     font-style: normal;
 }

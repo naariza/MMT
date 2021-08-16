@@ -1,4 +1,14 @@
 
+@font-face {
+  font-family:"websymbols-regular-webfont" ;
+  src: url('../../../assets/fonts/websymbols-regular-webfont.eot');
+  src: url('../../../assets/fonts/websymbols-regular-webfont.eot?#iefix') format('embedded-opentype'), 
+  url('../../../assets/fonts/websymbols-regular-webfont.woff') format('woff'), 
+  url('../../../assets/fonts/websymbols-regular-webfont.ttf') format('truetype'),
+  url('../../../assets/fonts/websymbols-regular-webfont.svg#WebSymbolsRegular') format('svg');
+  font-weight:normal;
+  font-style: normal;
+}
 .cars-list .car-image{
     height: 69%;
     overflow: hidden;
@@ -126,7 +136,21 @@ button{
   
     transition: all .4s;
   }
-  
+  .product-mas{
+    width: 30%;
+    margin-left: 3%;
+    margin-bottom: 25px;
+    box-shadow: 0px 0px 6px 0px rgb(247 244 244 / 90%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: flex-start;
+    transition: all .4s;
+    height: 390px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
   .products-list .product-item img{
     width: 100%;
   }
@@ -210,4 +234,29 @@ button{
   #link{
     text-decoration: none;
     background: linear-gradient(45deg, black, transparent);
+  }
+  .target{
+    display: flex;
+    flex-direction: column;
+  }
+  span{
+    font-size: 12px;
+  }
+  span >h6{
+    float: right;
+    font-size: 12px;
+    margin-right: 50px;
+    text-transform: capitalize;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+  .add{
+    font-family:"websymbols-regular-webfont" ;
+    font-size: 100px;
+    cursor: pointer;
+  }
+  #add{
+    border: none;
+    box-shadow: none;
+    text-decoration: none;
+    cursor: pointer;
   }
