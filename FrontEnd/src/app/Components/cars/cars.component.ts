@@ -1,4 +1,3 @@
-import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
@@ -21,10 +20,10 @@ export class CarsComponent implements OnInit {
     public identity;
     public token;
     public url: string;
-    public next_page;
-    public prev_page;
     public carSelect: any;
     public formularioPreo:Formulario;
+    public alertMessage;
+    
     autorization=[];
     date:Date;
     zone:String;
@@ -34,6 +33,7 @@ export class CarsComponent implements OnInit {
     clase:String;
     Placa:String;
     driver:String;
+    formulario:FormGroup;
     
 
     constructor(
@@ -46,10 +46,8 @@ export class CarsComponent implements OnInit {
     ) {
         this.titulo = 'Vehiculos';
         this.url = GLOBAL.url;
-        this.next_page = 1;
-        this.prev_page = 1;
     }
-    formulario:FormGroup;
+    
     ngOnInit() {
         this.formulario = this.formBuilder.group({
             date:[new Date(),Validators.required],
@@ -64,8 +62,8 @@ export class CarsComponent implements OnInit {
     getCar() {
         this._route.params.forEach((params: Params) => {
             let clase = params['clase']
-
-            this._carService.getCar(this.token, clase).subscribe(
+            let driverId=params['id']
+            this._carService.getCar(this.token, clase,driverId).subscribe(
                 (response: any) => {
 
                     if (!response.car) {
@@ -80,14 +78,14 @@ export class CarsComponent implements OnInit {
                     var errorMessage = <any>error;
                     var body = error.error.message;
                     if (errorMessage != null) {
-                        // this.alertMessage = body;
-                        console.log(error);
+                        this.alertMessage = body;
                     }
                 }
             )
         });
 
     }
+    
     addAuthorization(){
         console.clear();
         
@@ -112,47 +110,12 @@ export class CarsComponent implements OnInit {
                 var errorMessage = <any>error;
                 var body = error.error.message;
                 if (errorMessage != null) {
-                    // this.alertMessage = body;
-                    console.log(error);
+                    this.alertMessage = body;
                 } 
             }
         )
 
     }
-    //   getCars(){
-    //     this._route.params.forEach((params:Params)=>{
-    //         let page = +params['page'];
-    //         if(!page){
-    //             page = 1;
-    //         }else{
-    //             this.next_page=page+1;
-    //             this.prev_page=page-1;
-
-    //             if(this.prev_page == 0){
-    //                 this.prev_page=1;
-    //             }
-    //         }
-    //         this._carService.getCars(this.token,page).subscribe(
-
-    //             (response: any) => {
-
-    //                 if (!response.cars) {
-    //                     this._router.navigate(['/']);
-    //                 } else {
-    //                     this.cars = response.cars;
-    //                 }
-    //             },
-    //             error => {
-    //                 var errorMessage = <any>error;
-    //                 var body = error.error.message;
-    //                 if (errorMessage != null) {
-    //                     // this.alertMessage = body;
-    //                     console.log(error);
-    //                 }
-    //             }
-    //         )
-    //     });
-    // }
     public confirmado;
     onDeleteConfirm(id) {
         this.confirmado = id;
@@ -173,8 +136,7 @@ export class CarsComponent implements OnInit {
                 var errorMessage = <any>error;
                 var body = error.error.message;
                 if (errorMessage != null) {
-                    // this.alertMessage = body;
-                    console.log(error);
+                    this.alertMessage = body;
                 }
             }
         );
@@ -203,8 +165,7 @@ export class CarsComponent implements OnInit {
                         var errorMessage = <any>error;
                         var body = error.error.message;
                         if (errorMessage != null) {
-                            // this.alertMessage = body;
-                            console.log(error);
+                            this.alertMessage = body;
                         }
                     }
         

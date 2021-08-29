@@ -8,7 +8,6 @@ import { LoginComponent } from './Components/login/login.component';
 import { MainComponent } from './Components/main/main.component';
 import { HomeComponent } from './Components/home/home.component';
 import { VehiculoComponent } from './Components/vehiculo/vehiculo.component';
-import { EquipoComponent } from './Components/equipo/equipo.component';
 import { UserService } from './Services/user.service';
 import { UserEditComponent } from './Components/user-edit/user-edit.component';
 import { RegisterUserComponent } from './Components/register-user/register-user.component';
@@ -17,7 +16,6 @@ import { DriversComponent } from './Components/drivers/drivers.component';
 import { RegisterCarComponent } from './Components/register-car/register-car.component';
 import { CarEditComponent } from './Components/car-edit/car-edit.component';
 import { CarsComponent } from './Components/cars/cars.component';
-import { PreoperacionalComponent } from './Components/preoperacional/preoperacional.component';
 import { CreatePreoperacionalComponent } from './Components/create-preoperacional/create-preoperacional.component';
 import { FormularioComponent } from './Components/formulario/formulario.component';
 import { PreoperacionalesComponent } from './Components/preoperacionales/preoperacionales.component';
@@ -29,7 +27,6 @@ import { PreoperacionalesComponent } from './Components/preoperacionales/preoper
     MainComponent,
     HomeComponent,
     VehiculoComponent,
-    EquipoComponent,
     UserEditComponent,
     RegisterUserComponent,
     BubbleUserComponent,
@@ -37,7 +34,6 @@ import { PreoperacionalesComponent } from './Components/preoperacionales/preoper
     RegisterCarComponent,
     CarEditComponent,
     CarsComponent,
-    PreoperacionalComponent,
     CreatePreoperacionalComponent,
     FormularioComponent,
     PreoperacionalesComponent

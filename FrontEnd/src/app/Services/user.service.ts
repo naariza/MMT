@@ -72,20 +72,13 @@ getDriver(token, id: string) {
     let url = `${this.url}/get-driver/${id}`
     return this._http.get(url, { headers });
 }
-getDrivers(token,car?) {
+getDrivers(token) {
     let headers= new HttpHeaders({
         'Content-Type':'application/json',
         'Authorization':token
     });
-    
-    
-    if(car == null){
         let url = `${this.url}/get-drivers`
         return this._http.get(url,{headers});
-    }else{
-        let url2 = `${this.url}/get-drivers/${car}`
-        return this._http.get(url2,{headers});
-    }
     
 }
 DeleteUser(token,id:string){

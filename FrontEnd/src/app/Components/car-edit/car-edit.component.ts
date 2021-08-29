@@ -30,7 +30,7 @@ export class CarEditComponent implements OnInit {
     this.token = this._userService.getToken();
     this.titulo = 'Cargar Archivos del Vehiculo';
     this.user = this.identity;
-    this.car = new Car('','', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '','');
+    this.car = new Car('',false,'','', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '','');
 
     this.url = GLOBAL.url;
   }

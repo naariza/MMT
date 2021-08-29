@@ -10,6 +10,11 @@ import { PreoperacionalService } from 'src/app/Services/preoperacional.service';
 import { UserService } from 'src/app/Services/user.service';
 import { VehiculoService } from 'src/app/Services/vehiculo.service';
 import { FormularioComponent } from '../formulario/formulario.component';
+import { formatDate } from "@angular/common";
+
+// let dateFormat = require("dateformat");
+// let now = new Date();
+// dateFormat(now, "dddd, mmmm dS, yyyy, h:MM:ss TT");
 
 @Component({
   selector: 'app-create-preoperacional',
@@ -25,12 +30,11 @@ export class CreatePreoperacionalComponent implements OnInit {
   public cars: Car;
   public formulario: Formulario;
   public preoperacional: Preoperacional;
-  public fecha: any;
-  public mes: any;
   public recorrido: number;
   public respuestas: Array<any>;
   public alertMessage;
-
+  public today= new Date();
+  public fecha = '';
   constructor(
     private _userService: UserService,
     private _formService: FormularioService,
@@ -41,12 +45,13 @@ export class CreatePreoperacionalComponent implements OnInit {
   ) {
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
-    this.mes = new Date().getMonth() + 1;
-    this.fecha = new Date().getFullYear() + '-' + '0' + this.mes + '-' + new Date().getDate();
+     this.fecha = formatDate(this.today, 'dd-MM-yyyy hh:mm:ss a', 'en-US');
+    console.log(this.fecha)
     this.formulario = new Formulario('', '', '', '', '', '');
-    this.cars = new Car('','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','')
-    this.preoperacional = new Preoperacional('', '', null, null, '', this.recorrido, this.fecha, '','', '', '');
+    this.cars = new Car('',false,'','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','')
+    this.preoperacional = new Preoperacional('', null, this.fecha, '','','','');
     this.respuestas = [];
+    
   }
 
   ngOnInit(): void {
@@ -56,29 +61,6 @@ export class CreatePreoperacionalComponent implements OnInit {
   getRecorrido(start, end) {
     this.recorrido = end - start;
   }
-  // getUser() {
-  //   let id = this.identity._id;
-  //   this._userService.getDriver(this.token, id).subscribe(
-  //     (response: any) => {
-  //       this.user = response.user;
-  //       if (!response.user) {
-  //         this._router.navigate(['/']);
-  //       } else {
-  //         this.user = response.user;
-  //       }
-  //     },
-  //     error => {
-  //       var errorMessage = <any>error;
-  //       var body = error.error.message;
-  //       if (errorMessage != null) {
-  //         // this.alertMessage = body;
-  //         console.log(error);
-  //       }
-  //     }
-
-  //   );
-
-  // }
   getCar() {
     this._route.params.forEach((params: Params) => {
         let car = params.car
@@ -144,14 +126,33 @@ export class CreatePreoperacionalComponent implements OnInit {
   }
   guardarPreoperacional() {
     this._route.params.forEach((params: Params) => {
-      console.log(params)
       let driver = params.driver;
       let form = params.form;
+      let carId = params.car;
       this.preoperacional.driver = driver;
       this.preoperacional.formulario = form;
-      this.preoperacional.car=this.identity.car;
+      this.preoperacional.car=carId;
       this.preoperacional.respuestas = this.respuestas;
-      this.preoperacional.kil_Total = this.recorrido;
+      this.cars.status=true;
+      this._carService.updateCar(this.token,carId,this.cars).subscribe(
+        (response:any)=>{
+          
+          if (!response.car) {
+            this.alertMessage = 'Error en el servidor';
+          } else {
+            this.alertMessage = 'El vehiculo se ha actualizado correctamente';
+            this.cars=response.car
+          }
+        },
+        error=>{
+          var errorMessage = <any>error;
+          var body = error.error.message;
+          if (errorMessage != null) {
+            this.alertMessage = body;
+            console.log(error);
+          }
+        }
+      )
       this._preService.savePreo(this.token, this.preoperacional).subscribe(
         (response: any) => {
           let preoperacional = response.preoperacional;

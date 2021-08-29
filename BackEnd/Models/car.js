@@ -4,7 +4,9 @@ var mongoose=require('mongoose');
 var Schema = mongoose.Schema;
 
 var carSchema= Schema({
+    status:Boolean,
     clase:String,
+    kilometraje:String,
     modelo:String,
     chasis:String,
     marca:String,

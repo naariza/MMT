@@ -16,4 +16,7 @@
 td{
     width: 37%;
 }
-
+input {
+    overflow: visible;
+    width: 200px;
+}

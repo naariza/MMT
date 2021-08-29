@@ -33,4 +33,12 @@ getPreo(token,carId):Observable<any>{
     let url = `${this.url}/preoperacionales/${carId}`
     return this._http.get(url,{headers});
 }
+getPreoDriver(token,carId):Observable<any>{
+  let headers = new HttpHeaders({
+      'Content-Type':'application/json',
+      'Authorization':token
+  });
+  let url = `${this.url}/preoperacionales-driver/${carId}`
+  return this._http.get(url,{headers});
+}
 }

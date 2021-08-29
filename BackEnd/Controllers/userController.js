@@ -99,7 +99,6 @@ function UserSave(req, res) {
     user.email = params.email;
     user.role = params.role;
     user.image = '';
-    user.car = params.car;
 
     if (params.password) {
         //Encriptar la contraseña
@@ -162,13 +161,13 @@ function loginUser(req, res) {
     var params = req.body;
     var name = params.name;
     var password = params.password
-
+    
     User.findOne({ name: name }, (err, user) => {
         if (err) {
             res.status(500).send({ message: "Error en la petición" })
         } else {
             if (!user) {
-               
+                console.log('entra')
                 res.status(404).send({ message: 'El Conductor no existe' });
             } else {
                 //Comprobar la Contraseña
@@ -182,9 +181,7 @@ function loginUser(req, res) {
                             })
                         } else {
                             res.status(200).send({ user });
-
                         }
-                    } else {
                     }
                 })
             }

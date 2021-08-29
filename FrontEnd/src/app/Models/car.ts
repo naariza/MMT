@@ -1,6 +1,8 @@
 export class Car{
     constructor(
     public _id:string,
+    public status:boolean,
+    public kilometraje:string,
     public clase:string,
     public modelo:string,
     public chasis:string,

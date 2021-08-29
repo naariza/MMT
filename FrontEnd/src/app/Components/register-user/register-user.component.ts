@@ -26,13 +26,11 @@ export class RegisterUserComponent implements OnInit {
 
   constructor(
     private _userService: UserService,
-    private _carService: VehiculoService,
-    private _router: Router,
-    private _route: ActivatedRoute
+    private _router: Router
   ) {
 
     this.url = GLOBAL.url;
-    this.user_register = new User('', '', '', '', '', '', '', '');
+    this.user_register = new User('', '', '', '', '', '', '');
     this.titulo = "Registrar Usuario"
     this.next_page = 1;
     this.prev_page = 1;
@@ -41,43 +39,9 @@ export class RegisterUserComponent implements OnInit {
   ngOnInit(): void {
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
-    this.getCar();
-  }
-
-  getCar() {
-    this._route.params.forEach((params: Params) => {
-      let page = +params['page'];
-      if (!page) {
-        page = 1;
-      } else {
-        this.next_page = page + 1;
-        this.prev_page = page - 1;
-
-        if (this.prev_page == 0) {
-          this.prev_page = 1;
-        }
-      }
-      this._carService.getCars(this.token, page).subscribe(
-        (response: any) => {
-          if (!response.cars) {
-            this._router.navigate(['/']);
-          } else {
-            this.cars = response.cars;
-          }
-        },
-        error => {
-          var errorMessage = <any>error;
-          var body = error.error.message;
-          if (errorMessage != null) {
-            // this.alertMessage = body;
-            console.log(error);
-          }
-        }
-      )
-    });
   }
   onSubmit() {
-    if (this.user_register.name == '' || this.user_register.surName == '' || this.user_register.email == '' || this.user_register.password == '' || this.user_register.role == '' || this.user_register.car == '') {
+    if (this.user_register.name == '' || this.user_register.surName == '' || this.user_register.email == '' || this.user_register.password == '' || this.user_register.role == '') {
       this.alertMessage = 'Todos los campos del formulario son obligatorios'
     } else {
       this._userService.register(this.token, this.user_register).subscribe(

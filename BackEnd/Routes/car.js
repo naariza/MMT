@@ -10,7 +10,7 @@ const car = require('../Models/car');
 var md_upload = multipart({uploadDir:'./Uploads/cars'});
 
 
-api.get('/get-car/:clase?',md_auth.ensureAuth, carController.getCar);
+api.get('/get-car/:clase?/:id?',md_auth.ensureAuth, carController.getCar);
 api.post('/register-car',md_auth.ensureAuth, carController.saveCar);
 api.get('/car/:id',md_auth.ensureAuth, carController.getCars);
 api.put('/update-car/:id',md_auth.ensureAuth, carController.updateCar);

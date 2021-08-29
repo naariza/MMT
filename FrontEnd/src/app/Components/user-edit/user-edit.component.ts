@@ -45,7 +45,6 @@ export class UserEditComponent implements OnInit {
 
     ngOnInit() {
     this.getUser();
-    this.getCar();
     }
     getUser() {
         this._route.params.forEach((params: Params) => {
@@ -71,39 +70,6 @@ export class UserEditComponent implements OnInit {
             );
         });
     }
-    getCar(){
-        this._route.params.forEach((params:Params)=>{
-            let page = +params['page'];
-            if(!page){
-                page = 1;
-            }else{
-                this.next_page=page+1;
-                this.prev_page=page-1;
-    
-                if(this.prev_page == 0){
-                    this.prev_page=1;
-                }
-            }
-            this._carService.getCars(this.token,page).subscribe(
-                (response: any) => {
-                    if (!response.cars) {
-                        this._router.navigate(['/']);
-                    } else {
-                        this.vehiculos = response.cars;
-                    }
-                },
-                error => {
-                    var errorMessage = <any>error;
-                    var body = error.error.message;
-                    if (errorMessage != null) {
-                        // this.alertMessage = body;
-                        console.log(error);
-                    }
-                }
-            )
-        });
-    }
-
     onSubmit() {
         this._route.params.forEach((params: Params) => {
             let id = params['id'];

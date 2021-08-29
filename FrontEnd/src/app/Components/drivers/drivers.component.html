@@ -6,7 +6,6 @@
             <th>Apellido</th>
             <th>Correo Electronico</th>
             <th>Rol De Usuario</th>
-            <th>Vehiculo</th>
             <th colspan="2">Acciones</th>
         </tr>
       </thead> 
@@ -16,7 +15,6 @@
           <th style="text-transform: uppercase;">{{driver.surName}}</th>
           <th>{{driver.email}}</th>
           <th style="text-transform: uppercase;">{{driver.role}}</th>
-          <th style="text-transform: uppercase;">{{ driver.car ? driver.car.clase : 'Na#' }}</th>
 
           <th class="Editar"><a title="Editar" [routerLink]="['/edit-user',driver._id]">*</a></th>
           <th class="Eliminar" ><a (click)="onDeleteUser(driver._id)" title="Eliminar">-</a></th>

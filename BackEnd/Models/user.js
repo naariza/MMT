@@ -10,7 +10,6 @@ var userSchema= Schema({
     email:String,
     password: String,
     role:String,
-    image:String,
-    car:{type:Schema.ObjectId,ref:'Car'}
+    image:String
 });
 module.exports = mongoose.model('User', userSchema);

@@ -10,41 +10,41 @@ var nodemailer = require('nodemailer');
 
 function getCar(req, res) {
     var carClase = req.params.clase
-    if(carClase==1){
-       var find= Car.find({}).sort('modelo')
-    }else{
-        var find= Car.find({clase:carClase}).sort('modelo')
-    }    
-    find.exec((err, car) => {
-            if (err) {
-                res.status(500).send({ message: 'Error en la petición' });
-            } else {
-                if (!car) {
-                    res.status(404).send({ message: 'El vehiculo no existe' });
-                } else {
-                    res.status(200).send({ car });
-                }
-            }
-        });
+    if (carClase == 1) {
+        var find = Car.find({}).sort('modelo')
+    } else {
+        var find = Car.find({ clase: carClase }).sort('modelo')
     }
-
-function getCars(req, res) {
-    var carId = req.params.id;
-    Car.findById(carId).populate({ path: 'user' }).exec((err, car) => {
+    find.exec((err, car) => {
         if (err) {
             res.status(500).send({ message: 'Error en la petición' });
         } else {
             if (!car) {
                 res.status(404).send({ message: 'El vehiculo no existe' });
             } else {
-                res.status(200).send({car})
-            } 
+                res.status(200).send({ car });
+            }
         }
     });
-    
+}
+
+function getCars(req, res) {
+    var carId = req.params.id;
+    Car.findById(carId).exec((err, car) => {
+        if (err) {
+            res.status(500).send({ message: 'Error en la petición' });
+        } else {
+            if (!car) {
+                res.status(404).send({ message: 'El vehiculo no existe' });
+            } else {
+                res.status(200).send({ car })
+            }
+        }
+    });
 
 
-} 
+
+}
 function saveCar(req, res) {
     var car = new Car();
     var params = req.body;
@@ -79,7 +79,9 @@ function saveCar(req, res) {
     car.apoya_cabeza = params.apoya_cabeza;
     car.control_estabilidad = params.control_estabilidad;
     car.servicio = params.servicio;
-    car.hv_vehiculo ='';
+    car.kilometraje = params.kilometraje;
+    car.status = false;
+    car.hv_vehiculo = '';
     car.image = '';
 
     car.save((err, carStored) => {
@@ -96,7 +98,6 @@ function saveCar(req, res) {
 function updateCar(req, res) {
     var carId = req.params.id;
     var update = req.body;
-
     Car.findByIdAndUpdate(carId, update, (err, carUpdate) => {
         if (err) {
             res.status(500).send({ message: 'Error en el servidor' });
@@ -119,7 +120,7 @@ function deleteCar(req, res) {
                 res.status(404).send({ message: 'El vehiculo no ha sido eliminado' });
 
             } else {
-                res.status(200).send({ car:carRemoved });
+                res.status(200).send({ car: carRemoved });
 
             }
         }
@@ -134,7 +135,6 @@ function uploadImage(req, res) {
         var file_path = req.files.image.path;
         var file_split = file_path.split('\\');
         var file_name = file_split[2];
-
         var ext_split = file_name.split('\.');
         var file_ext = ext_split[1];
 
@@ -165,16 +165,16 @@ function getImageFile(req, res) {
         }
     });
 }
-function sendMessage(authorization,res){
+function sendMessage(authorization, res) {
     var params = authorization.body
     var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-        user: 'sistemasmmtltda', // Cambialo por tu email
-        pass: 'Mmtltda2021' // Cambialo por tu password
+            user: 'sistemasmmtltda', // Cambialo por tu email
+            pass: 'Mmtltda2021' // Cambialo por tu password
         }
-        });
-       const mailOptions = {
+    });
+    const mailOptions = {
         from: `”${params.driver} ”`,
         to: 'jodase26@gmail.com', // Cambia esta parte por el destinatario
         subject: 'AUTORIZACION VEHICULAR',
@@ -186,14 +186,13 @@ function sendMessage(authorization,res){
        </p>
         
         `
-        };
-       transporter.sendMail(mailOptions, function (err, info) {
-        if (err){
-        res.status(500).send({message:'Error en la peticion'})
-        // console.log(err)
-        }else
-        res.status(200).send({message:'El reporte se genero correctamente'})
-        });
+    };
+    transporter.sendMail(mailOptions, function (err, info) {
+        if (err) {
+            res.status(500).send({ message: 'Error en la peticion' })
+        } else
+            res.status(200).send({ message: 'El reporte se genero correctamente' })
+    });
 
 
 }

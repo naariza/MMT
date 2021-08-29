@@ -24,10 +24,10 @@ export class RegisterCarComponent implements OnInit {
     private _router: Router
   ) {
     this.url = GLOBAL.url;
-    this.car_register = new Car('','', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '','');
+    this.car_register = new Car('',false,'','', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '','');
     this.titulo = "Registrar Vehiculo"
   }
-
+ 
 
   ngOnInit(): void {
     this.identity = this._userService.getIdentity();
@@ -43,7 +43,7 @@ export class RegisterCarComponent implements OnInit {
           this.alertMessage = 'Error al registr el auto';
         } else {
           this.alertMessage = 'El registro del vehiculo '+this.car_register.clase+' se realizo corecctamente';
-          this.car_register = new Car('','', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'null', 'null','');
+          this.car_register = new Car('',false,'','', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'null', 'null','');
 
           this._router.navigate(['/edit-car', response.car._id]);
         }

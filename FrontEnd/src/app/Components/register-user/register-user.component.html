@@ -26,13 +26,7 @@
                     El apellido es obligatorio
                 </span>
             </p>
-            <p>
-                <input type="text" class="form-control" #email="ngModel" name="email" [(ngModel)]="user_register.email"
-                    placeholder="Correo Electronico" required>
-                <span *ngIf="!email.valid && email.touched">
-                    El email es obligatorio
-                </span>
-            </p>
+            
             <p>
                 <input type="password" class="form-control" #password="ngModel" name="password"
                     [(ngModel)]="user_register.password" placeholder="Contraseña" required>
@@ -43,14 +37,20 @@
                     <option  value="CONDUCTOR">CONDUCTOR</option>
                 </select>
             </p>
-            <p >
+            <p>
+                <input type="text" class="form-control" #email="ngModel" name="email" [(ngModel)]="user_register.email"
+                    placeholder="Correo Electronico" required>
+                <span *ngIf="!email.valid && email.touched">
+                    El email es obligatorio
+                </span>
+            </p>
+            <!-- <p >
                 <select class="form-control" [disabled]="!user_register.role" #car="ngModel" name="car" [(ngModel)]="user_register.car">
                      <option *ngFor="let car of cars"  value="{{car._id}}">{{car.clase}}</option>
                 </select>
-            </p>
+            </p> -->
             <input type="submit" name="" id="" data-toggle="modal" data-target="#exampleModal3" class="btn btn-primary m-3"
                 value="Registrar Usuario">
-            <!-- <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal3">Enviar Registro</button> -->
             <input type="button" name="" id="" [routerLink]="['/navegador']" class="btn btn-danger m-3" value="Cancelar">
         
             </div>

@@ -34,20 +34,20 @@ export class VehiculoService {
     
     return this._http.put(this.url+'update-car/'+id,params,{headers:headers});
   }
-  getCar(token,clase?):Observable<any>{
+  getCar(token,clase?,id?):Observable<any>{
     let headers= new HttpHeaders({
       'Content-Type':'application/json',
       'Authorization':token
   });
-  let url = `${this.url}/get-car/${clase}`
+  let url = `${this.url}/get-car/${clase}/${id}`
   return this._http.get(url,{headers});
   }
-  getCars(token,id){
+  getCars(token,car){
     let headers= new HttpHeaders({
         'Content-Type':'application/json',
         'Authorization':token
     });
-    let url = `${this.url}/car/${id}`
+    let url = `${this.url}/car/${car}`
     return this._http.get(url,{headers});
 }
 DeleteCar(token,id:string){
