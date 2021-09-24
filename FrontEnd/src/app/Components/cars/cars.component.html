@@ -1,330 +1,333 @@
 <app-bubble-user></app-bubble-user>
-<div class="wrap">
-    <h1 *ngIf="identity && identity.role =='CONDUCTOR'">
-        <p class="badge badge-warning">Paso 1.</p>Escoge un vehiculo
-    </h1>
-    <h1 *ngIf="identity && identity.role =='FUNCIONARIO'"></h1>
-    <div class="store-wrapper">
-        <div class="category_list">
-            <a [routerLink]="['/get-car/1']" class="category_item" category="all">Todo</a>
-            <a [routerLink]="['/get-car/Tracto Camion']" class="category_item" category="Tracto Camion">Tracto
-                Camion</a>
-            <a [routerLink]="['/get-car/Tractores']" class="category_item" category="Tractores">Tractores</a>
-            <a [routerLink]="['/get-car/camion grua']" class="category_item" category="camion grua">Camion grua</a>
-            <a [routerLink]="['/get-car/Retros']" class="category_item" category="Retros">Retros</a>
-        </div>
 
-        <section class="products-list">
-
-            <div class="product-item" *ngFor="let car of cars" >
-                <div class="row-md-4" *ngIf="car.status == false">
-                    <div class="card">
-                        <a id="link" >
-                            <div class="card-header  text-center font-weight-bold" style="text-transform: uppercase;">
-                                {{car.clase}}
-                            </div>
-                            <div class="card-body">
-                                <img class="card-img-top" src="{{url +'get-image-car/'+car.image}}"
-                                    alt="Imagen del carro">
-                            </div>
-                            <div class="card-footer">
-                                <div class="card-text text-left font-italic text-uppercase">
-                                    Modelo: {{car.modelo}} <br>
-                                    Placa: {{car.placa}}
-                                    <button *ngIf="identity && identity.role =='CONDUCTOR'" type="submit"
-                                        (click)="carSelect=car" class="btn btn-success btn-sm mt-4 mr-3 mb-0"
-                                        data-toggle="modal" data-target="#exampleModalScrollable">Elegir</button>
-                                    <button *ngIf="identity && identity.role =='FUNCIONARIO'" type="submit"
-                                        (click)="carSelect=car" class="btn btn-success btn-sm mt-4 mr-3 mb-0"
-                                        data-toggle="modal" data-target="#exampleModalScrollable2">Ver</button>
+<div class="container-fluid">
+    <div class="wrap">
+        <h2 *ngIf="identity && identity.role =='CONDUCTOR'">
+            <p class="badge badge-warning">Paso 1.</p>Escoge un vehiculo
+        </h2>
+        <h1 *ngIf="identity && identity.role =='FUNCIONARIO'"></h1>
+        <div class="store-wrapper">
+            <div class="category_list">
+                <a [routerLink]="['/get-car/1']" class="category_item" category="all">Todo</a>
+                <a [routerLink]="['/get-car/Tracto Camion']" class="category_item" category="Tracto Camion">Tracto
+                    Camion</a>
+                <a [routerLink]="['/get-car/Tractores']" class="category_item" category="Tractores">Tractores</a>
+                <a [routerLink]="['/get-car/camion grua']" class="category_item" category="camion grua">Camion grua</a>
+                <a [routerLink]="['/get-car/Retros']" class="category_item" category="Retros">Retros</a>
+            </div>
+    
+            <section class="products-list">
+    
+                <div class="product-item" *ngFor="let car of cars" >
+                    <div class="row-md-4" *ngIf="car.status == false">
+                        <div class="card">
+                            <a id="link" >
+                                <div class="card-header  text-center font-weight-bold" style="text-transform: uppercase;">
+                                    {{car.clase}}
+                                </div>
+                                <div class="card-body">
+                                    <img class="card-img-top" src="{{url +'get-image-car/'+car.image}}"
+                                        alt="Imagen del carro">
+                                </div>
+                                <div class="card-footer">
+                                    <div class="card-text text-left font-italic text-uppercase">
+                                        Modelo: {{car.modelo}} <br>
+                                        Placa: {{car.placa}}
+                                        <button *ngIf="identity && identity.role =='CONDUCTOR'" type="submit"
+                                            (click)="carSelect=car" class="btn btn-success btn-sm mt-4 mr-3 mb-0"
+                                            data-toggle="modal" data-target="#exampleModalScrollable">Elegir</button>
+                                        <button *ngIf="identity && identity.role =='FUNCIONARIO'" type="submit"
+                                            (click)="carSelect=car" class="btn btn-success btn-sm mt-4 mr-3 mb-0"
+                                            data-toggle="modal" data-target="#exampleModalScrollable2">Ver</button>
+                                    </div>
+                                </div>
+                            </a>
+    
+                        </div>
+    
+                    </div>
+                </div>
+                <div class="product-mas" [routerLink]="['/register-car']">
+                    <div class="row-md-4" >
+                        <div id="add" class="card">
+                            <a class="add" >
+                                +
+                            </a>
+    
+                        </div>
+    
+                    </div>
+                </div>
+                <ng-container *ngIf="identity && identity.role =='CONDUCTOR' && carSelect">
+                    <div class="modal" id="exampleModalScrollable" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalScrollableLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-scrollable" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalCenteredLabel">Registro de Actividad
+                                    </h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <h3>
+                                        <span class="badge badge-primary">
+                                            Servicio del Vehiculo {{ carSelect.clase }}
+                                        </span>
+                                    </h3>
+                                    <form class="form-group" [formGroup]="formulario">
+                                        <input type="datetime-local" class="form-control" name="date"
+                                            formControlName="date">
+                                        <input type="text" value="{{identity.name}}" class="form-control" disabled>
+                                        <input type="text" placeholder="Lugar ó Cliente" class="form-control" name="zone"
+                                            formControlName="zone">
+                                        <textarea name="activity" id="" cols="30" rows="10"
+                                            placeholder="Realice una breve descripción de la actividad a realizar"
+                                            class="form-control" formControlName="activity"></textarea>
+                                        <input type="text" placeholder="Escriba el nombre de quien autoriza el servicio"
+                                            class="form-control" name="authorize" formControlName="authorize">
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" [routerLink]="['/get-car/1']" class="btn btn-secondary"
+                                        data-dismiss="modal">Cancelar</button>
+                                    <button data-dismiss="modal" data-backdrop="false" dismiss="modal"
+                                        (click)="addAuthorization()" class="btn btn-primary">Entendido</button>
                                 </div>
                             </div>
-                        </a>
-
-                    </div>
-
-                </div>
-            </div>
-            <div class="product-mas" [routerLink]="['/register-car']">
-                <div class="row-md-4" >
-                    <div id="add" class="card">
-                        <a class="add" >
-                            +
-                        </a>
-
-                    </div>
-
-                </div>
-            </div>
-            <ng-container *ngIf="identity && identity.role =='CONDUCTOR' && carSelect">
-                <div class="modal" id="exampleModalScrollable" tabindex="-1" role="dialog"
-                    aria-labelledby="exampleModalScrollableLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-scrollable" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalCenteredLabel">Registro de Actividad
-                                </h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <h3>
-                                    <span class="badge badge-primary">
-                                        Servicio del Vehiculo {{ carSelect.clase }}
-                                    </span>
-                                </h3>
-                                <form class="form-group" [formGroup]="formulario">
-                                    <input type="datetime-local" class="form-control" name="date"
-                                        formControlName="date">
-                                    <input type="text" value="{{identity.name}}" class="form-control" disabled>
-                                    <input type="text" placeholder="Lugar ó Cliente" class="form-control" name="zone"
-                                        formControlName="zone">
-                                    <textarea name="activity" id="" cols="30" rows="10"
-                                        placeholder="Realice una breve descripción de la actividad a realizar"
-                                        class="form-control" formControlName="activity"></textarea>
-                                    <input type="text" placeholder="Escriba el nombre de quien autoriza el servicio"
-                                        class="form-control" name="authorize" formControlName="authorize">
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" [routerLink]="['/get-car/1']" class="btn btn-secondary"
-                                    data-dismiss="modal">Cancelar</button>
-                                <button data-dismiss="modal" data-backdrop="false" dismiss="modal"
-                                    (click)="addAuthorization()" class="btn btn-primary">Entendido</button>
-                            </div>
                         </div>
+    
                     </div>
-
-                </div>
-            </ng-container>
-            <ng-container *ngIf="identity && identity.role =='FUNCIONARIO' && carSelect">
-                <div class="modal" id="exampleModalScrollable2" tabindex="-1" role="dialog"
-                    aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-xl modal-dialog-scrollable" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalCenteredLabel">INFORMACIÓN PRINCIPAL DEL
-                                    VEHICULO
-                                </h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <img class="card-img-top" src="{{url +'get-image-car/'+carSelect.image}}"
-                                            alt="Imagen del carro">
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="target">
-                                            <span class="badge badge-info" style="text-transform: uppercase;">
-                                                {{ carSelect.clase }} {{carSelect._id}}
-                                            </span>
-                                            <span style="text-transform: uppercase;">
-                                                Modelo: <h6>
-
-                                                    {{ carSelect.modelo }}
-                                                </h6>
-                                            </span>
-                                            <span style="text-transform: uppercase;">
-                                                Serie Chasis: <h6>
-
-                                                    {{ carSelect.chasis }}
-                                                </h6>
-                                            </span>
-                                            <span style="text-transform: uppercase;">
-                                                Marca:<h6>
-
-                                                    {{ carSelect.marca }}
-                                                </h6>
-                                            </span>
-                                            <span style="text-transform: uppercase;">
-                                                Color:<h6>
-
-                                                    {{ carSelect.color }}
-                                                </h6>
-                                            </span>
-                                            <span style="text-transform: uppercase;">
-                                                Placa:<h6>
-
-                                                    {{ carSelect.placa }}
-                                                </h6>
-                                            </span>
-                                            <span style="text-transform: uppercase;">
-                                                Serie Motor:<h6>
-
-                                                    {{ carSelect.serie_motor }}
-                                                </h6>
-                                            </span>
-                                            <span style="text-transform: uppercase;">
-                                                Año de Fabricación:<h6>
-
-                                                    {{ carSelect.anio_fabrica }}
-                                                </h6>
-                                            </span>
-                                            <span style="text-transform: uppercase;">
-                                                Fecha de Compra:<h6>
-
-                                                    {{ carSelect.fecha_compra }}
-                                                </h6>
-                                            </span>
-                                            <span style="text-transform: uppercase;">
-                                                Rendimiento:<h6>
-
-                                                    {{ carSelect.rendimiento }}
-                                                </h6>
-                                            </span>
-                                            <span style="text-transform: uppercase;">
-                                                Tipo de Combustible:<h6>
-
-                                                    {{ carSelect.tipo_combustible }}
-                                                </h6>
-                                            </span>
-                                            <span style="text-transform: uppercase;">
-                                                Referencia del Aceite:<h6>
-
-                                                    {{ carSelect.ref_aceite }}
-                                                </h6>
-                                            </span>
-                                            <span style="text-transform: uppercase;">
-                                                Referencia del Rodamiento:<h6>
-
-                                                    {{ carSelect.ref_rodamiento }}
-                                                </h6>
-                                            </span>
-                                            <span style="text-transform: uppercase;">
-                                                Referencia del Lubricante:<h6>
-
-                                                    {{ carSelect.ref_lubricante }}
-                                                </h6>
-                                            </span>
-                                            <span style="text-transform: uppercase;">
-                                                Referencia de la Bateria:<h6>
-
-                                                    {{ carSelect.ref_bateria }}
-                                                </h6>
-                                            </span>
-                                            <span style="text-transform: uppercase;">
-                                                Referencia de las llantas:<h6>
-
-                                                    {{ carSelect.ref_llantas }}
-                                                </h6>
-                                            </span>
-                                            <span style="text-transform: uppercase;">
-                                                Referencia de las Correas:<h6>
-
-                                                    {{ carSelect.ref_correas }}
-                                                </h6>
-                                            </span>
-                                            <span style="text-transform: uppercase;">
-                                                Referencia del aceite de transmisión:<h6>
-                                                    {{ carSelect.ref_aceiteTransmision }}
-                                                </h6>
-
-                                            </span>
-                                            <span style="text-transform: uppercase;">
-                                                Referencia Filtro del Aire:<h6>
-
-                                                    {{ carSelect.ref_filtroAire }}
-                                                </h6>
-                                            </span>
-                                            <span style="text-transform: uppercase;">
-                                                Sistema de Frenos:<h6>
-
-                                                    {{ carSelect.sis_frenos }}
-                                                </h6>
-                                            </span>
-                                            <span style="text-transform: uppercase;">
-                                                cinturones:<h6>
-
-                                                    {{ carSelect.cinturones }}
-                                                </h6>
-                                            </span>
-                                            <span style="text-transform: uppercase;">
-                                                Sistema dirección:<h6>
-
-                                                    {{ carSelect.sis_direccion }}
-                                                </h6>
-                                            </span>
-                                            <span style="text-transform: uppercase;">
-                                                airbags:<h6>
-
-                                                    {{ carSelect.airbags }}
-                                                </h6>
-                                            </span>
-                                            <span style="text-transform: uppercase;">
-                                                sistema de suspensión:<h6>
-
-                                                    {{ carSelect.sis_suspension }}
-                                                </h6>
-                                            </span>
-                                            <span style="text-transform: uppercase;">
-                                                chasis de carroseria:<h6>
-                                                    {{ carSelect.chasis_carroceria }}
-                                                </h6>
-                                            </span>
-                                            <span style="text-transform: uppercase;">
-                                                Neumaticos:<h6>
-                                                    {{ carSelect.neumaticos }}
-
-                                                </h6>
-                                            </span>
-                                            <span style="text-transform: uppercase;">
-                                                Cristales:<h6>
-
-                                                    {{ carSelect.cristales }}
-                                                </h6>
-                                            </span>
-                                            <span style="text-transform: uppercase;">
-                                                iluminación:<h6>
-
-                                                    {{ carSelect.iluminacion }}
-                                                </h6>
-                                            </span>
-                                            <span style="text-transform: uppercase;">
-                                                apoya cabeza:<h6>
-
-                                                    {{ carSelect.apoya_cabeza }}
-                                                </h6>
-                                            </span>
-                                            <span style="text-transform: uppercase;">
-                                                Estabilidad:<h6>
-
-                                                    {{ carSelect.control_estabilidad }}
-                                                </h6>
-                                            </span>
-                                            <span style="text-transform: uppercase;">
-                                                Hoja de vida: <h6>
-                                                    {{ carSelect.hv_vehiculo }}
-                                                </h6>
-
-                                            </span>
-                                            <span style="text-transform: uppercase;">
-                                                Servicio:<h6>
-
-                                                    {{ carSelect.servicio }}
-                                                </h6>
-                                            </span>
-
+                </ng-container>
+                <ng-container *ngIf="identity && identity.role =='FUNCIONARIO' && carSelect">
+                    <div class="modal" id="exampleModalScrollable2" tabindex="-1" role="dialog"
+                        aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-xl modal-dialog-scrollable" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalCenteredLabel">INFORMACIÓN PRINCIPAL DEL
+                                        VEHICULO
+                                    </h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <img class="card-img-top" src="{{url +'get-image-car/'+carSelect.image}}"
+                                                alt="Imagen del carro">
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="target">
+                                                <span class="badge badge-info" style="text-transform: uppercase;">
+                                                    {{ carSelect.clase }} {{carSelect._id}}
+                                                </span>
+                                                <span style="text-transform: uppercase;">
+                                                    Modelo: <h6>
+    
+                                                        {{ carSelect.modelo }}
+                                                    </h6>
+                                                </span>
+                                                <span style="text-transform: uppercase;">
+                                                    Serie Chasis: <h6>
+    
+                                                        {{ carSelect.chasis }}
+                                                    </h6>
+                                                </span>
+                                                <span style="text-transform: uppercase;">
+                                                    Marca:<h6>
+    
+                                                        {{ carSelect.marca }}
+                                                    </h6>
+                                                </span>
+                                                <span style="text-transform: uppercase;">
+                                                    Color:<h6>
+    
+                                                        {{ carSelect.color }}
+                                                    </h6>
+                                                </span>
+                                                <span style="text-transform: uppercase;">
+                                                    Placa:<h6>
+    
+                                                        {{ carSelect.placa }}
+                                                    </h6>
+                                                </span>
+                                                <span style="text-transform: uppercase;">
+                                                    Serie Motor:<h6>
+    
+                                                        {{ carSelect.serie_motor }}
+                                                    </h6>
+                                                </span>
+                                                <span style="text-transform: uppercase;">
+                                                    Año de Fabricación:<h6>
+    
+                                                        {{ carSelect.anio_fabrica }}
+                                                    </h6>
+                                                </span>
+                                                <span style="text-transform: uppercase;">
+                                                    Fecha de Compra:<h6>
+    
+                                                        {{ carSelect.fecha_compra }}
+                                                    </h6>
+                                                </span>
+                                                <span style="text-transform: uppercase;">
+                                                    Rendimiento:<h6>
+    
+                                                        {{ carSelect.rendimiento }}
+                                                    </h6>
+                                                </span>
+                                                <span style="text-transform: uppercase;">
+                                                    Tipo de Combustible:<h6>
+    
+                                                        {{ carSelect.tipo_combustible }}
+                                                    </h6>
+                                                </span>
+                                                <span style="text-transform: uppercase;">
+                                                    Referencia del Aceite:<h6>
+    
+                                                        {{ carSelect.ref_aceite }}
+                                                    </h6>
+                                                </span>
+                                                <span style="text-transform: uppercase;">
+                                                    Referencia del Rodamiento:<h6>
+    
+                                                        {{ carSelect.ref_rodamiento }}
+                                                    </h6>
+                                                </span>
+                                                <span style="text-transform: uppercase;">
+                                                    Referencia del Lubricante:<h6>
+    
+                                                        {{ carSelect.ref_lubricante }}
+                                                    </h6>
+                                                </span>
+                                                <span style="text-transform: uppercase;">
+                                                    Referencia de la Bateria:<h6>
+    
+                                                        {{ carSelect.ref_bateria }}
+                                                    </h6>
+                                                </span>
+                                                <span style="text-transform: uppercase;">
+                                                    Referencia de las llantas:<h6>
+    
+                                                        {{ carSelect.ref_llantas }}
+                                                    </h6>
+                                                </span>
+                                                <span style="text-transform: uppercase;">
+                                                    Referencia de las Correas:<h6>
+    
+                                                        {{ carSelect.ref_correas }}
+                                                    </h6>
+                                                </span>
+                                                <span style="text-transform: uppercase;">
+                                                    Referencia del aceite de transmisión:<h6>
+                                                        {{ carSelect.ref_aceiteTransmision }}
+                                                    </h6>
+    
+                                                </span>
+                                                <span style="text-transform: uppercase;">
+                                                    Referencia Filtro del Aire:<h6>
+    
+                                                        {{ carSelect.ref_filtroAire }}
+                                                    </h6>
+                                                </span>
+                                                <span style="text-transform: uppercase;">
+                                                    Sistema de Frenos:<h6>
+    
+                                                        {{ carSelect.sis_frenos }}
+                                                    </h6>
+                                                </span>
+                                                <span style="text-transform: uppercase;">
+                                                    cinturones:<h6>
+    
+                                                        {{ carSelect.cinturones }}
+                                                    </h6>
+                                                </span>
+                                                <span style="text-transform: uppercase;">
+                                                    Sistema dirección:<h6>
+    
+                                                        {{ carSelect.sis_direccion }}
+                                                    </h6>
+                                                </span>
+                                                <span style="text-transform: uppercase;">
+                                                    airbags:<h6>
+    
+                                                        {{ carSelect.airbags }}
+                                                    </h6>
+                                                </span>
+                                                <span style="text-transform: uppercase;">
+                                                    sistema de suspensión:<h6>
+    
+                                                        {{ carSelect.sis_suspension }}
+                                                    </h6>
+                                                </span>
+                                                <span style="text-transform: uppercase;">
+                                                    chasis de carroseria:<h6>
+                                                        {{ carSelect.chasis_carroceria }}
+                                                    </h6>
+                                                </span>
+                                                <span style="text-transform: uppercase;">
+                                                    Neumaticos:<h6>
+                                                        {{ carSelect.neumaticos }}
+    
+                                                    </h6>
+                                                </span>
+                                                <span style="text-transform: uppercase;">
+                                                    Cristales:<h6>
+    
+                                                        {{ carSelect.cristales }}
+                                                    </h6>
+                                                </span>
+                                                <span style="text-transform: uppercase;">
+                                                    iluminación:<h6>
+    
+                                                        {{ carSelect.iluminacion }}
+                                                    </h6>
+                                                </span>
+                                                <span style="text-transform: uppercase;">
+                                                    apoya cabeza:<h6>
+    
+                                                        {{ carSelect.apoya_cabeza }}
+                                                    </h6>
+                                                </span>
+                                                <span style="text-transform: uppercase;">
+                                                    Estabilidad:<h6>
+    
+                                                        {{ carSelect.control_estabilidad }}
+                                                    </h6>
+                                                </span>
+                                                <span style="text-transform: uppercase;">
+                                                    Hoja de vida: <h6>
+                                                        {{ carSelect.hv_vehiculo }}
+                                                    </h6>
+    
+                                                </span>
+                                                <span style="text-transform: uppercase;">
+                                                    Servicio:<h6>
+    
+                                                        {{ carSelect.servicio }}
+                                                    </h6>
+                                                </span>
+    
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" [routerLink]="['/get-car/1']" class="btn btn-secondary"
-                                    data-dismiss="modal">Cancelar</button>
-                                <button data-dismiss="modal" [routerLink]="['/preoperacionales',carSelect._id,{valio:true}]"
-                                    data-backdrop="false" dismiss="modal" class="btn btn-primary">Ver
-                                    preoperacionales</button>
+                                <div class="modal-footer">
+                                    <button type="button" [routerLink]="['/get-car/1']" class="btn btn-secondary"
+                                        data-dismiss="modal">Cancelar</button>
+                                    <button data-dismiss="modal" [routerLink]="['/preoperacionales',carSelect._id,{valio:true}]"
+                                        data-backdrop="false" dismiss="modal" class="btn btn-primary">Ver
+                                        preoperacionales</button>
+                                </div>
                             </div>
                         </div>
+    
                     </div>
-
-                </div>
-            </ng-container>
-
-        </section>
+                </ng-container>
+    
+            </section>
+        </div>
     </div>
 </div>

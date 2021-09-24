@@ -167,8 +167,7 @@ function loginUser(req, res) {
             res.status(500).send({ message: "Error en la petición" })
         } else {
             if (!user) {
-                console.log('entra')
-                res.status(404).send({ message: 'El Conductor no existe' });
+                res.status(404).send({ message: "El Conductor no existe" });
             } else {
                 //Comprobar la Contraseña
                 bcrypt.compare(password, user.password, (err, check) => {

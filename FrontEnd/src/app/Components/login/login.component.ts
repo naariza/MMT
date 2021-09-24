@@ -1,9 +1,9 @@
-import { Component, ElementRef, OnInit,TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, ElementRef, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
 import { UserService } from "../../Services/user.service";
 import { User } from '../../Models/user';
 import { GLOBAL } from "../../Services/global";
 import { Router, ActivatedRoute, Params } from "@angular/router";
-import { NgbModal,ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
+import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 import { PreoperacionalService } from 'src/app/Services/preoperacional.service';
 import { VehiculoService } from 'src/app/Services/vehiculo.service';
 
@@ -11,12 +11,13 @@ import { VehiculoService } from 'src/app/Services/vehiculo.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css'],
   providers: [UserService]
 })
- 
+
 export class LoginComponent implements OnInit {
-  @ViewChild('aaaa', {static: true}) ModalChoto;
-  @ViewChild('manual', {static: true}) Manual;
+  @ViewChild('aaaa', { static: true }) ModalChoto;
+  @ViewChild('manual', { static: true }) Manual;
   public level = "";
   public user: User;
   public user_register: User;
@@ -27,14 +28,14 @@ export class LoginComponent implements OnInit {
   public url;
   public verify;
   public closeResult = '';
-  
+
   constructor(
     private _route: ActivatedRoute,
     private _router: Router,
     private _userService: UserService,
     private _preoService: PreoperacionalService,
     private _modalService: NgbModal,
-    private _carService:VehiculoService
+    private _carService: VehiculoService
   ) {
     this.user = new User('', '', '', null, '', '', '');
     this.user_register = new User('', '', '', '', '', '', '');
@@ -56,11 +57,11 @@ export class LoginComponent implements OnInit {
   public onSubmit() {
     //Conseguir los datos del usuario identificado
     this._userService.singup(this.user).subscribe(
-      (response:any )=> {
+      response => {
         this.identity = response.user;
-        
+
         if (!this.identity._id) {
-          this.errorMessage="El usuario no está corecctamente identificado"
+          alert("El usuario no está corecctamente identificado")
         } else {
           //Crear elelmento en el localStorage para tener el usuario en sesion
           localStorage.setItem('identity', JSON.stringify(this.identity));
@@ -106,22 +107,25 @@ export class LoginComponent implements OnInit {
   getVerifyCar() {
     this._preoService.getPreoDriver(this.token, this.identity._id).subscribe(
       (response: any) => {
+        console.log(response.error);
         if (!response) {
           this._router.navigate(['/']);
         } else {
-          this.verify = response
-          if (this.verify.status == true) {
-           this.open(this.ModalChoto)
-          }
-          else {
-            this._router.navigate(['/get-car/1']);
-          }
+            this.verify = response
+            if (this.verify.status == true) {
+              this.open(this.ModalChoto)
+            }
+            else {
+              this._router.navigate(['/get-car/1']);
+            }
+          
         }
       },
       error => {
         var errorMessage = <any>error;
         var body = error.error.message;
         if (errorMessage != null) {
+          this._router.navigate(['/get-car/1']);
           // this.alertMessage = body;
           console.log(error);
         }
@@ -144,31 +148,31 @@ export class LoginComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
- updateCar(){
-      let id = this.verify._id;
-      this.verify.status=false;
-      this._carService.updateCar(this.token, id, this.verify).subscribe(
-        (response: any) => {
-          this.verify= response.car;
-          if (!response.car) {
-            this.alertMessage = 'Error en el servidor';
-          } else {
-              this.alertMessage = 'El vehiculo se ha actualizado correctamente';
-              this._router.navigate(['/get-car/1']);
-              this.getDismissReason('Save click')
-              console.log(this.verify)
+  updateCar() {
+    let id = this.verify._id;
+    this.verify.status = false;
+    this._carService.updateCar(this.token, id, this.verify).subscribe(
+      (response: any) => {
+        this.verify = response.car;
+        if (!response.car) {
+          this.alertMessage = 'Error en el servidor';
+        } else {
+          this.alertMessage = 'El vehiculo se ha actualizado correctamente';
+          this._router.navigate(['/get-car/1']);
+          this.getDismissReason('Save click')
+          console.log(this.verify)
 
-            }
-        },
-        error => {
-          var errorMessage = <any>error;
-          var body = error.error.message;
-          if (errorMessage != null) {
-            this.alertMessage = body;
-            console.log(error);
-          }
         }
-      );
+      },
+      error => {
+        var errorMessage = <any>error;
+        var body = error.error.message;
+        if (errorMessage != null) {
+          this.alertMessage = body;
+          console.log(error);
+        }
+      }
+    );
   }
   logout() {
     localStorage.removeItem('identity');
